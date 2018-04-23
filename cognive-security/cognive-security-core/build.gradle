@@ -1,0 +1,11 @@
+jar {
+    baseName = 'cognive-security-core'
+    version = "${CGN_BASE_VERSION}"
+}
+
+dependencies {
+   	compile project(':cognive-core')
+
+	compile group: 'org.springframework.security', name: 'spring-security-core', version: "${SPRING_VERSION}"
+}
+

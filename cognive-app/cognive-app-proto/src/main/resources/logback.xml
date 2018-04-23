@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<configuration>
+    <include resource="org/springframework/boot/logging/logback/defaults.xml" />
+
+    <property name="LOG_PATTERN" value="${LOG_PATTERN:-%d{yyyy-MM-dd HH:mm:ss:SSS z} | ${LOG_LEVEL_PATTERN:-%5p} | [%t] %-40.40logger{39} : %m%n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}}" />
+
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>${LOG_PATTERN}</pattern>
+        </encoder>
+<!--         <filter class="ch.qos.logback.classic.filter.LevelFilter"> -->
+<!--             <level>DEBUG</level> -->
+<!--             <onMatch>DENY</onMatch> -->
+<!--             <onMismatch>ACCEPT</onMismatch> -->
+<!--         </filter> -->
+    </appender>
+
+    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <encoder>
+            <pattern>${LOG_PATTERN}</pattern>
+        </encoder>
+<!--         <filter class="ch.qos.logback.classic.filter.LevelFilter"> -->
+<!--             <level>DEBUG</level> -->
+<!--             <onMatch>DENY</onMatch> -->
+<!--             <onMismatch>ACCEPT</onMismatch> -->
+<!--         </filter> -->
+        <file>cgn.log</file>
+    </appender>
+    
+<!--     <logger level="DEBUG" name="com.cognive"> -->
+<!--         <appender-ref ref="CONSOLE" /> -->
+<!--         <appender-ref ref="FILE" /> -->
+<!--     </logger> -->
+
+    <root level="DEBUG">
+        <appender-ref ref="CONSOLE" />
+        <appender-ref ref="FILE" />
+    </root>
+</configuration>

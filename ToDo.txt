@@ -1,0 +1,6 @@
+ - exclude junit?
+ - add checkstyle/findbug?
+ - how to do partly builds (not all)
+ - make project of different types (not only java)
+ - add lombock
+ - switch to yaml

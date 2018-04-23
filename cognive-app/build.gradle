@@ -1,0 +1,31 @@
+buildscript {
+    repositories { mavenCentral() }
+    dependencies { classpath("org.springframework.boot:spring-boot-gradle-plugin:${SPRING_BOOT_VERSION}") }
+}
+
+
+ext {
+}
+
+subprojects {
+	apply plugin: 'org.springframework.boot'
+
+	dependencyManagement {
+    	imports { mavenBom("org.springframework.boot:spring-boot-dependencies:${SPRING_BOOT_VERSION}") }
+    	dependencies {
+    	}
+	}
+	
+	dependencies {
+		// compile group: 'org.springframework.boot', name: 'spring-boot-gradle-plugin', version: '2.0.0.RELEASE', ext: 'pom'
+		// compile('org.springframework.cloud:spring-cloud-starter-config')
+		
+	    compile "org.springframework.boot:spring-boot-starter-web"
+    	compile "org.springframework.boot:spring-boot-starter-actuator"
+    	
+    	compile project(':cognive-core')
+    	
+    	testCompile "org.springframework.boot:spring-boot-starter-test"
+    }
+
+}

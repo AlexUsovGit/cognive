@@ -1,0 +1,1 @@
+- share container cfg properties between apps (etc)

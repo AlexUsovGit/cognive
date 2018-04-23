@@ -1,0 +1,83 @@
+//apply from: "$rootDir/cognive-env/cognive-env-gradle-lib/util.gradle" // $rootDir
+//configure(listJavaProjects()) { 	println "$rootDir ${project.rootProject} ${project.rootDir} ${project.projectDir}"
+//}
+
+buildscript {
+   repositories {
+      mavenCentral()
+   }
+   
+   dependencies {
+      classpath 'io.spring.gradle:dependency-management-plugin:1.0.4.RELEASE'
+   }
+}
+
+apply plugin: 'project-report'
+
+allprojects {
+    ext {
+    	CGN_BASE_VERSION = '0.0.1-SNAPSHOT' 
+	}
+    
+	group 'com.cognive'
+    version "${CGN_BASE_VERSION}"
+    
+	repositories {
+	    mavenCentral()
+	    jcenter()
+	}
+}
+
+subprojects {
+	apply plugin: 'eclipse'
+	apply plugin: 'idea'
+	
+	apply plugin: 'java' 
+    apply plugin: 'io.spring.dependency-management'
+    apply plugin: 'pmd'
+    // apply plugin: 'checkstyle'
+    // apply plugin: 'findbugs'
+    // apply plugin: 'jacoco'
+    
+    sourceCompatibility = 1.8
+    targetCompatibility = 1.8    	
+
+    ext {
+    	SPRING_BOM_VERSION = '2.0.8.RELEASE'
+    	SPRING_VERSION = '5.0.4.RELEASE'
+		SPRING_BOOT_VERSION = '2.0.1.RELEASE'
+    	
+    	SLF4J_VERSION = '1.7.25'
+        LOGBACK_VERSION = '1.2.3'
+        TESTNG_VERSION = '6.14.2'
+        MOCKITO_VERSION = '2.18.0'
+        
+        MAPSTRUCT_VERSION = '1.2.0.Final'
+    }
+    
+	dependencyManagement {
+		// imports {	mavenBom "io.spring.platform:platform-bom:${SPRING_BOM_VERSION}" }
+	    imports {
+	        mavenBom("io.spring.platform:platform-bom:${SPRING_BOM_VERSION}") {
+	            bomProperty 'spring.version', "${SPRING_VERSION}"
+	        }
+	    }		
+	
+    	dependencies {
+    		dependency "org.slf4j:jcl-over-slf4j:${SLF4J_VERSION}"
+    		dependency "ch.qos.logback:logback-classic:${LOGBACK_VERSION}"
+    	
+    		dependency "org.testng:testng:${TESTNG_VERSION}"
+    		dependency "org.mockito:mockito-core:${MOCKITO_VERSION}"
+ 			// dependencySet(group:'org.slf4j', version: '1.7.7') { entry 'slf4j-api' entry 'slf4j-simple' } 
+ 			// exclude
+    	}
+	}
+    
+    dependencies {
+		compile 'org.slf4j:jcl-over-slf4j'
+		compile 'ch.qos.logback:logback-classic'
+		
+        testCompile "org.testng:testng"
+	}
+}

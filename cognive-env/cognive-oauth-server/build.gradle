@@ -1,0 +1,39 @@
+buildscript {
+	ext {
+		SPRING_CLOUD_BOM_VERSION = 'Finchley.M8'
+	}
+	repositories {
+		mavenCentral()
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${SPRING_BOOT_VERSION}")
+	}
+}
+
+apply plugin: 'org.springframework.boot'
+
+bootJar {
+	baseName = 'cgn-oauth-service'
+	version = '0.0.1-SNAPSHOT'
+}
+
+repositories {
+}
+
+dependencyManagement {
+}
+
+dependencies {
+    compile "org.springframework.boot:spring-boot-starter-web"
+   	compile "org.springframework.boot:spring-boot-starter-actuator"
+	compile group: 'org.springframework.security.oauth', name: 'spring-security-oauth2', version: '2.1.0.RELEASE'
+}
+
+/*
+eclipse {
+	classpath {
+		 containers.remove('org.eclipse.jdt.launching.JRE_CONTAINER')
+		 containers 'org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8'
+	}
+}
+*/

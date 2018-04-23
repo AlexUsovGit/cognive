@@ -1,0 +1,4 @@
+dependencies {
+   	compile project(':cognive-security:cognive-security-core')
+}
+

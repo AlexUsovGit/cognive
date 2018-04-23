@@ -1,0 +1,11 @@
+group 'com.cognive.core'
+
+dependencies {
+	compile group: 'org.springframework', name: 'spring-core'
+	compile group: 'org.springframework', name: 'spring-context'
+	compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind'
+
+	testCompile 'org.testng:testng'
+	testCompile group: 'org.springframework', name: 'spring-test'
+}
+

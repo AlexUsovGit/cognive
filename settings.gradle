@@ -1,0 +1,11 @@
+rootProject.name = 'cognive'
+
+include 'cognive-core'
+include 'cognive-security:cognive-security-core'
+include 'cognive-security:cognive-security-rdbms'
+include 'cognive-storage-rdbms'
+include 'cognive-app:cognive-app-proto'
+include 'cognive-module:cognive-module-user-management'
+include 'cognive-module:cognive-sample-module'
+include 'cognive-env:cognive-config-server'
+include 'cognive-env:cognive-oauth-server'

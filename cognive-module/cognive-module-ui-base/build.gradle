@@ -1,0 +1,12 @@
+group 'com.cognive.module'
+
+task webjar(type: Jar, dependsOn: "jar") { 
+    from(fileTree("dist")) {  
+        into "META-INF/resources" 
+    } 
+}
+
+dependencies {
+	testCompile "org.testng:testng"
+}
+

@@ -1,0 +1,14 @@
+bootJar {
+    baseName = 'cognive-app-proto'
+    version =  '0.1.0'
+}
+
+dependencies {
+	compile project(':cognive-core')
+
+	compile 'org.springframework.boot:spring-boot-starter-security'
+	// compile 'org.springframework.boot:spring-boot-devtools'
+
+	testCompile 'org.springframework.boot:spring-boot-starter-test'
+	testCompile 'org.springframework.security:spring-security-test'
+}

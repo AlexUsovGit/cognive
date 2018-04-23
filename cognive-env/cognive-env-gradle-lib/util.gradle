@@ -1,0 +1,12 @@
+def listJavaProjects() { 
+	return subprojects.findAll { new File(it.projectDir, 'src/main/java').exists() }
+}
+
+boolean isJavaProject(project) {
+	return (new File(project.projectDir, 'src/main/java')).exists()
+}
+
+ext {
+    listJavaProjects = this.&javaProjects
+    isJavaProject = this.&isJavaProject
+}

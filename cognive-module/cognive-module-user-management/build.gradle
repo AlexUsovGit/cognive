@@ -1,0 +1,6 @@
+group 'com.cognive.module'
+
+dependencies {
+	testCompile "org.testng:testng"
+}
+
