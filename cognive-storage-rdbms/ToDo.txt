@@ -1,0 +1,6 @@
+ - entities/mapping
+ - cache
+ - cache preloading/dictionaries
+ - metrics
+ - ORM vs template (partly)
+ - SerDe for json field

@@ -1,0 +1,119 @@
+buildscript {
+    repositories {
+        mavenLocal()
+        mavenCentral()
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.moowork.gradle:gradle-node-plugin:0.12'
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'com.moowork.node'
+
+node {
+  version = '6.10.2'
+  npmVersion = '3.10.6'
+  download = true
+  workDir = file("${project.buildDir}/node")
+  nodeModulesDir = file("${project.projectDir}")
+}
+
+// place to 
+//    /META-INF/resources/
+//    /resources/
+//    /static/
+//    /public/
+
+
+
+task cp(type: Jar, dependsOn: "jar") { 
+//    from(fileTree("dist")) {  
+//        into "META-INF/resources" 
+//    } 
+    copy {
+		from ("$projectDir/dist") 
+		into('build/tmp/jar/resources')
+		// into('src/main/resources')
+	}
+}
+
+
+task runWebpackOnNpm(type: NodeTask, dependsOn: 'npmInstall') {
+/*
+    def osName = System.getProperty("os.name").toLowerCase();
+    if (osName.contains("windows")) {
+        script = project.file('node_modules/webpack/bin/webpack.js')
+    } else {
+        script = project.file('node_modules/.bin/webpack')
+    }
+*/
+    script = project.file('build-scripts/build.js')
+}
+
+task runBuild(type: NpmTask) {
+  args = ['run', 'build']
+}
+runBuild.dependsOn(npmInstall)
+
+
+runWebpackOnNpm.dependsOn 'npmInstall'
+
+jar {
+	doFirst {
+		project.logger.info('!!! myjar !!!')
+	}
+	
+	// from ("${buildDir}/dist")
+	// { include 'META-INF/resources' }
+    from ("${projectDir}/dist") {
+        into ("public")
+    } 	
+}
+
+task runWebpack(type: Exec) {
+    // inputs.file("package-lock.json") 
+    // inputs.dir("src")
+    // NOTE: Add inputs.file("webpack.config.js") for projects that have it
+    // outputs.dir("$buildDir/dist")      
+    
+	// commandLine 'npm', 'run', 'build'
+    commandLine 'node', 'build-scripts/build.js'
+    // commandLine "$projectDir/$wb_script", "src/main.js", "$buildDir/js/bundle.js"
+
+    // copy {
+		// from ("$projectDir/dist")
+		// into('META-INF/resources') 
+		// into('build/tmp/jar/resources')
+		// into('src/main/resources/public')
+	// }
+//	copy { 
+//		from 'dist'
+//	    // into 'src/main/resources/public'
+//	    into 'META-INF/resources'
+//	}
+}
+processResources.dependsOn 'runWebpack'
+
+clean.delete << file('dist')
+
+task cleanDist(type: Delete){
+  delete "dist"
+}
+
+task cleanAll(type: Delete){
+  delete "build"
+  delete "node_modules"
+  // delete ".gradle"
+}
+cleanAll.dependsOn(clean)
+
+task zipWebJar(type: Zip) {
+	extension 'jar'
+	classifier 'webjar'
+	from ("$projectDir/dist") {
+		into('META-INF/resources/')
+	}
+	outputs.file 'testwebjar.zip'
+}

@@ -8,10 +8,10 @@ import com.cognive.app.base.rest.model.messages.ContentMessage;
 import com.cognive.core.model.AppUser;
 
 @RestController
-@RequestMapping("/api/v1")
+@RequestMapping("/api/v1/user")
 public class UserController extends BaseController<AppUser> {
 
-	@GetMapping("/user")
+	@GetMapping("/me")
 	public ContentMessage<AppUser> getCurrentUser() {
 		AppUser user = new AppUser();
 		user.setUid("default");

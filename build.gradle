@@ -55,6 +55,13 @@ subprojects {
         MAPSTRUCT_VERSION = '1.2.0.Final'
     }
     
+	eclipse {
+	    classpath {
+	         containers.remove('org.eclipse.jdt.launching.JRE_CONTAINER')
+	         containers 'org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8'
+	    }
+	}
+    
 	dependencyManagement {
 		// imports {	mavenBom "io.spring.platform:platform-bom:${SPRING_BOM_VERSION}" }
 	    imports {

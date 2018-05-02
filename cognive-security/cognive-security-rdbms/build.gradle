@@ -1,4 +1,25 @@
+plugins {
+    id 'net.ltgt.apt' version '0.8'
+}
+
+ext {
+    generatedMapperSourcesDir = "${buildDir}/generated-src/mapstruct/main"
+}
+ 
+// configurations { mapstruct }
+
 dependencies {
+   	compile project(':cognive-core')
    	compile project(':cognive-security:cognive-security-core')
+   	
+	compile "org.mapstruct:mapstruct-jdk8:${MAPSTRUCT_VERSION}"
+    // mapstruct "org.mapstruct:mapstruct-processor:${MAPSTRUCT_VERSION}"
+    apt "org.mapstruct:mapstruct-processor:${MAPSTRUCT_VERSION}"
+}
+
+tasks.withType(JavaCompile) {
+    options.compilerArgs = [
+            '-Amapstruct.suppressGeneratorTimestamp=true'
+    ]
 }
 

@@ -49,7 +49,8 @@ public class WebUiConfig implements WebMvcConfigurer {
 	@Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
 		registry.addResourceHandler("/**")
-        		.addResourceLocations("classpath:/webjars/", "/webjars/", "classpath:/public/"); 
+        		.addResourceLocations("/META-INF/resources/", "classpath:/public/" , "classpath:/public-default/");
+		// "classpath:/webjars/", "/webjars/", 
     }
 	
 	// TODO: remove	
