@@ -2,13 +2,19 @@ package com.cognive.storage.app.rdbms.entity;
 
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.Type;
+import org.hibernate.annotations.TypeDef;
+import org.hibernate.annotations.TypeDefs;
+
 import com.fasterxml.jackson.databind.JsonNode;
+import com.vladmihalcea.hibernate.type.json.JsonNodeBinaryType;
 
 @Entity
 @Table(name = "basic")
@@ -16,8 +22,8 @@ public class BasicEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-// @GeneratedValue(strategy = GenerationType.IDENTITY)
-// @Column(columnDefinition = "serial")	
+	// @GeneratedValue(strategy = GenerationType.IDENTITY)
+	// @Column(columnDefinition = "serial")
 	private String id;
 	private String kind;
 	private String type;
@@ -33,6 +39,9 @@ public class BasicEntity {
 	private String tag;
 
 	private String value;
+
+	@Type(type = "jsonb")
+	@Column(columnDefinition = "jsonb")
 	private JsonNode ext;
 
 	public String getId() {
