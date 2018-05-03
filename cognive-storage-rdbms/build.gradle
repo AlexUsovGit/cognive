@@ -1,3 +1,8 @@
+buildscript {
+    repositories { mavenCentral() }
+    dependencies { classpath("org.springframework.boot:spring-boot-gradle-plugin:${SPRING_BOOT_VERSION}") }
+}
+
 plugins {
     id 'net.ltgt.apt' version '0.8'
 }
@@ -8,12 +13,27 @@ ext {
  
 // configurations { mapstruct }
 
+dependencyManagement {
+	imports { mavenBom("org.springframework.boot:spring-boot-dependencies:${SPRING_BOOT_VERSION}") }
+	dependencies {
+	}
+}
+	
 dependencies {
    	compile project(':cognive-core')
+   	
+   	compile 'org.springframework.boot:spring-boot-starter-data-jpa'
+
+   	// compile 'org.springframework.data:spring-data-jpa'
+   	// compile 'org.hibernate:hibernate-entitymanager'
+
+	compile 'org.postgresql:postgresql:42.2.2'
    	
 	compile "org.mapstruct:mapstruct-jdk8:${MAPSTRUCT_VERSION}"
     // mapstruct "org.mapstruct:mapstruct-processor:${MAPSTRUCT_VERSION}"
     apt "org.mapstruct:mapstruct-processor:${MAPSTRUCT_VERSION}"
+    
+   	testCompile "org.springframework.boot:spring-boot-starter-test"
 }
 
 tasks.withType(JavaCompile) {
@@ -21,4 +41,3 @@ tasks.withType(JavaCompile) {
             '-Amapstruct.suppressGeneratorTimestamp=true'
     ]
 }
-

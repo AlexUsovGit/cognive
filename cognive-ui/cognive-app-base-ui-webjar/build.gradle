@@ -56,8 +56,6 @@ task runBuild(type: NpmTask) {
   args = ['run', 'build']
 }
 runBuild.dependsOn(npmInstall)
-
-
 runWebpackOnNpm.dependsOn 'npmInstall'
 
 jar {

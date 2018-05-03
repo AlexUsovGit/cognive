@@ -1,14 +1,23 @@
-package com.cognive.app.base.rest.model;
+package com.cognive.storage.rdbms.entity;
 
 import java.util.Date;
 
-public class ModifiableResource {
+public class BaseModifiableEntity extends BaseEntity {
 
-	private String modifiedBy;
 	private Date modifiedOn;
+	private String modifiedBy;
+	private String modificationComment;
 
 	private String version;
 	private String tag;
+
+	public Date getModifiedOn() {
+		return modifiedOn;
+	}
+
+	public void setModifiedOn(Date modifiedOn) {
+		this.modifiedOn = modifiedOn;
+	}
 
 	public String getModifiedBy() {
 		return modifiedBy;
@@ -18,12 +27,12 @@ public class ModifiableResource {
 		this.modifiedBy = modifiedBy;
 	}
 
-	public Date getModifiedOn() {
-		return modifiedOn;
+	public String getModificationComment() {
+		return modificationComment;
 	}
 
-	public void setModifiedOn(Date modifiedOn) {
-		this.modifiedOn = modifiedOn;
+	public void setModificationComment(String modificationComment) {
+		this.modificationComment = modificationComment;
 	}
 
 	public String getVersion() {

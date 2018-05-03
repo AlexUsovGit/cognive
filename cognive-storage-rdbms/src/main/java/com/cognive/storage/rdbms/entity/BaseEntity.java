@@ -1,8 +1,8 @@
-package com.cognive.core.model.base;
+package com.cognive.storage.rdbms.entity;
 
 import java.util.Date;
 
-public class BaseBusinessObject {
+public class BaseEntity {
 
 	private String id;
 	private String kind;

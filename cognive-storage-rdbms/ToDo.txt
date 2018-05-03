@@ -4,3 +4,9 @@
  - metrics
  - ORM vs template (partly)
  - SerDe for json field
+ - handle multiple data sources
+ - mapping for json field
+ - entities: implements Serializable, tostring + hashcode/equals
+ - validation
+ - spring boot dep -? do we really need it
+ - tests with in memory DB

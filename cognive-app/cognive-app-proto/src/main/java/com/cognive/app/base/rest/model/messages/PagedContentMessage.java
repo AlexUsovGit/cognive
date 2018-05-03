@@ -2,7 +2,7 @@ package com.cognive.app.base.rest.model.messages;
 
 import java.util.List;
 
-import com.cognive.app.base.rest.model.ItemsPage;
+import com.cognive.core.model.base.ItemsPage;
 
 public class PagedContentMessage<T> extends StatusMessage {
 

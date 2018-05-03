@@ -2,3 +2,6 @@
  - User management
  - CSRF
  - Spring Boot dev tools 
+ - patch method?
+ - URL params to object 
+ - handle custom json (JsonNode or Map<String, Object>)
