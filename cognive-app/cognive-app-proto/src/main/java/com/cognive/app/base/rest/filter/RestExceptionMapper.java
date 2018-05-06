@@ -12,6 +12,8 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 
 import com.cognive.app.base.exception.RestCogniveRtException;
 import com.cognive.app.base.rest.model.messages.StatusMessage;
+import com.cognive.core.exception.IllegalArgumentCogniveRtException;
+import com.cognive.core.exception.NotFoundCogniveRtException;
 
 @RestControllerAdvice 
 public class RestExceptionMapper extends ResponseEntityExceptionHandler {
@@ -28,6 +30,28 @@ public class RestExceptionMapper extends ResponseEntityExceptionHandler {
         return handleExceptionInternal(ex, body, 
           new HttpHeaders(), ex.getCode(), request);
     }	
+    
+    @ExceptionHandler(value = { IllegalArgumentCogniveRtException.class })
+    protected ResponseEntity<Object> handleIllegalArgument(RuntimeException ex, WebRequest request) {
+    	StatusMessage body = StatusMessage.getBuilder()
+    			.withMessage(ex.getMessage())
+    			.withStatus(HttpStatus.BAD_REQUEST)
+    			.build();
+    	
+        return handleExceptionInternal(ex, body, 
+          new HttpHeaders(), body.getStatus(), request);
+    }
+    
+    @ExceptionHandler(value = { NotFoundCogniveRtException.class })
+    protected ResponseEntity<Object> handleNotFound(RuntimeException ex, WebRequest request) {
+    	StatusMessage body = StatusMessage.getBuilder()
+    			.withMessage(ex.getMessage())
+    			.withStatus(HttpStatus.BAD_REQUEST)
+    			.build();
+    	
+        return handleExceptionInternal(ex, body, 
+          new HttpHeaders(), body.getStatus(), request);
+    }
     
     @ExceptionHandler(value = { RuntimeException.class })
     protected ResponseEntity<Object> handleConflict(RuntimeException ex, WebRequest request) {

@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -26,32 +27,33 @@ public class BasicBoRestController extends BaseController<BasicBo> {
 
 	@GetMapping("/{id}")
 	public ContentMessage<BasicBo> getById(@PathVariable("id") String id) {
-		return null;
+		return asContentMessage( basicBoService.getById(id) );
 	}
 	
 	@GetMapping("/")
 	public PagedContentMessage<BasicBo> find(BasicBoFilter filter) {
-		return null;
+		return asPagedContentMessage( basicBoService.find(filter), filter.cloneAsItemsPage());
 	}
 	
 	@PostMapping("/")
-	public ContentMessage<BasicBo> create(BasicBo bo) {
-		return null;
+	public ContentMessage<BasicBo> create(@RequestBody BasicBo bo) {
+		return asContentMessage( basicBoService.create(bo) );
 	}
 	
 	@PutMapping("/{id}")
-	public ContentMessage<BasicBo> update(@PathVariable("id") String id, BasicBo bo) {
-		return null;
+	public ContentMessage<BasicBo> update(@PathVariable("id") String id, @RequestBody BasicBo bo) {
+		return asContentMessage( basicBoService.update(bo) );
 	}
 	
 	@PatchMapping("/{id}")
-	public ContentMessage<BasicBo> patch(@PathVariable("id") String id, BasicBo bo) {
-		return null;
+	public ContentMessage<BasicBo> patch(@PathVariable("id") String id, @RequestBody BasicBo bo) {
+		return asContentMessage( basicBoService.update(bo) );
 	}
 	
 	@DeleteMapping("/{id}")
 	public ContentMessage<BasicBo> delete(@PathVariable("id") String id) {
-		return null;
+		basicBoService.delete(id);
+		return getEmptyContentMessage();
 	}
 	
 }

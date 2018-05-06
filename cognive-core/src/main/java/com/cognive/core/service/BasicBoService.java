@@ -7,13 +7,13 @@ import com.cognive.core.model.BasicBoFilter;
 
 public interface BasicBoService {
 
-	BasicBo create(BasicBo customer);
+	BasicBo create(BasicBo bo);
 	
 	BasicBo getById(String id);
 	
 	List<BasicBo> find(BasicBoFilter filter);
 	
-	BasicBo update(BasicBo customer);
+	BasicBo update(BasicBo bo);
 	
 	void delete(String id);
 	

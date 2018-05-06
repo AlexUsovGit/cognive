@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2011 rel. 2 (http://www.altova.com) by Alex (AdHoc) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+    <xs:element name="application">
+        <xs:annotation>
+            <xs:documentation>Comment describing your root element</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:complexType name="Application">
+        <xs:sequence>
+            <xs:element name="applicationType"/>
+            <xs:element name="submissionDate"/>
+            <xs:element name="updateDate"/>
+            <xs:choice>
+                <xs:element name="person" type="Person"/>
+                <xs:element name="enterpreneur" type="Enterpreneur"/>
+                <xs:element name="enterprise" type="Enterprise"/>
+                <xs:element name="creditOrganization" type="CreditOrganization"/>
+            </xs:choice>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="Person">
+        <xs:sequence>
+            <xs:element name="firstName"/>
+            <xs:element name="middleName"/>
+            <xs:element name="lastName"/>
+            <xs:element name="birthDate"/>
+            <xs:element name="birthPlace"/>
+            <xs:element name="birthCountry" type="Country"/>
+            <xs:element name="regAddress" type="Address"/>
+            <xs:element name="idDocument" type="Document"/>
+            <xs:element name="migrationCard" type="Document"/>
+            <xs:element name="foreignDocument" type="Document"/>
+            <xs:element name="inn"/>
+            <xs:element name="snils"/>
+            <xs:element name="email"/>
+            <xs:element name="phoneNumber"/>
+            <xs:element name="faxNumber"/>
+            <xs:element name="postalAddress" type="Address"/>
+            <xs:element name="poRelation"/>
+            <xs:element name="relatedPublicOfficials" type="POInfo" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element name="taxCountry" type="Country"/>
+            <xs:element name="beneficiary" type="Application" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element name="profitMaker" type="Application" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element name="relationToBank" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element name="relationToBankDetail" minOccurs="0"/>
+            <xs:element name="fundSource" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element name="fundSourceDetail" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:simpleType name="Country">
+        <xs:restriction base="xs:string"/>
+    </xs:simpleType>
+    <xs:complexType name="Address">
+        <xs:sequence>
+            <xs:element name="addrString"/>
+            <xs:element name="apartment"/>
+            <xs:element name="house"/>
+            <xs:element name="street"/>
+            <xs:element name="town"/>
+            <xs:element name="region"/>
+            <xs:element name="county"/>
+            <xs:element name="country"/>
+            <xs:element name="postIndex"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="Document">
+        <xs:sequence>
+            <xs:element name="docType"/>
+            <xs:element name="docSeries"/>
+            <xs:element name="docNumber"/>
+            <xs:element name="issueDate"/>
+            <xs:element name="issuer"/>
+            <xs:element name="issuerCode"/>
+            <xs:element name="expirationDate"/>
+            <xs:element name="docTypeString"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="POInfo">
+        <xs:sequence>
+            <xs:element name="firstName"/>
+            <xs:element name="middleName"/>
+            <xs:element name="lastName"/>
+            <xs:element name="relation"/>
+            <xs:element name="position"/>
+            <xs:element name="employerName"/>
+            <xs:element name="employerAddress"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="Enterpreneur">
+        <xs:sequence/>
+    </xs:complexType>
+    <xs:complexType name="Enterprise">
+        <xs:sequence/>
+    </xs:complexType>
+    <xs:complexType name="CreditOrganization">
+        <xs:sequence/>
+    </xs:complexType>
+</xs:schema>

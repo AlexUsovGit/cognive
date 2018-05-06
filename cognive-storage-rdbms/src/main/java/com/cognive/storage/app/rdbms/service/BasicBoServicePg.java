@@ -14,7 +14,6 @@ import com.cognive.core.exception.IllegalArgumentCogniveRtException;
 import com.cognive.core.exception.NotFoundCogniveRtException;
 import com.cognive.core.model.BasicBo;
 import com.cognive.core.model.BasicBoFilter;
-import com.cognive.core.model.base.BaseModifiableBusinessObject;
 import com.cognive.core.model.base.ItemsPage;
 import com.cognive.core.service.BasicBoService;
 import com.cognive.storage.app.rdbms.entity.BasicEntity;
@@ -48,7 +47,8 @@ public class BasicBoServicePg implements BasicBoService {
 		return mapper.entityToBo(e);
 	}
 
-	private BasicEntity getEntityById(String id) {
+	protected BasicEntity getEntityById(String id) {
+		assertValidId(id, "ID is not valid for the getById operation.");
 		Optional<BasicEntity> e = repo.findById(id);
 		if (!e.isPresent()) {
 			throw new NotFoundCogniveRtException("BasicBo was not found for id=" + id);
@@ -73,6 +73,7 @@ public class BasicBoServicePg implements BasicBoService {
 
 	@Override
 	public void delete(String id) {
+		assertValidId(id, "ID is not valid for the delete operation.");
 		repo.deleteById(id);
 	}
 	
@@ -116,7 +117,7 @@ public class BasicBoServicePg implements BasicBoService {
 
 	protected void rejectNullArgument(Object parameterValue, String errorMessage) {
 		if (parameterValue == null || "".equals(parameterValue.toString())) {
-			throw new IllegalArgumentException(errorMessage);
+			throw new IllegalArgumentCogniveRtException(errorMessage);
 		}
 	}
 
