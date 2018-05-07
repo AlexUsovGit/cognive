@@ -5,6 +5,7 @@ bootJar {
 
 dependencies {
 	compile project(':cognive-core')
+	compile project(':cognive-storage-rdbms')
 	compile project(':cognive-ui:cognive-app-base-ui-webjar')
 
 	compile 'org.springframework.boot:spring-boot-starter-security'

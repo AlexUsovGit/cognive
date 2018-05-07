@@ -10,3 +10,4 @@
  - validation
  - spring boot dep -? do we really need it
  - tests with in memory DB
+ - generate ddl

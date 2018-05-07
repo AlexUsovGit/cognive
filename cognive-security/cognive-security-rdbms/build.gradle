@@ -3,7 +3,7 @@ plugins {
 }
 
 ext {
-    generatedMapperSourcesDir = "${buildDir}/generated-src/mapstruct/main"
+    generatedMapperSourcesDir = "${buildDir}/generated/source/apt/main"
 }
  
 // configurations { mapstruct }
@@ -11,6 +11,9 @@ ext {
 dependencies {
    	compile project(':cognive-core')
    	compile project(':cognive-security:cognive-security-core')
+   	compile project(':cognive-storage-rdbms')
+   	// compile 'org.springframework.boot:spring-boot-starter-data-jpa'
+   	compile 'org.postgresql:postgresql:42.2.2'
    	
 	compile "org.mapstruct:mapstruct-jdk8:${MAPSTRUCT_VERSION}"
     // mapstruct "org.mapstruct:mapstruct-processor:${MAPSTRUCT_VERSION}"

@@ -6,6 +6,9 @@ jar {
 dependencies {
    	compile project(':cognive-core')
 
-	compile group: 'org.springframework.security', name: 'spring-security-core', version: "${SPRING_VERSION}"
+	// compile group: 'org.springframework.security', name: 'spring-security-core', version: "${SPRING_VERSION}"
+	// compile group: 'org.springframework.security', name: 'spring-security-acl', version: "${SPRING_VERSION}"
+	// compile group: 'org.springframework.security', name: 'spring-security-config', version: "${SPRING_VERSION}"
+	compile group: 'org.springframework.boot', name: 'spring-boot-starter-security', version: "${SPRING_BOOT_VERSION}"
 }
 
