@@ -9,12 +9,12 @@ public interface BasicBoService {
 
 	BasicBo create(BasicBo bo);
 	
-	BasicBo getById(String id);
+	BasicBo getById(long id);
 	
 	List<BasicBo> find(BasicBoFilter filter);
 	
 	BasicBo update(BasicBo bo);
 	
-	void delete(String id);
+	void delete(long id);
 	
 }

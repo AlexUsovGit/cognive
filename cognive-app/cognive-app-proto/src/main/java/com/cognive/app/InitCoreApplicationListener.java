@@ -12,8 +12,9 @@ public class InitCoreApplicationListener implements ApplicationListener<Applicat
 	
 	@Override
 	public void onApplicationEvent(ApplicationEvent event) {
+		logger.debug("onAppEvent: " + event.toString());
 		if (event instanceof ApplicationStartedEvent) {
-			
+			logger.debug("onAppEvent: the app is started" );
 		}
 	}
 	

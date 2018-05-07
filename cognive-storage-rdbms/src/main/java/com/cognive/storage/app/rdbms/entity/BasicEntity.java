@@ -10,11 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.Type;
-import org.hibernate.annotations.TypeDef;
-import org.hibernate.annotations.TypeDefs;
 
 import com.fasterxml.jackson.databind.JsonNode;
-import com.vladmihalcea.hibernate.type.json.JsonNodeBinaryType;
 
 @Entity
 @Table(name = "basic")
@@ -24,7 +21,7 @@ public class BasicEntity {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	// @GeneratedValue(strategy = GenerationType.IDENTITY)
 	// @Column(columnDefinition = "serial")
-	private String id;
+	private long id;
 	private String kind;
 	private String type;
 
@@ -44,11 +41,11 @@ public class BasicEntity {
 	@Column(columnDefinition = "jsonb")
 	private JsonNode ext;
 
-	public String getId() {
+	public long getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 

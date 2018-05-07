@@ -42,12 +42,12 @@ public class BasicBoServicePg implements BasicBoService {
 	}
 
 	@Override
-	public BasicBo getById(String id) {
+	public BasicBo getById(long id) {
 		BasicEntity e = getEntityById(id);
 		return mapper.entityToBo(e);
 	}
 
-	protected BasicEntity getEntityById(String id) {
+	protected BasicEntity getEntityById(long id) {
 		assertValidId(id, "ID is not valid for the getById operation.");
 		Optional<BasicEntity> e = repo.findById(id);
 		if (!e.isPresent()) {
@@ -72,7 +72,7 @@ public class BasicBoServicePg implements BasicBoService {
 	}
 
 	@Override
-	public void delete(String id) {
+	public void delete(long id) {
 		assertValidId(id, "ID is not valid for the delete operation.");
 		repo.deleteById(id);
 	}
@@ -101,6 +101,12 @@ public class BasicBoServicePg implements BasicBoService {
 
 	protected int validatePageSize(int size) {
 		return (size <= 0) ? DEFAULT_PAGE_SIZE : size;
+	}
+
+	protected void assertValidId(Long arg, String msg) {
+		if (arg == null) {
+			throw new IllegalArgumentCogniveRtException(msg == null ? INCORRECT_ID_ERROR : msg);
+		}
 	}
 
 	protected void assertValidId(String arg, String msg) {

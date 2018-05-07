@@ -46,7 +46,7 @@ public class RestExceptionMapper extends ResponseEntityExceptionHandler {
     protected ResponseEntity<Object> handleNotFound(RuntimeException ex, WebRequest request) {
     	StatusMessage body = StatusMessage.getBuilder()
     			.withMessage(ex.getMessage())
-    			.withStatus(HttpStatus.BAD_REQUEST)
+    			.withStatus(HttpStatus.NOT_FOUND)
     			.build();
     	
         return handleExceptionInternal(ex, body, 

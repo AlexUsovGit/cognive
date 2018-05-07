@@ -7,5 +7,5 @@ import com.cognive.storage.app.rdbms.entity.BasicEntity;
 
 @Repository
 
-public interface BasicEntityRepo extends PagingAndSortingRepository<BasicEntity, String> {
+public interface BasicEntityRepo extends PagingAndSortingRepository<BasicEntity, Long> {
 }

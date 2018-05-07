@@ -48,8 +48,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	            .and()
 // 	        .exceptionHandling().accessDeniedPage("/access-denied.html")
 //	        	.and()
-//	        .httpBasic() // TODO: remove
-//	        	.and()
+	        .httpBasic() // TODO: remove
+	        	.and()
 	        .csrf()
 	        	.disable()
 //	        	.csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse());

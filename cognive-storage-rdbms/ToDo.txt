@@ -11,3 +11,6 @@
  - spring boot dep -? do we really need it
  - tests with in memory DB
  - generate ddl
+ - encrypt data fields
+ - review https://stackoverflow.com/questions/621884/database-development-mistakes-made-by-application-developers?rq=1
+ - review long as ID

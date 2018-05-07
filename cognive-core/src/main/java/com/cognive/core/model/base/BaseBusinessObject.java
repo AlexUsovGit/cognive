@@ -4,18 +4,18 @@ import java.util.Date;
 
 public class BaseBusinessObject {
 
-	private String id;
+	private long id;
 	private String kind;
 	private String type;
 
 	private Date createdOn;
 	private String createdBy;
 
-	public String getId() {
+	public long getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 

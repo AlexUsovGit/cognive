@@ -26,7 +26,7 @@ public class BasicBoRestController extends BaseController<BasicBo> {
 	BasicBoService basicBoService;
 
 	@GetMapping("/{id}")
-	public ContentMessage<BasicBo> getById(@PathVariable("id") String id) {
+	public ContentMessage<BasicBo> getById(@PathVariable(name = "id", required = true) long id) {
 		return asContentMessage( basicBoService.getById(id) );
 	}
 	
@@ -41,17 +41,17 @@ public class BasicBoRestController extends BaseController<BasicBo> {
 	}
 	
 	@PutMapping("/{id}")
-	public ContentMessage<BasicBo> update(@PathVariable("id") String id, @RequestBody BasicBo bo) {
+	public ContentMessage<BasicBo> update(@PathVariable(name = "id", required = true) long id, @RequestBody BasicBo bo) {
 		return asContentMessage( basicBoService.update(bo) );
 	}
 	
 	@PatchMapping("/{id}")
-	public ContentMessage<BasicBo> patch(@PathVariable("id") String id, @RequestBody BasicBo bo) {
+	public ContentMessage<BasicBo> patch(@PathVariable(name = "id", required = true) long id, @RequestBody BasicBo bo) {
 		return asContentMessage( basicBoService.update(bo) );
 	}
 	
 	@DeleteMapping("/{id}")
-	public ContentMessage<BasicBo> delete(@PathVariable("id") String id) {
+	public ContentMessage<BasicBo> delete(@PathVariable(name = "id", required = true) long id) {
 		basicBoService.delete(id);
 		return getEmptyContentMessage();
 	}
