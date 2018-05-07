@@ -3,7 +3,7 @@
  - cache preloading/dictionaries
  - metrics
  - ORM vs template (partly)
- - SerDe for json field
+ - SerDe for json field: 
  - handle multiple data sources
  - mapping for json field
  - entities: implements Serializable, tostring + hashcode/equals
@@ -14,3 +14,4 @@
  - encrypt data fields
  - review https://stackoverflow.com/questions/621884/database-development-mistakes-made-by-application-developers?rq=1
  - review long as ID
+ - use transactions

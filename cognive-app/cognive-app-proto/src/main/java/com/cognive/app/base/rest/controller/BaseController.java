@@ -7,6 +7,7 @@ import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
+import com.cognive.app.base.exception.BadRequestCogniveRtException;
 import com.cognive.app.base.rest.model.RequestInfo;
 import com.cognive.app.base.rest.model.messages.ContentListMessage;
 import com.cognive.app.base.rest.model.messages.ContentMessage;
@@ -84,4 +85,9 @@ public class BaseController<T> {
 		return result;
 	}
 	
+	protected void assertRequestBodyNotNull(Object requestBody, String errorMessage) {
+		if (requestBody == null) {
+			throw new BadRequestCogniveRtException(errorMessage == null? "The request body can not be empty.": errorMessage);
+		}
+	}
 }

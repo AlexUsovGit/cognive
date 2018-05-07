@@ -22,6 +22,7 @@ public class RestExceptionMapper extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler(value = { RestCogniveRtException.class })
     protected ResponseEntity<Object> handleConflict(RestCogniveRtException ex, WebRequest request) {
+    	logger.error("Cognive REST runtime exception.", ex);
     	StatusMessage body = StatusMessage.getBuilder()
     			.withMessage(ex.getMessage())
     			.withStatus(ex.getCode())
@@ -33,6 +34,7 @@ public class RestExceptionMapper extends ResponseEntityExceptionHandler {
     
     @ExceptionHandler(value = { IllegalArgumentCogniveRtException.class })
     protected ResponseEntity<Object> handleIllegalArgument(RuntimeException ex, WebRequest request) {
+    	logger.error("Failed to handle request.", ex);
     	StatusMessage body = StatusMessage.getBuilder()
     			.withMessage(ex.getMessage())
     			.withStatus(HttpStatus.BAD_REQUEST)
@@ -44,6 +46,7 @@ public class RestExceptionMapper extends ResponseEntityExceptionHandler {
     
     @ExceptionHandler(value = { NotFoundCogniveRtException.class })
     protected ResponseEntity<Object> handleNotFound(RuntimeException ex, WebRequest request) {
+    	logger.error("Failed to find resource.", ex);
     	StatusMessage body = StatusMessage.getBuilder()
     			.withMessage(ex.getMessage())
     			.withStatus(HttpStatus.NOT_FOUND)
@@ -55,6 +58,7 @@ public class RestExceptionMapper extends ResponseEntityExceptionHandler {
     
     @ExceptionHandler(value = { RuntimeException.class })
     protected ResponseEntity<Object> handleConflict(RuntimeException ex, WebRequest request) {
+    	logger.error(ex.getMessage(), ex);
     	StatusMessage body = StatusMessage.getBuilder()
     			.withMessage(ex.getMessage())
     			.withStatus(HttpStatus.INTERNAL_SERVER_ERROR)

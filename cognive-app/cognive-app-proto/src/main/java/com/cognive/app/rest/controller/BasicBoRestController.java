@@ -30,23 +30,28 @@ public class BasicBoRestController extends BaseController<BasicBo> {
 		return asContentMessage( basicBoService.getById(id) );
 	}
 	
-	@GetMapping("/")
+	@GetMapping("")
 	public PagedContentMessage<BasicBo> find(BasicBoFilter filter) {
 		return asPagedContentMessage( basicBoService.find(filter), filter.cloneAsItemsPage());
 	}
 	
-	@PostMapping("/")
+	@PostMapping("")
 	public ContentMessage<BasicBo> create(@RequestBody BasicBo bo) {
+		assertRequestBodyNotNull(bo, null);
 		return asContentMessage( basicBoService.create(bo) );
 	}
 	
 	@PutMapping("/{id}")
 	public ContentMessage<BasicBo> update(@PathVariable(name = "id", required = true) long id, @RequestBody BasicBo bo) {
+		assertRequestBodyNotNull(bo, null);
+		bo.setId(id);
 		return asContentMessage( basicBoService.update(bo) );
 	}
 	
 	@PatchMapping("/{id}")
 	public ContentMessage<BasicBo> patch(@PathVariable(name = "id", required = true) long id, @RequestBody BasicBo bo) {
+		assertRequestBodyNotNull(bo, null);
+		bo.setId(id);
 		return asContentMessage( basicBoService.update(bo) );
 	}
 	

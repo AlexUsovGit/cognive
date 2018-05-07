@@ -6,8 +6,11 @@
  - URL params to object 
  - remove unused cfg/beans
  - check port value
+ - setup spring profiles
+ - add request context
+ - dto serializable? 
+  
  - handle custom json (JsonNode or Map<String, Object>) - HandlerMethodArgumentResolver? or  Converter<String, LocalDateTime>
- 
  public class MetaDataResolver implements HandlerMethodArgumentResolver {
     private static final String TRANSACTION_ID = "TRANSACTION-ID";
     private static final String ACCESS_KEY = "ACCESS-KEY";
@@ -54,5 +57,3 @@
 	OR! 
 	just use Map	
 	
- - add request context
- - dto serializable? 

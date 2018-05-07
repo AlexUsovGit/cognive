@@ -36,6 +36,8 @@ public class BasicBoServicePg implements BasicBoService {
 
 	@Override
 	public BasicBo create(BasicBo bo) {
+		// bo.setId(0);
+		// Optional<BasicEntity> existed = repo.findById(bo.getId());
 		BasicEntity e = mapper.boToEntity(bo);
 		e = repo.save(e);
 		return mapper.entityToBo(e);
@@ -115,7 +117,7 @@ public class BasicBoServicePg implements BasicBoService {
 		}
 	}
 
-	protected void assertNotNull(Object arg, String msg) {
+	protected void assertFoundItemNotNull(Object arg, String msg) {
 		if (arg == null) {
 			throw new NotFoundCogniveRtException(msg);
 		}

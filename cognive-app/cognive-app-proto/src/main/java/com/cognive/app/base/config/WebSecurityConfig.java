@@ -68,12 +68,15 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Bean
     @Override
     public UserDetailsService userDetailsService() {
+    	// FIXME: use dev profile
+    	// Authorization: Basic dXNlcjpwYXNzd29yZA==
         UserDetails user =
              User.withDefaultPasswordEncoder()
                 .username("user")
                 .password("password")
                 .roles("USER")
                 .build();
+        // Authorization: Basic YWRtaW46cGFzc3dvcmQ=
         UserDetails admin =
                 User.withDefaultPasswordEncoder()
                    .username("admin")
