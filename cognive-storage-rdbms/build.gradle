@@ -8,7 +8,8 @@ plugins {
 }
 
 ext {
-    generatedMapperSourcesDir = "${buildDir}/generated-src/mapstruct/main"
+    // generatedMapperSourcesDir = "${buildDir}/generated-src/mapstruct/main"
+    generatedMapperSourcesDir = "${buildDir}/generated/source/apt/main"
 }
  
 // configurations { mapstruct }

@@ -14,7 +14,6 @@ import com.cognive.core.exception.IllegalArgumentCogniveRtException;
 import com.cognive.core.exception.NotFoundCogniveRtException;
 import com.cognive.core.model.BasicBo;
 import com.cognive.core.model.BasicBoFilter;
-import com.cognive.core.model.base.BaseModifiableBusinessObject;
 import com.cognive.core.model.base.ItemsPage;
 import com.cognive.core.service.BasicBoService;
 import com.cognive.storage.app.rdbms.entity.BasicEntity;

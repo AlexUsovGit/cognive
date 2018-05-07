@@ -19,8 +19,8 @@ import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
-@ComponentScan({"com.cognive.storage.app.rdbms.service"})
-@PropertySource({ "classpath:cgn-databases.properties" })
+@ComponentScan({"com.cognive.storage.app.rdbms.service", "com.cognive.storage.app.rdbms.mapper"})
+@PropertySource({ "classpath:cgn-databases.properties", "classpath:cgn-app-database.properties" })
 @EnableTransactionManagement
 @EnableJpaRepositories(
         entityManagerFactoryRef = "appDbEntityManagerFactory", 
@@ -53,7 +53,7 @@ public class AppDbConfiguration {
 	@Primary
 	@Bean(name = "appDbTransactionManager")
 	public PlatformTransactionManager transactionManager(
-			@Qualifier("entityManagerFactory") EntityManagerFactory entityManagerFactory) {
+			@Qualifier("appDbEntityManagerFactory") EntityManagerFactory entityManagerFactory) {
 		
 		return new JpaTransactionManager(entityManagerFactory);
 	}
