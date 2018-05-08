@@ -1,0 +1,34 @@
+/** Variables, mixins, function, etc. */
+
+/* Variables */
+
+//Font
+$font: 'Open Sans', sans-serif;
+
+//Colors
+$color-main: rgba(88, 86, 214, 1);
+$color-main-violet-blue: rgba(74, 71, 179, 1);
+$color-background: rgba(243, 247, 249, 1);
+$color-background-menu: rgba(250, 250, 250, 1);
+$color-background-white: rgba(255, 255, 255, 1);
+$color-background-platinum: rgba(229, 229, 234, 1);
+$color-danger: rgba(255, 45, 85, 1);
+$color-borders: rgba(209, 209, 214, 1);
+//Text colors
+$color-text-bold: rgba(21, 21, 21, 1);
+$color-text-main: rgba(97, 97, 97, 1);
+$color-text-light: rgba(145, 145, 145, 1);
+//Base layout
+$header-height: 56px;
+$width-menu: 70px;
+$width-menu-open: 236px;
+$border-style: 1px solid $color-borders;
+$height-counter: 16px;
+
+/* Mixins */
+@mixin placeholder {
+  &::-webkit-input-placeholder {@content}
+  &:-moz-placeholder           {@content}
+  &::-moz-placeholder          {@content}
+  &:-ms-input-placeholder      {@content}
+}

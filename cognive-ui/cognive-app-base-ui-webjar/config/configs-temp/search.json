@@ -1,0 +1,27 @@
+{
+  "contentSearch": {
+    "tabs": [
+      {
+        "id": "1",
+        "ico": "",
+        "label": "ИП",
+        "badge": "",
+        "component": ""
+      },
+      {
+        "id": "2",
+        "ico": "",
+        "label": "Юр. Лицо",
+        "badge": "",
+        "component": ""
+      },
+      {
+        "id": "3",
+        "ico": "",
+        "label": "Физ. Лицо",
+        "badge": "",
+        "component": "application-for-individual"
+      }
+    ]
+  }
+}

@@ -20,7 +20,7 @@ node {
   nodeModulesDir = file("${project.projectDir}")
 }
 
-// place to 
+// place to
 //    /META-INF/resources/
 //    /resources/
 //    /static/
@@ -28,12 +28,12 @@ node {
 
 
 
-task cp(type: Jar, dependsOn: "jar") { 
-//    from(fileTree("dist")) {  
-//        into "META-INF/resources" 
-//    } 
+task cp(type: Jar, dependsOn: "jar") {
+//    from(fileTree("dist")) {
+//        into "META-INF/resources"
+//    }
     copy {
-		from ("$projectDir/dist") 
+		from ("$projectDir/dist")
 		into('build/tmp/jar/resources')
 		// into('src/main/resources')
 	}
@@ -49,7 +49,7 @@ task runWebpackOnNpm(type: NodeTask, dependsOn: 'npmInstall') {
         script = project.file('node_modules/.bin/webpack')
     }
 */
-    script = project.file('build-scripts/build.js')
+    script = project.file('build_scripts/build.js')
 }
 
 task runBuild(type: NpmTask) {
@@ -62,31 +62,31 @@ jar {
 	doFirst {
 		project.logger.info('!!! myjar !!!')
 	}
-	
+
 	// from ("${buildDir}/dist")
 	// { include 'META-INF/resources' }
     from ("${projectDir}/dist") {
         into ("public")
-    } 	
+    }
 }
 
 task runWebpack(type: Exec) {
-    // inputs.file("package-lock.json") 
+    // inputs.file("package-lock.json")
     // inputs.dir("src")
     // NOTE: Add inputs.file("webpack.config.js") for projects that have it
-    // outputs.dir("$buildDir/dist")      
-    
+    // outputs.dir("$buildDir/dist")
+
 	// commandLine 'npm', 'run', 'build'
-    commandLine 'node', 'build-scripts/build.js'
+    commandLine 'node', 'build_scripts/build.js'
     // commandLine "$projectDir/$wb_script", "src/main.js", "$buildDir/js/bundle.js"
 
     // copy {
 		// from ("$projectDir/dist")
-		// into('META-INF/resources') 
+		// into('META-INF/resources')
 		// into('build/tmp/jar/resources')
 		// into('src/main/resources/public')
 	// }
-//	copy { 
+//	copy {
 //		from 'dist'
 //	    // into 'src/main/resources/public'
 //	    into 'META-INF/resources'

@@ -1,0 +1,10 @@
+[
+  {
+    "email": "admin@cognive.com",
+    "password": "admin"
+  },
+  {
+    "email": "user@cognive.com",
+    "password": "user"
+  }
+]

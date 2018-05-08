@@ -9,12 +9,12 @@ module.exports = {
 
     // Paths
     assetsSubDirectory: 'static',
-    assetsPublicPath: '/proto/',
+    assetsPublicPath: '/',
     proxyTable: {},
 
     // Various Dev Server settings
     host: 'localhost', // can be overwritten by process.env.HOST
-    port: 8080, // can be overwritten by process.env.PORT, if port is in use, a free one will be determined
+    port: 8888, // can be overwritten by process.env.PORT, if port is in use, a free one will be determined
     autoOpenBrowser: false,
     errorOverlay: true,
     notifyOnErrors: true,
@@ -43,7 +43,7 @@ module.exports = {
     // Paths
     assetsRoot: path.resolve(__dirname, '../dist'),
     assetsSubDirectory: 'static',
-    assetsPublicPath: '/',
+    assetsPublicPath: '/proto', // Assets path has been changed for Cognive project
 
     /**
      * Source Maps
@@ -60,9 +60,9 @@ module.exports = {
     productionGzip: false,
     productionGzipExtensions: ['js', 'css'],
 
-    // Run the build command with an extra argument to
-    // View the bundle analyzer report after build finishes:
-    // `npm run build --report`
+    // Run the build_scripts command with an extra argument to
+    // View the bundle analyzer report after build_scripts finishes:
+    // `npm run build_scripts --report`
     // Set to `true` or `false` to always turn it on or off
     bundleAnalyzerReport: process.env.npm_config_report
   }

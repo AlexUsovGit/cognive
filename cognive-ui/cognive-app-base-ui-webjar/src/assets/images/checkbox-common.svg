@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="32" height="32" viewBox="0 0 32 32">
+  <defs>
+    <path id="check-a" d="M25.3333333,6.66666667 L25.3333333,25.3333333 L6.66666667,25.3333333 L6.66666667,6.66666667 L25.3333333,6.66666667 L25.3333333,6.66666667 Z M25.3333333,4 L6.66666667,4 C5.2,4 4,5.2 4,6.66666667 L4,25.3333333 C4,26.8 5.2,28 6.66666667,28 L25.3333333,28 C26.8,28 28,26.8 28,25.3333333 L28,6.66666667 C28,5.2 26.8,4 25.3333333,4 L25.3333333,4 Z"/>
+  </defs>
+  <g fill="none" fill-rule="evenodd">
+    <mask id="check-b" fill="#fff">
+      <use xlink:href="#check-a"/>
+    </mask>
+    <g fill="#C7C7CC" mask="url(#check-b)">
+      <rect width="32" height="32"/>
+    </g>
+  </g>
+</svg>

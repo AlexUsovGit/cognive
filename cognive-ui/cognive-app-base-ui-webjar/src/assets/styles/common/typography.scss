@@ -1,0 +1,29 @@
+/** Text, links, etc. */
+
+@import "../core/core";
+
+* {
+  font-family: 'Open Sans', sans-serif;
+}
+
+h1 {
+  font-size: 28px;
+  font-weight: bold;
+  color: $color-text-bold;
+}
+h2 {
+  font-size: 22px;
+  font-weight: bold;
+  color: $color-text-bold;
+}
+h6 {
+  font-size: 12px;
+  font-weight: 600;
+  color: $color-text-main;
+}
+a {
+  color: $color-main;
+  &:hover {
+    text-decoration: underline;
+  }
+}

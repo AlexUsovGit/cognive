@@ -1,0 +1,16 @@
+{
+  "cards": [
+    {
+      "id": 1,
+      "image": "",
+      "label": "Taken",
+      "value": "3 046 $"
+    },
+    {
+      "id": 2,
+      "image": "temp-logo-small.png",
+      "label": "New vs Returns",
+      "value": "134 / 210"
+    }
+  ]
+}

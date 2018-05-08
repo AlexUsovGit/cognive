@@ -1,0 +1,160 @@
+/** Inputs, checkboxes, radio buttons. */
+
+@import "../core/core";
+
+
+/* Inputs */
+
+label {
+  font-size: 12px;
+  font-weight: 600;
+  color: $color-text-main;
+  margin-bottom: 0;
+}
+.form-control {
+  min-height: 48px;
+  border: 1px solid rgba(199, 199, 204, 1);
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  color: $color-text-bold;
+  caret-color: $color-main;
+  &:hover {
+    border-color: rgba(145, 145, 145, 1);
+  }
+  &:focus {
+    border-color: $color-main;
+    box-shadow: 0 0 0 1px $color-main;
+  }
+  &[disabled] {
+    background-color: rgba(238, 238, 238, 1);
+  }
+  @include placeholder {
+    color:  rgba(199, 199, 204, 1);
+  }
+  &.invalid {
+    border-color: $color-danger;
+    box-shadow: 0 0 0 1px $color-danger;
+    background-color: rgba(255, 187, 200, 1);
+    @include placeholder {
+      color:  $color-background-white;
+    }
+    & + .invalid-feedback {
+      display: block;
+      font-size: 11px;
+      color: rgba(255, 59, 48, 1);
+      padding-left: 13px;
+    }
+  }
+}
+
+
+/* Checkbox */
+
+//For Login Page
+// ToDo: probably need refactoring
+.form-check {
+  padding-left: 25px;
+}
+.form-check-input {
+  margin-left: -25px;
+  &::before {
+    position: relative;
+    top: -3px;
+    content: '';
+    display: block;
+    height: 20px;
+    width: 24px;
+    background-image: url("assets/images/checkbox-login-sprite.png");
+    background-repeat: no-repeat;
+    background-position-x: 0;
+  }
+  &.checked::before {
+    background-position-x: -25px;
+  }
+}
+
+
+/* Radio buttons and checkboxes */
+
+// Common radio button
+.cognive-check {
+  position: relative;
+  margin-right: 32px;
+}
+.cognive-check-input {
+  position: absolute;
+  opacity: 0;
+  &[type="radio"] ~ .cognive-check-label::before {
+    background-image: url("assets/images/radio-common.svg");
+  }
+  &[type="radio"]:checked ~ .cognive-check-label::before {
+    background-image: url("assets/images/radio-common-checked.svg");
+  }
+  &[type="checkbox"] ~ .cognive-check-label::before {
+    background-image: url("assets/images/checkbox-common.svg");
+  }
+  &[type="checkbox"]:checked ~ .cognive-check-label::before {
+    background-image: url("assets/images/checkbox-common-checked.svg");
+  }
+}
+.cognive-check-label {
+  display: flex;
+  align-items: center;
+  &::before {
+    content: '';
+    height: 32px;
+    width: 32px;
+    margin-right: 12px;
+  }
+}
+
+// Toggle from checkbox
+.cognive-toggle {
+  position: relative;
+}
+.cognive-toggle-input {
+  position: absolute;
+  opacity: 0;
+  &:checked ~ .cognive-toggle-label::before {
+    background-color: $color-main;
+  }
+  &:checked ~ .cognive-toggle-label::after {
+    left: calc(52px - 28px - 2px);
+  }
+}
+.cognive-toggle-label {
+  display: flex;
+  align-items: center;
+  &::before {
+    content: '';
+    height: 32px;
+    width: 52px;
+    background-color: $color-borders;
+    border-radius: calc(32px / 2);
+    margin-right: 12px;
+  }
+  &::after {
+    content: '';
+    position: absolute;
+    left: 2px;
+    height: 28px;
+    width: 28px;
+    background-color: $color-background-white;
+    border-radius: 28px;
+    box-shadow: 0 4px 1px 0 rgba(0, 0, 0, 0.02),
+                0 4px 1px 0 rgba(0, 0, 0, 0.02),
+                0 3px 1px 0 rgba(27, 27, 28, 0.03),
+                0 1px 1px 0 rgba(28, 26, 26, 0.03),
+                0 1px 1px 1px rgba(28, 26, 26, 0.04),
+                0 3px 8px 0 rgba(22, 18, 18, 0.15);
+  }
+}
+
+
+/* Others */
+fieldset {
+  border: 2px solid $color-borders;
+  border-radius: 8px;
+  padding-top: 15px;
+}

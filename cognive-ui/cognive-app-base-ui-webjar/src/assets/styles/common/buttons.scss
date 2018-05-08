@@ -1,0 +1,45 @@
+/** Buttons. */
+
+@import "../core/core";
+
+/* Variables */
+$btn-types: (
+  prim : (color: $color-background-white, background: $color-main),
+  second : (color: $color-main, background: $color-background-white)
+);
+$btn-sizes: (
+  xxs:(height: 32px, padding: 24px, font: 11px),
+  xs:(height: 36px, padding: 24px, font: 11px),
+  s:(height: 44px, padding: 24px, font: 15px),
+  m:(height: 48px, padding: 48px, font: 17px),
+  l:(height: 56px, padding: 56px, font: 20px),
+  xl: (height: 72px, padding: 72px, font: 22px)
+);
+
+/* Common */
+.btn-cgn {
+  position: relative;
+  font-weight: bold;
+  border: none;
+  box-shadow: 0 8px 8px 0 rgba(0, 0, 0, 0.16);
+  cursor: pointer;
+}
+
+/* Types */
+@each $text, $props in $btn-types {
+  .btn-cgn-#{$text} {
+    color: map_get($props, 'color');
+    background-color: map_get($props, 'background');
+  }
+}
+
+/* Sizes */
+@each $text, $props in $btn-sizes {
+  .btn-cgn-#{$text} {
+    height: map_get($props, 'height');
+    padding-left: map_get($props, 'padding');
+    padding-right: map_get($props, 'padding');
+    border-radius: map_get($props, 'height') / 2;
+    font-size: map_get($props, 'font');
+  }
+}

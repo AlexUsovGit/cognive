@@ -1,0 +1,18 @@
+{
+  "tabs": [
+    {
+      "id": "1",
+      "label": "Tab 1"
+    },
+    {
+      "id": "2",
+      "ico": "icon_24_ic_view_carousel",
+      "label": "Tab 2"
+    },
+    {
+      "id": "3",
+      "label": "Tab 3",
+      "badge": "3"
+    }
+  ]
+}
