@@ -43,7 +43,7 @@ module.exports = {
     // Paths
     assetsRoot: path.resolve(__dirname, '../dist'),
     assetsSubDirectory: 'static',
-    assetsPublicPath: '/proto', // Assets path has been changed for Cognive project
+    assetsPublicPath: '/proto/', // Assets path has been changed for Cognive project
 
     /**
      * Source Maps
