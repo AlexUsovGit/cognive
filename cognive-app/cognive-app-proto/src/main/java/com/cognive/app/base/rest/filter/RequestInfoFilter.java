@@ -8,12 +8,17 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.cognive.app.base.rest.model.RequestInfo;
+import com.cognive.core.model.RequestInfo;
+import com.cognive.core.util.RequestInfoHolder;
 
 public class RequestInfoFilter implements HandlerInterceptor {
+	
+	@Autowired
+	RequestInfoHolder requestInfoHolder;
 
 	private static final Logger logger = LoggerFactory.getLogger(RequestInfoFilter.class);
 	
@@ -30,6 +35,7 @@ public class RequestInfoFilter implements HandlerInterceptor {
     	info.setRequestKey(UUID.randomUUID().toString());
     	
     	// TODO: save in context
+    	requestInfoHolder.set(info);
     	
         return true;
     }
@@ -38,8 +44,13 @@ public class RequestInfoFilter implements HandlerInterceptor {
 	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,
 			ModelAndView modelAndView) throws Exception {
 		
-		// put end date or log
-		// HandlerInterceptor.super.postHandle(request, response, handler, modelAndView);
+		// put end date or log? do not clean context?
+    	logger.debug("Request: {} - was processed in {} ms.", 
+    			requestInfoHolder.get().getRequestKey(), 
+    			(System.currentTimeMillis() - requestInfoHolder.get().getDate().getTime()));
+
+    	requestInfoHolder.remove();
+		HandlerInterceptor.super.postHandle(request, response, handler, modelAndView);
 	}
     
 }

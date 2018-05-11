@@ -1,0 +1,15 @@
+ - generate ddl
+ - default values
+ - serializable 
+ - equils etc
+ 
+ ---- acl sample 
+ 
+@PostFilter("hasPermission(filterObject, 'READ')")
+List<NoticeMessage> findAll();
+     
+@PostAuthorize("hasPermission(returnObject, 'READ')")
+NoticeMessage findById(Integer id);
+     
+@PreAuthorize("hasPermission(#noticeMessage, 'WRITE')")
+NoticeMessage save(@Param("noticeMessage")NoticeMessage noticeMessage);

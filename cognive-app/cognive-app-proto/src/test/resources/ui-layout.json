@@ -1,0 +1,79 @@
+{
+  "menu": [
+    {
+      "id": "1",
+      "title": "Menu",
+      "items": [
+        {
+          "id": 1,
+          "label": "Dashboard",
+          "icon": "icon_24_ic_poll",
+          "link": "/",
+          "count": 7
+        },
+        {
+          "id": 2,
+          "label": "Statistics",
+          "icon": "icon_24_ic_view_day",
+          "link": "/statistics",
+          "count": 0
+        },
+        {
+          "id": 3,
+          "label": "Information",
+          "icon": "icon_24_ic_view_carousel",
+          "link": "/information",
+          "count": 0
+        },
+        {
+          "id": 4,
+          "label": "Mindmap Buildrer",
+          "icon": "icon_24_ic_diagram",
+          "link": "/mindmap",
+          "count": 0
+        },
+        {
+          "id": 5,
+          "label": "Calendar",
+          "icon": "icon_24_ic_calendar_01",
+          "link": "/calendar",
+          "count": 7
+        },
+        {
+          "id": 6,
+          "label": "Reports",
+          "icon": "icon_24_ic_subject",
+          "link": "/reports",
+          "count": 0
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "title": "Admin",
+      "items": [
+        {
+          "id": 7,
+          "label": "Integrations",
+          "icon": "icon_24_ic_cloud_upload",
+          "link": "/integrations",
+          "count": 7
+        },
+        {
+          "id": 8,
+          "label": "Users",
+          "icon": "icon_24_ic_group",
+          "link": "/users",
+          "count": 7
+        },
+        {
+          "id": 9,
+          "label": "Settings",
+          "icon": "icon_24_ic_settings_applications",
+          "link": "/settings",
+          "count": 0
+        }
+      ]
+    }
+  ]
+}

@@ -2,8 +2,8 @@ package com.cognive.app.base.exception;
 
 import org.springframework.http.HttpStatus;
 
-import com.cognive.app.base.rest.model.RequestInfo;
 import com.cognive.core.exception.CogniveRtException;
+import com.cognive.core.model.RequestInfo;
 
 public class RestCogniveRtException extends CogniveRtException {
 
