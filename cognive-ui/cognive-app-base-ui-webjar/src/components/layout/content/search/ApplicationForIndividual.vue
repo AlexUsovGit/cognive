@@ -80,7 +80,6 @@
                 <label for="birthDate">
                   Дата рождения
                 </label>
-                <!-- ToDo: set up date picker -->
                 <v-date-picker
                   mode="single"
                   v-model="birthDate"

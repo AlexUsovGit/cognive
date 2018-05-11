@@ -27,4 +27,14 @@ new Vue({
 // Date picker
 Vue.use(VCalendar, {
   firstDayOfWeek: 2,  // Monday
+  formats: { // Default params have been used
+    title: 'MMMM YYYY',
+    weekdays: 'WW', // Has been changed. 2 chars for displaying.
+    navMonths: 'MMM',
+    input: ['L', 'YYYY-MM-DD', 'YYYY/MM/DD'],
+    dayPopover: 'L',
+    data: ['L', 'YYYY-MM-DD', 'YYYY/MM/DD']
+  },
+  popoverVisibility: 'focus', // Show calendar when input in focus.
+  datePickerTintColor: 'rgba(88, 86, 214, 1)' // Background color of the selected date
 });
