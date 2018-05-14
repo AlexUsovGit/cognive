@@ -2,7 +2,7 @@ package com.cognive.storage.rdbms.entity;
 
 import java.util.Date;
 
-public class BaseEntity {
+abstract public class BaseEntity {
 
 	private String id;
 	private String kind;

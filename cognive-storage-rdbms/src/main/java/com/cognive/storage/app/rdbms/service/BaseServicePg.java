@@ -6,94 +6,105 @@ import java.util.Optional;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort.Direction;
-import org.springframework.stereotype.Service;
+import org.springframework.data.repository.PagingAndSortingRepository;
 
 import com.cognive.core.exception.IllegalArgumentCogniveRtException;
 import com.cognive.core.exception.NotFoundCogniveRtException;
-import com.cognive.core.model.BasicBo;
-import com.cognive.core.model.BasicBoFilter;
+import com.cognive.core.model.base.BaseModifiableBusinessObject;
 import com.cognive.core.model.base.ItemsPage;
-import com.cognive.core.service.BasicBoService;
-import com.cognive.storage.app.rdbms.entity.BasicEntity;
-import com.cognive.storage.app.rdbms.mapper.BasicBoMapper;
-import com.cognive.storage.app.rdbms.repo.BasicEntityRepo;
+import com.cognive.core.model.base.ModifiableBoFilter;
+import com.cognive.core.service.base.BaseBoCrudService;
+import com.cognive.storage.app.rdbms.mapper.BaseModifiableBoMapper;
+import com.cognive.storage.rdbms.entity.BaseModifiableEntity;
 
-@Service
-public class BasicBoServicePg implements BasicBoService {
+abstract public class BaseServicePg<T extends BaseModifiableBusinessObject, E extends BaseModifiableEntity> implements BaseBoCrudService<T> {
 
-	private static final String CREATED_ON = "createdOn";
-	private static final String DEFAULT_SORT_FIELD = CREATED_ON;
-	private static final int DEFAULT_PAGE_SIZE = 25;
-	private static final String INCORRECT_ID_ERROR = null;
+	protected static final String CREATED_ON = "createdOn";
+	protected static final String DEFAULT_SORT_FIELD = CREATED_ON;
+	protected static final int DEFAULT_PAGE_SIZE = 25;
+	protected static final String INCORRECT_ID_ERROR = null;
 
-	private static final Logger logger = LoggerFactory.getLogger(BasicBoServicePg.class);
+	private static final Logger logger = LoggerFactory.getLogger(BaseServicePg.class);
 	
-	@Autowired
-	BasicEntityRepo repo;
+	abstract protected BaseModifiableBoMapper<T, E> getMapper();
+	
+	abstract protected PagingAndSortingRepository<E, Long> getRepo();
 
-	@Autowired
-	BasicBoMapper mapper;
-
+	/* (non-Javadoc)
+	 * @see com.cognive.storage.app.rdbms.service.BaseBoCrudService#create(T)
+	 */
 	@Override
-	public BasicBo create(BasicBo bo) {
+	public T create(T bo) {
 		// bo.setId(0);
-		// Optional<BasicEntity> existed = repo.findById(bo.getId());
-		BasicEntity e = mapper.boToEntity(bo);
-		e = repo.save(e);
-		return mapper.entityToBo(e);
+		// Optional<T> existed = getRepo().findById(bo.getId());
+		E e = getMapper().boToEntity(bo);
+		e = getRepo().save(e);
+		return getMapper().entityToBo(e);
 	}
 
+	/* (non-Javadoc)
+	 * @see com.cognive.storage.app.rdbms.service.BaseBoCrudService#getById(java.lang.Long)
+	 */
 	@Override
-	public BasicBo getById(long id) {
-		BasicEntity e = getEntityById(id);
-		return mapper.entityToBo(e);
+	public T getById(Long id) {
+		E e = getEntityById(id);
+		return getMapper().entityToBo(e);
 	}
 
-	protected BasicEntity getEntityById(long id) {
+	protected E getEntityById(Long id) {
 		assertValidId(id, "ID is not valid for the getById operation.");
-		Optional<BasicEntity> e = repo.findById(id);
+		Optional<E> e = getRepo().findById(id);
 		if (!e.isPresent()) {
-			throw new NotFoundCogniveRtException("BasicBo was not found for id=" + id);
+			throw new NotFoundCogniveRtException("T was not found for id=" + id);
 		}
 		return e.get();
 	}
 
+	/* (non-Javadoc)
+	 * @see com.cognive.storage.app.rdbms.service.BaseBoCrudService#find(com.cognive.core.model.base.ModifiableBoFilter)
+	 */
 	@Override
-	public List<BasicBo> find(BasicBoFilter filter) {
-		Iterable<BasicEntity> items = repo.findAll(asPageRequest(filter));
-		return mapper.entitiesToBoList(items);
+	public List<T> find(ModifiableBoFilter filter) {
+		Iterable<E> items = getRepo().findAll(asPageRequest(filter));
+		return getMapper().entitiesToBoList(items);
 	}
 
+	/* (non-Javadoc)
+	 * @see com.cognive.storage.app.rdbms.service.BaseBoCrudService#update(T)
+	 */
 	@Override
-	public BasicBo update(BasicBo bo) {
-		BasicEntity e = getEntityById(bo.getId());
-		mapper.updateEntity(mapper.boToEntity(bo), e);
+	public T update(T bo) {
+		E e = getEntityById(bo.getId());
+		getMapper().updateEntity(getMapper().boToEntity(bo), e);
 		prepareToUpdate(e);
-		e = repo.save(e);
-		return mapper.entityToBo(e);
+		e = getRepo().save(e);
+		return getMapper().entityToBo(e);
 	}
 
+	/* (non-Javadoc)
+	 * @see com.cognive.storage.app.rdbms.service.BaseBoCrudService#delete(long)
+	 */
 	@Override
 	public void delete(long id) {
 		assertValidId(id, "ID is not valid for the delete operation.");
-		repo.deleteById(id);
+		getRepo().deleteById(id);
 	}
 	
-	protected void prepareToCreate(BasicEntity arg) {
+	protected void prepareToCreate(T arg) {
 		arg.setCreatedOn(new Date());
 		arg.setCreatedBy( getCurrentUser() );
 	}
 
-	protected void prepareToUpdate(BasicEntity arg) {
+	protected void prepareToUpdate(E arg) {
 		arg.setModifiedOn(new Date());
 		arg.setModifiedBy( getCurrentUser() );
 	}
 
 	protected String getCurrentUser() {
+		// FIXME:
 		return "stub-user";
 	}
 

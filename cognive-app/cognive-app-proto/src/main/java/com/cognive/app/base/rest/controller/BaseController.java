@@ -14,7 +14,7 @@ import com.cognive.app.base.rest.model.messages.PagedContentMessage;
 import com.cognive.core.model.RequestInfo;
 import com.cognive.core.model.base.ItemsPage;
 
-public class BaseController<T> {
+abstract public class BaseController<T> {
 
 	@Autowired
 	protected MessageSource messageSource;
