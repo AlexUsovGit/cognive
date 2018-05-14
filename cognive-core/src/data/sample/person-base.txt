@@ -1,0 +1,70 @@
+== PERSON
+
+lastName: string
+firstName: string
+middleName: string
+birthDate: 14.05.2018
+birthPlace: Место Рождения
+citizenship: Гражданство
+email: string[]
+phone: string[]
+fax: string[]
+
+document: ==DOCUMENT[]
+
+registrationAddress: ==ADDRESS
+isAddressSame: on
+residenceAddress: ==ADDRESS
+postAddress: string
+
+inn: string
+insuranceNumber: string
+
+isIpdl: true
+ipdlNumber: string
+ipdlEmployerInfo: string
+ipdlPosition: string
+ipdlRelation: Степень родства
+ipdlFinance: string
+
+isRpdl: true
+rpdlName: string
+rpdlEmployerInfo: string
+rpdlPosition: string
+rpdlRelation: Степень родства
+rpdlFinance: string
+
+beneficial: ==PERSON[]
+
+relationshipWithBankType1: on
+relationshipWithBankType2: on
+relationshipWithBankType3: on
+relationshipWithBankType4: on
+relationshipWithBankType5: on
+relationshipWithBank: string
+
+purposes1: on
+purposes2: on
+purposes3: on
+purposes: string
+
+financialPosition: string
+reputation: string
+
+sources1: on
+sources2: on
+sources3: on
+sources4: on
+sources5: on
+sources6: on
+sources: string
+
+== ADDRESS
+
+== DOCUMENT
+documentType: string
+documentSeries: string
+documentNumber: string
+documentIssueDate: 14.05.2018
+documentIssuePlace: string
+documentDepartmentCode: string

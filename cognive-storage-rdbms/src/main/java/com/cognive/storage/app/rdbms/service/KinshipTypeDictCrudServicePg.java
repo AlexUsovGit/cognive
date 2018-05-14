@@ -3,7 +3,7 @@ package com.cognive.storage.app.rdbms.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.CrudRepository;
 
-import com.cognive.core.model.KinshipTypeDictItem;
+import com.cognive.core.model.dict.KinshipTypeDictItem;
 import com.cognive.storage.app.rdbms.entity.DictKinshipTypeEntity;
 import com.cognive.storage.app.rdbms.mapper.BaseDictItemMapper;
 import com.cognive.storage.app.rdbms.mapper.KinshipTypeDictItemMapper;

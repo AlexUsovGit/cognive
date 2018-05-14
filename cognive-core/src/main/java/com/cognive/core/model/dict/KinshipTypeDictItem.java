@@ -1,4 +1,4 @@
-package com.cognive.core.model;
+package com.cognive.core.model.dict;
 
 import com.cognive.core.model.base.BaseDictItem;
 

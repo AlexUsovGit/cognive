@@ -2,7 +2,7 @@ package com.cognive.storage.app.rdbms.mapper;
 
 import org.mapstruct.Mapper;
 
-import com.cognive.core.model.CountryDictItem;
+import com.cognive.core.model.dict.CountryDictItem;
 import com.cognive.storage.app.rdbms.entity.DictCountryEntity;
 
 @Mapper(componentModel = "spring")

@@ -6,9 +6,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.cognive.app.base.rest.model.messages.ContentListMessage;
-import com.cognive.core.model.CountryDictItem;
-import com.cognive.core.model.KinshipTypeDictItem;
 import com.cognive.core.model.base.BaseDictItem;
+import com.cognive.core.model.dict.CountryDictItem;
+import com.cognive.core.model.dict.KinshipTypeDictItem;
 import com.cognive.core.service.CountryDictService;
 import com.cognive.core.service.KinshipTypeDictService;
 

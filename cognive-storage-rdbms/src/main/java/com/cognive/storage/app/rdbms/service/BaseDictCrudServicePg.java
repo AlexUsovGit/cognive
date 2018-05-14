@@ -24,6 +24,8 @@ public abstract class BaseDictCrudServicePg<BO extends BaseDictItem, E extends B
 	
 	abstract CrudRepository<E, String> getRepo();
 	
+	// TODO: cache + preloading on startup
+	
 	@Override
 	public BO create(BO item) {
 		E e = getMapper().boToEntity(item);
