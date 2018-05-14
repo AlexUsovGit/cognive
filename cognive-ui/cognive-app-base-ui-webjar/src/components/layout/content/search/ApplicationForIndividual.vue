@@ -1,7 +1,12 @@
 <!-- This is application form for individual. Probably it is temporary. -->
 
 <template>
-  <form class="app-form container-fluid">
+  <form
+    class="app-form container-fluid"
+    method="post"
+    action="/test"
+    novalidate
+  >
 
     <div class="row">
       <div class="col">
@@ -29,6 +34,7 @@
                   type="text"
                   class="form-control"
                   id="lastName"
+                  name="lastName"
                   placeholder="Фамилия"
                 />
               </div>
@@ -40,6 +46,7 @@
                 </label>
                 <input
                   id="firstName"
+                  name="firstName"
                   type="text"
                   class="form-control"
                   placeholder="Имя"
@@ -53,6 +60,7 @@
                 </label>
                 <input
                   id="middleName"
+                  name="middleName"
                   type="text"
                   class="form-control"
                   placeholder="Отчество (опционально)"
@@ -86,6 +94,7 @@
                 >
                   <input
                     id="birthDate"
+                    name="birthDate"
                     type="text"
                     class="form-control"
                     placeholder="--.--.---"
@@ -105,6 +114,7 @@
                 </label>
                 <select
                   id="birthPlace"
+                  name="birthPlace"
                   class="form-control"
                 >
                   <option>
@@ -135,6 +145,7 @@
                 </label>
                 <select
                   id="citizenship"
+                  name="citizenship"
                   class="form-control"
                 >
                   <option>
@@ -180,9 +191,10 @@
                   Тип Документа
                 </label>
                 <input
+                  id="documentType"
+                  name="documentType"
                   type="text"
                   class="form-control"
-                  id="documentType"
                   placeholder="Тип Документа"
                 />
               </div>
@@ -193,9 +205,10 @@
                   Серия
                 </label>
                 <input
+                  id="documentSeries"
+                  name="documentSeries"
                   type="text"
                   class="form-control"
-                  id="documentSeries"
                   placeholder="Серия"
                 />
               </div>
@@ -206,9 +219,10 @@
                   Номер
                 </label>
                 <input
+                  id="documentNumber"
+                  name="documentNumber"
                   type="text"
                   class="form-control"
-                  id="documentNumber"
                   placeholder="Номер"
                 />
               </div>
@@ -224,6 +238,7 @@
                 >
                   <input
                     id="documentIssueDate"
+                    name="documentIssueDate"
                     type="text"
                     class="form-control"
                     placeholder="--.--.---"
@@ -241,9 +256,10 @@
                   Кем Выдан
                 </label>
                 <input
+                  id="documentIssuePlace"
+                  name="documentIssuePlace"
                   type="text"
                   class="form-control"
-                  id="documentIssuePlace"
                   placeholder="Кем Выдан"
                 />
               </div>
@@ -254,9 +270,10 @@
                   Код Подразделения
                 </label>
                 <input
+                  id="documentDepartmentCode"
+                  name="documentDepartmentCode"
                   type="text"
                   class="form-control"
-                  id="documentDepartmentCode"
                   placeholder="Код Подразделения"
                 />
               </div>
@@ -283,9 +300,10 @@
                   Адрес регистрации
                 </label>
                 <input
+                  id="registrationAddress"
+                  name="registrationAddress"
                   type="text"
                   class="form-control"
-                  id="registrationAddress"
                   placeholder="Адрес регистрации"
                 />
               </div>
@@ -316,9 +334,10 @@
                   Адрес проживания
                 </label>
                 <input
+                  id="residenceAddress"
+                  name="residenceAddress"
                   type="text"
                   class="form-control"
-                  id="residenceAddress"
                   placeholder="Адрес проживания"
                 />
               </div>
@@ -329,9 +348,10 @@
                   Email
                 </label>
                 <input
+                  id="email"
+                  name="email"
                   type="email"
                   class="form-control"
-                  id="email"
                   placeholder="Email"
                 />
               </div>
@@ -342,9 +362,10 @@
                   Телефон
                 </label>
                 <input
+                  id="phone"
+                  name="phone"
                   type="tel"
                   class="form-control"
-                  id="phone"
                   placeholder="Телефон"
                 />
               </div>
@@ -355,9 +376,10 @@
                   Факс
                 </label>
                 <input
+                  id="fax"
+                  name="fax"
                   type="tel"
                   class="form-control"
-                  id="fax"
                   placeholder="Факс (опционально)"
                 />
               </div>
@@ -368,9 +390,10 @@
                   Почтовый адрес
                 </label>
                 <input
+                  id="postAddress"
+                  name="postAddress"
                   type="text"
                   class="form-control"
-                  id="postAddress"
                   placeholder="Почтовый адрес"
                 />
               </div>
@@ -397,9 +420,10 @@
                   Номер плательщика
                 </label>
                 <input
+                  id="inn"
+                  name="inn"
                   type="text"
                   class="form-control"
-                  id="inn"
                   placeholder="ИНН"
                 />
               </div>
@@ -427,9 +451,10 @@
                   Страховой Номер
                 </label>
                 <input
+                  id="insuranceNumber"
+                  name="insuranceNumber"
                   type="text"
                   class="form-control"
-                  id="insuranceNumber"
                   placeholder="Страховой Номер"
                 />
               </div>
@@ -497,9 +522,10 @@
                         Ф.И.О (заполняется, если ИПДЛ, является родственник)
                       </label>
                       <input
+                        id="ipdlNumber"
+                        name="ipdlNumber"
                         type="text"
                         class="form-control"
-                        id="ipdlNumber"
                         placeholder="Ф.И.О"
                       />
                     </div>
@@ -510,9 +536,10 @@
                         Наименование и адрес его работодателя ИПДЛ
                       </label>
                       <input
+                        id="ipdlEmployerInfo"
+                        name="ipdlEmployerInfo"
                         type="text"
                         class="form-control"
-                        id="ipdlEmployerInfo"
                         placeholder="Наименование и адрес его работодателя"
                       />
                     </div>
@@ -523,9 +550,10 @@
                         Должность ИПДЛ
                       </label>
                       <input
+                        id="ipdlPosition"
+                        name="ipdlPosition"
                         type="text"
                         class="form-control"
-                        id="ipdlPosition"
                         placeholder="Должность"
                       />
                     </div>
@@ -537,6 +565,7 @@
                       </label>
                       <select
                         id="ipdlRelation"
+                        name="ipdlRelation"
                         class="form-control"
                       >
                         <option>
@@ -567,6 +596,7 @@
                       </label>
                       <textarea
                         id="ipdlFinance"
+                        name="ipdlFinance"
                         class="form-control"
                         rows="12"
                         placeholder="Пояснение"
@@ -635,13 +665,14 @@
                 <div class="row">
                   <div class="col-6">
                     <div class="form-group">
-                      <label for="rpdlNumber">
+                      <label for="rpdlName">
                         Ф.И.О (заполняется, если ПДЛ, является родственник)
                       </label>
                       <input
+                        id="rpdlName"
+                        name="rpdlName"
                         type="text"
                         class="form-control"
-                        id="rpdlNumber"
                         placeholder="Ф.И.О"
                       />
                     </div>
@@ -652,9 +683,10 @@
                         Наименование и адрес его работодателя ПДЛ
                       </label>
                       <input
+                        id="rpdlEmployerInfo"
+                        name="rpdlEmployerInfo"
                         type="text"
                         class="form-control"
-                        id="rpdlEmployerInfo"
                         placeholder="Наименование и адрес его работодателя"
                       />
                     </div>
@@ -665,9 +697,10 @@
                         Должность ПДЛ
                       </label>
                       <input
+                        id="rpdlPosition"
+                        name="rpdlPosition"
                         type="text"
                         class="form-control"
-                        id="rpdlPosition"
                         placeholder="Должность"
                       />
                     </div>
@@ -679,6 +712,7 @@
                       </label>
                       <select
                         id="rpdlRelation"
+                        name="rpdlRelation"
                         class="form-control"
                       >
                         <option>
@@ -709,6 +743,7 @@
                       </label>
                       <textarea
                         id="rpdlFinance"
+                        name="rpdlFinance"
                         class="form-control"
                         rows="12"
                         placeholder="Пояснение"
@@ -781,9 +816,10 @@
                         Ф.И.О (заполняется, если ПДЛ, является родственник)
                       </label>
                       <input
+                        id="beneficialName"
+                        name="beneficialName"
                         type="text"
                         class="form-control"
-                        id="beneficialName"
                         placeholder="Ф.И.О"
                       />
                     </div>
@@ -795,6 +831,7 @@
                       </label>
                       <select
                         id="beneficialCitizenship"
+                        name="beneficialCitizenship"
                         class="form-control"
                       >
                         <option>
@@ -824,9 +861,10 @@
                         Тип Документа
                       </label>
                       <input
+                        id="beneficialDocumentType"
+                        name="beneficialDocumentType"
                         type="text"
                         class="form-control"
-                        id="beneficialDocumentType"
                         placeholder="Тип Документа"
                       />
                     </div>
@@ -837,9 +875,10 @@
                         Серия
                       </label>
                       <input
+                        id="beneficialDocumentSeries"
+                        name="beneficialDocumentSeries"
                         type="text"
                         class="form-control"
-                        id="beneficialDocumentSeries"
                         placeholder="Серия"
                       />
                     </div>
@@ -850,9 +889,10 @@
                         Номер
                       </label>
                       <input
+                        id="beneficialDocumentNumber"
+                        name="beneficialDocumentNumber"
                         type="text"
                         class="form-control"
-                        id="beneficialDocumentNumber"
                         placeholder="Номер"
                       />
                     </div>
@@ -868,6 +908,7 @@
                       >
                         <input
                           id="beneficialDocumentIssueDate"
+                          name="beneficialDocumentIssueDate"
                           type="text"
                           class="form-control"
                           placeholder="--.--.---"
@@ -885,9 +926,10 @@
                         Кем Выдан
                       </label>
                       <input
+                        id="beneficialDocumentIssuePlace"
+                        name="beneficialDocumentIssuePlace"
                         type="text"
                         class="form-control"
-                        id="beneficialDocumentIssuePlace"
                         placeholder="Кем Выдан"
                       />
                     </div>
@@ -898,9 +940,10 @@
                         Код Подразделения
                       </label>
                       <input
+                        id="beneficialDocumentDepartmentCode"
+                        name="beneficialDocumentDepartmentCode"
                         type="text"
                         class="form-control"
-                        id="beneficialDocumentDepartmentCode"
                         placeholder="Код Подразделения"
                       />
                     </div>
@@ -911,9 +954,10 @@
                         Данные миграционной карты, или иного документа подтверждающие право на пребывание в РФ
                       </label>
                       <input
+                        id="beneficialMigrationInfo"
+                        name="beneficialMigrationInfo"
                         type="text"
                         class="form-control"
-                        id="beneficialMigrationInfo"
                         placeholder="Данные миграционной карты"
                       />
                     </div>
@@ -924,9 +968,10 @@
                         Адрес места жительства (места пребывания)
                       </label>
                       <input
+                        id="beneficialAddress"
+                        name="beneficialAddress"
                         type="text"
                         class="form-control"
-                        id="beneficialAddress"
                         placeholder="Адрес места"
                       />
                     </div>
@@ -937,9 +982,10 @@
                         ИНН
                       </label>
                       <input
+                        id="beneficialInn"
+                        name="beneficialInn"
                         type="text"
                         class="form-control"
-                        id="beneficialInn"
                         placeholder="ИНН"
                       />
                     </div>
@@ -968,6 +1014,7 @@
                 <div class="cognive-check">
                   <input
                     id="relationshipWithBankType1"
+                    name="relationshipWithBankType1"
                     class="cognive-check-input"
                     type="checkbox"
                   >
@@ -981,6 +1028,7 @@
                 <div class="cognive-check">
                   <input
                     id="relationshipWithBankType2"
+                    name="relationshipWithBankType2"
                     class="cognive-check-input"
                     type="checkbox"
                   >
@@ -994,6 +1042,7 @@
                 <div class="cognive-check">
                   <input
                     id="relationshipWithBankType3"
+                    name="relationshipWithBankType3"
                     class="cognive-check-input"
                     type="checkbox"
                   >
@@ -1007,6 +1056,7 @@
                 <div class="cognive-check">
                   <input
                     id="relationshipWithBankType4"
+                    name="relationshipWithBankType4"
                     class="cognive-check-input"
                     type="checkbox"
                   >
@@ -1020,6 +1070,7 @@
                 <div class="cognive-check">
                   <input
                     id="relationshipWithBankType5"
+                    name="relationshipWithBankType5"
                     v-model="relationshipWithBankOther"
                     class="cognive-check-input"
                     type="checkbox"
@@ -1043,6 +1094,7 @@
                 </label>
                 <textarea
                   id="relationshipWithBank"
+                  name="relationshipWithBank"
                   class="form-control"
                   rows="12"
                   placeholder="Пояснение"
@@ -1070,6 +1122,7 @@
                 <div class="cognive-check">
                   <input
                     id="purposes1"
+                    name="purposes1"
                     class="cognive-check-input"
                     type="checkbox"
                   >
@@ -1083,6 +1136,7 @@
                 <div class="cognive-check">
                   <input
                     id="purposes2"
+                    name="purposes2"
                     class="cognive-check-input"
                     type="checkbox"
                   >
@@ -1096,6 +1150,7 @@
                 <div class="cognive-check">
                   <input
                     id="purposes3"
+                    name="purposes3"
                     v-model="purposesOther"
                     class="cognive-check-input"
                     type="checkbox"
@@ -1119,6 +1174,7 @@
                 </label>
                 <textarea
                   id="purposes"
+                  name="purposes"
                   class="form-control"
                   rows="12"
                   placeholder="Пояснение"
@@ -1148,6 +1204,7 @@
                 </label>
                 <textarea
                   id="financialPosition"
+                  name="financialPosition"
                   class="form-control"
                   rows="12"
                   placeholder="Пояснение"
@@ -1177,6 +1234,7 @@
                 </label>
                 <textarea
                   id="reputation"
+                  name="reputation"
                   class="form-control"
                   rows="12"
                   placeholder="Пояснение"
@@ -1204,6 +1262,7 @@
                 <div class="cognive-check">
                   <input
                     id="sources1"
+                    name="sources1"
                     class="cognive-check-input"
                     type="checkbox"
                   >
@@ -1217,6 +1276,7 @@
                 <div class="cognive-check">
                   <input
                     id="sources2"
+                    name="sources2"
                     class="cognive-check-input"
                     type="checkbox"
                   >
@@ -1230,6 +1290,7 @@
                 <div class="cognive-check">
                   <input
                     id="sources3"
+                    name="sources3"
                     class="cognive-check-input"
                     type="checkbox"
                   >
@@ -1243,6 +1304,7 @@
                 <div class="cognive-check">
                   <input
                     id="sources4"
+                    name="sources4"
                     class="cognive-check-input"
                     type="checkbox"
                   >
@@ -1256,6 +1318,7 @@
                 <div class="cognive-check">
                   <input
                     id="sources5"
+                    name="sources5"
                     class="cognive-check-input"
                     type="checkbox"
                   >
@@ -1269,6 +1332,7 @@
                 <div class="cognive-check">
                   <input
                     id="sources6"
+                    name="sources6"
                     v-model="sourcesOther"
                     class="cognive-check-input"
                     type="checkbox"
@@ -1292,11 +1356,26 @@
                 </label>
                 <textarea
                   id="sources"
+                  name="sources"
                   class="form-control"
                   rows="12"
                   placeholder="Пояснение"
                 ></textarea>
               </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col">
+              <hr>
+
+              <button type="submit" class="btn-cgn btn-cgn-prim btn-cgn-m">Сохранить</button>
             </div>
           </div>
         </div>
@@ -1330,6 +1409,7 @@
   @import "../../../../assets/styles/core/core";
 
   .app-form {
+    padding-bottom: 50px;
     background-color: $color-background-white;
     border-radius: 12px;
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
