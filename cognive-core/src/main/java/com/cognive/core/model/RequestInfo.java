@@ -1,4 +1,4 @@
-package com.cognive.app.base.rest.model;
+package com.cognive.core.model;
 
 import java.util.Date;
 import java.util.Map;

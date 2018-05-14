@@ -2,8 +2,6 @@ package com.cognive.core.module;
 
 import java.util.List;
 
-import javax.annotation.PostConstruct;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +20,7 @@ public class ModuleRegistry {
 	@Autowired
 	private ApplicationContext context;
 	
-	@PostConstruct
+	// @PostConstruct
 	public void init() {
 		// or org.springframework.context.ApplicationListener + ApplicationStartedEvent
 		

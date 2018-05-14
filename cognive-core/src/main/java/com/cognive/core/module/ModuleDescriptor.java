@@ -14,6 +14,8 @@ public class ModuleDescriptor {
 	private String version;
 	private String type;
 	
+	private WebUiDesciptor webUiDesciptor;
+	
 	public List<String> checkDependencies() {
 		return null;
 	}

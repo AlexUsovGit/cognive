@@ -4,6 +4,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.User;
@@ -27,7 +28,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 			.cors()
 				.and()
 			.authorizeRequests()
-				.antMatchers("/intro.html", "/login.html").permitAll()
+				.antMatchers("/static/css/**", "/static/img/**", "/intro.html", "/login.html").permitAll()
 	            .anyRequest().authenticated()
 	            // .antMatchers("/api/**").authenticated()
 	            .and()
@@ -55,6 +56,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 //	        	.csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse());
 	            ;
 	}
+	
+//	@Override
+//    public void configure(WebSecurity web) throws Exception {
+//        web.ignoring().antMatchers("/static/**");
+//    }	
 	
     @Bean // or @CrossOrigin(origins = "http://localhost:8080")
     public CorsConfigurationSource corsConfigurationSource() {

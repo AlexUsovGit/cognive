@@ -8,10 +8,10 @@ import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import com.cognive.app.base.exception.BadRequestCogniveRtException;
-import com.cognive.app.base.rest.model.RequestInfo;
 import com.cognive.app.base.rest.model.messages.ContentListMessage;
 import com.cognive.app.base.rest.model.messages.ContentMessage;
 import com.cognive.app.base.rest.model.messages.PagedContentMessage;
+import com.cognive.core.model.RequestInfo;
 import com.cognive.core.model.base.ItemsPage;
 
 public class BaseController<T> {

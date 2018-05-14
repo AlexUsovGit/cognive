@@ -2,7 +2,7 @@ package com.cognive.app.base.rest.model.messages;
 
 import org.springframework.http.HttpStatus;
 
-import com.cognive.app.base.rest.model.RequestInfo;
+import com.cognive.core.model.RequestInfo;
 
 public class StatusMessage {
 
