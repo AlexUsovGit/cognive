@@ -9,17 +9,20 @@ public class Person {
 	private String birthPlace;
 	private String birthCountry; // Code
 	private String citizenshipCountry; // Code
-	private String regAddress; // 
-	private String residenceAddress; // 
-	private Document idDocument; //
-	private String migrationCard; //
-	private String foreignDocument; //
-	private String inn;
-	private String snils;
+	
+	private Address registrationAddress; 
+	private Address residenceAddress;
+	private Address postalAddress; // postalAddress
+	
+	private Document idDocument;
+	private Document migrationCard;
+	private Document foreignDocument;
+	
+	private String taxIdentificationNumber; // inn
+	private String socialSecurityNumber; // snils;
 	private String email;
 	private String phoneNumber;
 	private String faxNumber;
-	private String postalAddress; // postalAddress
 
-	// TODO:
+	// 
 }
