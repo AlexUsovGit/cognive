@@ -110,4 +110,10 @@ It uses template witch is common for all SVG file and supplements it with unique
       fill: $color-main;
     }
   }
+  // Styles for properties icon in individual search results.
+  .props:hover {
+    .on-hover {
+      fill: $color-background-white;
+    }
+  }
 </style>
