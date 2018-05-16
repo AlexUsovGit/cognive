@@ -1,4 +1,4 @@
-package com.cognive.storage.app.rdbms.entity;
+package com.cognive.storage.app.rdbms.entity.dict;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;

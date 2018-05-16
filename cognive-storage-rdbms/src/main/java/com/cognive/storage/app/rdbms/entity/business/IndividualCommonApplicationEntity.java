@@ -1,11 +1,17 @@
-package com.cognive.core.model.business;
+package com.cognive.storage.app.rdbms.entity.business;
 
 import java.util.List;
 
-import com.cognive.core.model.common.Person;
-import com.cognive.core.model.common.PersonRelationship;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 
-public class IndividualCommonApplication extends BaseApplication {
+import com.cognive.core.model.common.Person;
+import com.cognive.storage.app.rdbms.entity.common.PersonRelationshipEntity;
+
+@Entity
+public class IndividualCommonApplicationEntity extends BaseApplicationEntity {
+
+	public final static String ATTACHMENT_KIND = "ind_app";
 
 	private Person individual;
 
@@ -18,10 +24,10 @@ public class IndividualCommonApplication extends BaseApplication {
 	private int relationshipWithBank;
 	private String relationshipWithBankOther;
 
-	private List<PersonRelationship> beneficiaries;
+	private List<PersonRelationshipEntity> beneficiaries;
 
-	private List<PersonRelationship> publicOfficials;
-	private List<PersonRelationship> foreignPublicOfficials;
+	private List<PersonRelationshipEntity> publicOfficials;
+	private List<PersonRelationshipEntity> foreignPublicOfficials;
 
 	public Person getIndividual() {
 		return individual;
@@ -79,27 +85,27 @@ public class IndividualCommonApplication extends BaseApplication {
 		this.relationshipWithBankOther = relationshipWithBankOther;
 	}
 
-	public List<PersonRelationship> getBeneficiaries() {
+	public List<PersonRelationshipEntity> getBeneficiaries() {
 		return beneficiaries;
 	}
 
-	public void setBeneficiaries(List<PersonRelationship> beneficiaries) {
+	public void setBeneficiaries(List<PersonRelationshipEntity> beneficiaries) {
 		this.beneficiaries = beneficiaries;
 	}
 
-	public List<PersonRelationship> getPublicOfficials() {
+	public List<PersonRelationshipEntity> getPublicOfficials() {
 		return publicOfficials;
 	}
 
-	public void setPublicOfficials(List<PersonRelationship> publicOfficials) {
+	public void setPublicOfficials(List<PersonRelationshipEntity> publicOfficials) {
 		this.publicOfficials = publicOfficials;
 	}
 
-	public List<PersonRelationship> getForeignPublicOfficials() {
+	public List<PersonRelationshipEntity> getForeignPublicOfficials() {
 		return foreignPublicOfficials;
 	}
 
-	public void setForeignPublicOfficials(List<PersonRelationship> foreignPublicOfficials) {
+	public void setForeignPublicOfficials(List<PersonRelationshipEntity> foreignPublicOfficials) {
 		this.foreignPublicOfficials = foreignPublicOfficials;
 	}
 

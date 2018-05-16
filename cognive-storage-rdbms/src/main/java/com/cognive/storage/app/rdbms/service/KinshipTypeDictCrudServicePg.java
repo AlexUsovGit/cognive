@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 
 import com.cognive.core.model.dict.KinshipTypeDictItem;
 import com.cognive.core.service.KinshipTypeDictService;
-import com.cognive.storage.app.rdbms.entity.DictKinshipTypeEntity;
+import com.cognive.storage.app.rdbms.entity.dict.DictKinshipTypeEntity;
 import com.cognive.storage.app.rdbms.mapper.BaseDictItemMapper;
 import com.cognive.storage.app.rdbms.mapper.KinshipTypeDictItemMapper;
 import com.cognive.storage.app.rdbms.repo.DictKinshipTypeEntityRepo;

@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.cognive.app.base.rest.controller.BaseController;
 import com.cognive.app.base.rest.model.messages.ContentMessage;
-import com.cognive.core.model.Customer;
+import com.cognive.core.model.business.Customer;
 
 /**
  * @author AndreyGabrinovich

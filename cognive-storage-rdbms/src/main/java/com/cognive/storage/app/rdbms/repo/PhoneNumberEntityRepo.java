@@ -3,8 +3,8 @@ package com.cognive.storage.app.rdbms.repo;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.stereotype.Repository;
 
-import com.cognive.storage.app.rdbms.entity.BasicEntity;
+import com.cognive.storage.app.rdbms.entity.common.PhoneNumberEntity;
 
 @Repository
-public interface BasicEntityRepo extends PagingAndSortingRepository<BasicEntity, Long> {
+public interface PhoneNumberEntityRepo extends PagingAndSortingRepository<PhoneNumberEntity, Long> {
 }

@@ -22,8 +22,6 @@ public class BasicEntity {
 	// @GeneratedValue(strategy = GenerationType.IDENTITY)
 	// @Column(columnDefinition = "serial")
 	private long id;
-	private String kind;
-	private String type;
 
 	private Date createdOn;
 	private String createdBy;
@@ -31,9 +29,6 @@ public class BasicEntity {
 	private Date modifiedOn;
 	private String modifiedBy;
 	private String modificationComment;
-
-	private String version;
-	private String tag;
 
 	private String value;
 
@@ -47,22 +42,6 @@ public class BasicEntity {
 
 	public void setId(long id) {
 		this.id = id;
-	}
-
-	public String getKind() {
-		return kind;
-	}
-
-	public void setKind(String kind) {
-		this.kind = kind;
-	}
-
-	public String getType() {
-		return type;
-	}
-
-	public void setType(String type) {
-		this.type = type;
 	}
 
 	public Date getCreatedOn() {
@@ -103,22 +82,6 @@ public class BasicEntity {
 
 	public void setModificationComment(String modificationComment) {
 		this.modificationComment = modificationComment;
-	}
-
-	public String getVersion() {
-		return version;
-	}
-
-	public void setVersion(String version) {
-		this.version = version;
-	}
-
-	public String getTag() {
-		return tag;
-	}
-
-	public void setTag(String tag) {
-		this.tag = tag;
 	}
 
 	public String getValue() {

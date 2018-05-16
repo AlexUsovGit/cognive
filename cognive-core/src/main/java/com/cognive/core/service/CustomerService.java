@@ -2,7 +2,7 @@ package com.cognive.core.service;
 
 import java.util.List;
 
-import com.cognive.core.model.Customer;
+import com.cognive.core.model.business.Customer;
 
 public interface CustomerService {
 

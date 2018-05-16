@@ -1,14 +1,28 @@
 package com.cognive.core.model.business;
 
-import java.util.List;
-
-import com.cognive.core.model.banking.Account;
-import com.cognive.core.model.customer.Person;
-
 public class Customer {
 
-	private Person person;
-	private List<Account> accounts;
-	private List<BaseApplication> application;
+//	private Person person;
+//	private List<Account> accounts;
+//	private List<BaseApplication> application;
+
+	private String id;
+	private String name;
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
 	
 }

@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 
 import com.cognive.core.model.dict.CountryDictItem;
 import com.cognive.core.service.CountryDictService;
-import com.cognive.storage.app.rdbms.entity.DictCountryEntity;
+import com.cognive.storage.app.rdbms.entity.dict.DictCountryEntity;
 import com.cognive.storage.app.rdbms.mapper.BaseDictItemMapper;
 import com.cognive.storage.app.rdbms.mapper.CountryDictItemMapper;
 import com.cognive.storage.app.rdbms.repo.DictCountryEntityRepo;

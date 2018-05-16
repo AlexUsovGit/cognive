@@ -17,7 +17,7 @@ import com.cognive.core.model.base.BaseModifiableBusinessObject;
 import com.cognive.core.model.base.ItemsPage;
 import com.cognive.core.model.base.ModifiableBoFilter;
 import com.cognive.core.service.base.BaseBoCrudService;
-import com.cognive.storage.app.rdbms.mapper.BaseModifiableBoMapper;
+import com.cognive.storage.app.rdbms.mapper.BaseModifiableEntityMapper;
 import com.cognive.storage.rdbms.entity.BaseModifiableEntity;
 
 abstract public class BaseServicePg<T extends BaseModifiableBusinessObject, E extends BaseModifiableEntity> implements BaseBoCrudService<T> {
@@ -29,7 +29,7 @@ abstract public class BaseServicePg<T extends BaseModifiableBusinessObject, E ex
 
 	private static final Logger logger = LoggerFactory.getLogger(BaseServicePg.class);
 	
-	abstract protected BaseModifiableBoMapper<T, E> getMapper();
+	abstract protected BaseModifiableEntityMapper<T, E> getMapper();
 	
 	abstract protected PagingAndSortingRepository<E, Long> getRepo();
 

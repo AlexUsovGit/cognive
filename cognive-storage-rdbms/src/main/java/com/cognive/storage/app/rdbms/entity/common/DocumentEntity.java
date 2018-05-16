@@ -1,0 +1,78 @@
+package com.cognive.storage.app.rdbms.entity.common;
+
+import java.util.Date;
+
+import javax.persistence.Entity;
+
+import com.cognive.storage.rdbms.entity.BaseEntity;
+
+@Entity
+public class DocumentEntity extends BaseEntity {
+
+	private String documentType;
+	private String documentSeries;
+	private String documentNumber;
+	private Date documentIssueDate;
+	private Date expirationDate;
+	private String issuer;
+	private String issuerCode;
+
+	// add attachment?
+	
+	public String getDocumentType() {
+		return documentType;
+	}
+
+	public void setDocumentType(String documentType) {
+		this.documentType = documentType;
+	}
+
+	public String getDocumentSeries() {
+		return documentSeries;
+	}
+
+	public void setDocumentSeries(String documentSeries) {
+		this.documentSeries = documentSeries;
+	}
+
+	public String getDocumentNumber() {
+		return documentNumber;
+	}
+
+	public void setDocumentNumber(String documentNumber) {
+		this.documentNumber = documentNumber;
+	}
+
+	public Date getDocumentIssueDate() {
+		return documentIssueDate;
+	}
+
+	public void setDocumentIssueDate(Date documentIssueDate) {
+		this.documentIssueDate = documentIssueDate;
+	}
+
+	public Date getExpirationDate() {
+		return expirationDate;
+	}
+
+	public void setExpirationDate(Date expirationDate) {
+		this.expirationDate = expirationDate;
+	}
+
+	public String getIssuer() {
+		return issuer;
+	}
+
+	public void setIssuer(String issuer) {
+		this.issuer = issuer;
+	}
+
+	public String getIssuerCode() {
+		return issuerCode;
+	}
+
+	public void setIssuerCode(String issuerCode) {
+		this.issuerCode = issuerCode;
+	}
+
+}

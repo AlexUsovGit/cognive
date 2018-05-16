@@ -8,8 +8,8 @@ public class BaseModifiableBusinessObject extends BaseBusinessObject {
 	private String modifiedBy;
 	private String modificationComment;
 
-	private String version;
-	private String tag;
+//	private String version;
+//	private String tag;
 
 	public Date getModifiedOn() {
 		return modifiedOn;
@@ -33,22 +33,6 @@ public class BaseModifiableBusinessObject extends BaseBusinessObject {
 
 	public void setModificationComment(String modificationComment) {
 		this.modificationComment = modificationComment;
-	}
-
-	public String getVersion() {
-		return version;
-	}
-
-	public void setVersion(String version) {
-		this.version = version;
-	}
-
-	public String getTag() {
-		return tag;
-	}
-
-	public void setTag(String tag) {
-		this.tag = tag;
 	}
 
 }

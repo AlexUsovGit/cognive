@@ -1,11 +1,3 @@
-/**
-* Domain classes and Hibernate User Type definitions
-*
-* @since 1.0
-* @author somebody
-* @version 1.0
-*/
-
 @TypeDefs({
 	@TypeDef(name = "jsonb", typeClass = JsonBinaryType.class),
 	@TypeDef(name = "jsonb-node", typeClass = JsonNodeBinaryType.class)

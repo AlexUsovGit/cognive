@@ -2,14 +2,17 @@ package com.cognive.storage.rdbms.entity;
 
 import java.util.Date;
 
+import javax.persistence.Column;
+import javax.persistence.MappedSuperclass;
+
+@MappedSuperclass
 abstract public class BaseModifiableEntity extends BaseEntity {
 
 	private Date modifiedOn;
 	private String modifiedBy;
+	
+	@Column(name = "modificationComment")
 	private String modificationComment;
-
-	private String version;
-	private String tag;
 
 	public Date getModifiedOn() {
 		return modifiedOn;
@@ -33,22 +36,6 @@ abstract public class BaseModifiableEntity extends BaseEntity {
 
 	public void setModificationComment(String modificationComment) {
 		this.modificationComment = modificationComment;
-	}
-
-	public String getVersion() {
-		return version;
-	}
-
-	public void setVersion(String version) {
-		this.version = version;
-	}
-
-	public String getTag() {
-		return tag;
-	}
-
-	public void setTag(String tag) {
-		this.tag = tag;
 	}
 
 }
