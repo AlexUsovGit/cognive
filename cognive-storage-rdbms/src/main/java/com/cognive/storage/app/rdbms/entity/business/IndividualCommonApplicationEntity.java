@@ -3,10 +3,11 @@ package com.cognive.storage.app.rdbms.entity.business;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
-import com.cognive.core.model.common.Person;
+import com.cognive.storage.app.rdbms.entity.common.PersonEntity;
 import com.cognive.storage.app.rdbms.entity.common.PersonRelationshipEntity;
 
 @Entity
@@ -14,8 +15,9 @@ public class IndividualCommonApplicationEntity extends BaseApplicationEntity {
 
 	public final static String ATTACHMENT_KIND = "ind_app";
 
-	@OneToOne(mappedBy="personId")
-	private Person individual;
+	@OneToOne
+	@JoinColumn(name = "id")
+	private PersonEntity individual;
 
 	private String reputation;
 	private String financialStatus;
@@ -27,20 +29,21 @@ public class IndividualCommonApplicationEntity extends BaseApplicationEntity {
 	private String relationshipWithBankOther;
 
 	// FIXME: filter by kind? different entities? single list?
-	@OneToMany(mappedBy="beneficiaries")
+	@OneToMany(mappedBy="personFromId")
 	private List<PersonRelationshipEntity> beneficiaries;
 
-	@OneToMany(mappedBy="publicOfficials")
+	@OneToMany(mappedBy="personFromId")
 	private List<PersonRelationshipEntity> publicOfficials;
 	
-	@OneToMany(mappedBy="foreignPublicOfficials")
+	@OneToMany(mappedBy="personFromId")
 	private List<PersonRelationshipEntity> foreignPublicOfficials;
 
-	public Person getIndividual() {
+
+	public PersonEntity getIndividual() {
 		return individual;
 	}
 
-	public void setIndividual(Person individual) {
+	public void setIndividual(PersonEntity individual) {
 		this.individual = individual;
 	}
 

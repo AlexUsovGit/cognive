@@ -15,3 +15,6 @@
  - review https://stackoverflow.com/questions/621884/database-development-mistakes-made-by-application-developers?rq=1
  - review long as ID
  - use transactions
+ - names: tables, columns
+ - fetch, etc
+ - 

@@ -1,1 +1,3 @@
  - i18n
+ - include npm task into build
+ - clean build.gradle

@@ -2,17 +2,22 @@ package com.cognive.storage.app.rdbms.entity.common;
 
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 
 import com.cognive.storage.rdbms.entity.BaseModifiableEntity;
 
 @Entity
 public class EmploymentEntity extends BaseModifiableEntity {
 
-	private String type;
+	@ManyToOne
 	private OrganizationEntity organization;
+	private String type;
 	private String position;
+	@Column(name = "started")
 	private Date from;
+	// TODO: from - finish
 	private String details;
 
 	public String getType() {

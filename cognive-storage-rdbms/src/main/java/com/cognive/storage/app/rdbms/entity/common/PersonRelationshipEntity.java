@@ -17,7 +17,7 @@ import com.cognive.storage.rdbms.entity.BaseEntity;
  *
  */
 @Entity
-@IdClass(PersonRelationshipId.class)
+//@IdClass(PersonRelationshipId.class)
 public class PersonRelationshipEntity extends BaseEntity {
 
 	@Column(name = "PERSON_FROM_ID")
@@ -26,11 +26,11 @@ public class PersonRelationshipEntity extends BaseEntity {
 	private Long personToId;
 	
 	@ManyToOne
-	@JoinColumn(name = "PERSON_FROM_ID", referencedColumnName = "id")
-	private Person personFrom;
+	@JoinColumn(name = "PERSON_FROM_ID", referencedColumnName = "id", insertable=false, updatable=false)
+	private PersonEntity personFrom;
 	@ManyToOne
-	@JoinColumn(name = "PERSON_TO_ID", referencedColumnName = "id")
-	private Person personTo;
+	@JoinColumn(name = "PERSON_TO_ID", referencedColumnName = "id", insertable=false, updatable=false)
+	private PersonEntity personTo;
 	
 	private String kind;
 	private String type;
@@ -54,19 +54,19 @@ public class PersonRelationshipEntity extends BaseEntity {
 		this.personToId = personToId;
 	}
 
-	public Person getPersonFrom() {
+	public PersonEntity getPersonFrom() {
 		return personFrom;
 	}
 
-	public void setPersonFrom(Person personFrom) {
+	public void setPersonFrom(PersonEntity personFrom) {
 		this.personFrom = personFrom;
 	}
 
-	public Person getPersonTo() {
+	public PersonEntity getPersonTo() {
 		return personTo;
 	}
 
-	public void setPersonTo(Person personTo) {
+	public void setPersonTo(PersonEntity personTo) {
 		this.personTo = personTo;
 	}
 

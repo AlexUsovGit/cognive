@@ -30,7 +30,6 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
         	}
         )
 public class AppDbConfiguration {
-
 	@Primary
 	@Bean(name = "appDataSource")
 	@ConfigurationProperties(prefix = "app.datasource")

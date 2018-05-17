@@ -3,6 +3,7 @@ package com.cognive.storage.app.rdbms.entity.base;
 import java.sql.Blob;
 
 import javax.persistence.Basic;
+import javax.persistence.Column;
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -14,11 +15,13 @@ import com.cognive.storage.rdbms.entity.BaseEntity;
 
 @Entity
 @Inheritance( strategy = InheritanceType.SINGLE_TABLE )
-@DiscriminatorColumn( name = "kind" )
+@DiscriminatorColumn( name = "kind")
 public class BaseAttachmentEntity extends BaseEntity {
 
 	private String name;
 	private String type;
+	
+	@Column(insertable=false, updatable=false)
 	private String kind;
 	private String contentType;
 	

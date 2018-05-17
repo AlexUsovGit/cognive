@@ -18,17 +18,17 @@ import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
-@Configuration
-@ComponentScan({"com.cognive.storage.hst.rdbms.service"})
-@PropertySource({ "classpath:cgn-databases.properties" })
-@EnableTransactionManagement
-@EnableJpaRepositories(
-        entityManagerFactoryRef = "hstDbEntityManagerFactory", 
-        transactionManagerRef = "hstDbTransactionManager", 
-        basePackages = { 
-        		"com.cognive.storage.hst.rdbms.repo" 
-        	}
-        )
+//@Configuration
+//@ComponentScan({"com.cognive.storage.hst.rdbms.service"})
+//@PropertySource({ "classpath:cgn-databases.properties" })
+//@EnableTransactionManagement
+//@EnableJpaRepositories(
+//        entityManagerFactoryRef = "hstDbEntityManagerFactory", 
+//        transactionManagerRef = "hstDbTransactionManager", 
+//        basePackages = { 
+//        		"com.cognive.storage.hst.rdbms.repo" 
+//        	}
+//        )
 public class HistoryDbConfiguration {
 
 	@Bean(name = "hstDataSource")
