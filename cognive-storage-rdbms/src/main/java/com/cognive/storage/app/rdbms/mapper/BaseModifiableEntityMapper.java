@@ -1,8 +1,5 @@
 package com.cognive.storage.app.rdbms.mapper;
 
-import java.util.List;
-
-import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.MappingTarget;
 import org.mapstruct.Mappings;
@@ -11,12 +8,9 @@ import com.cognive.core.model.base.BaseModifiableBusinessObject;
 import com.cognive.storage.rdbms.entity.BaseModifiableEntity;
 
 // @Mapper(componentModel = "spring")
-public interface BaseModifiableEntityMapper<BO extends BaseModifiableBusinessObject, E extends BaseModifiableEntity> {
+public interface BaseModifiableEntityMapper<BO extends BaseModifiableBusinessObject, E extends BaseModifiableEntity>
+	extends BaseEntityMapper<BO, E>{
 
-	E boToEntity(BO bo);
-	
-	BO entityToBo(E entity);
-	
 	@Mappings({
 		@Mapping(target = "id", ignore = true),
 		@Mapping(target = "createdBy", ignore = true),
@@ -25,7 +19,5 @@ public interface BaseModifiableEntityMapper<BO extends BaseModifiableBusinessObj
 		@Mapping(target = "modifiedOn", ignore = true)
 	})
 	void updateEntity(E source, @MappingTarget E target);
-	
-	List<BO> entitiesToBoList(Iterable<E> entities);
 	
 }

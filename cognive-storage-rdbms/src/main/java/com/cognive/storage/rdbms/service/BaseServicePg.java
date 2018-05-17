@@ -1,4 +1,4 @@
-package com.cognive.storage.app.rdbms.service;
+package com.cognive.storage.rdbms.service;
 
 import java.util.Date;
 import java.util.List;
@@ -13,14 +13,14 @@ import org.springframework.data.repository.PagingAndSortingRepository;
 
 import com.cognive.core.exception.IllegalArgumentCogniveRtException;
 import com.cognive.core.exception.NotFoundCogniveRtException;
-import com.cognive.core.model.base.BaseModifiableBusinessObject;
+import com.cognive.core.model.base.BaseBoFilter;
+import com.cognive.core.model.base.BaseBusinessObject;
 import com.cognive.core.model.base.ItemsPage;
-import com.cognive.core.model.base.ModifiableBoFilter;
-import com.cognive.core.service.base.BaseModifiableBoCrudService;
-import com.cognive.storage.app.rdbms.mapper.BaseModifiableEntityMapper;
-import com.cognive.storage.rdbms.entity.BaseModifiableEntity;
+import com.cognive.core.service.base.BaseBoCrudService;
+import com.cognive.storage.app.rdbms.mapper.BaseEntityMapper;
+import com.cognive.storage.rdbms.entity.BaseEntity;
 
-abstract public class BaseServicePg<T extends BaseModifiableBusinessObject, E extends BaseModifiableEntity> implements BaseModifiableBoCrudService<T> {
+abstract public class BaseServicePg<T extends BaseBusinessObject, E extends BaseEntity> implements BaseBoCrudService<T> {
 
 	protected static final String CREATED_ON = "createdOn";
 	protected static final String DEFAULT_SORT_FIELD = CREATED_ON;
@@ -29,7 +29,7 @@ abstract public class BaseServicePg<T extends BaseModifiableBusinessObject, E ex
 
 	private static final Logger logger = LoggerFactory.getLogger(BaseServicePg.class);
 	
-	abstract protected BaseModifiableEntityMapper<T, E> getMapper();
+	abstract protected BaseEntityMapper<T, E> getMapper();
 	
 	abstract protected PagingAndSortingRepository<E, Long> getRepo();
 
@@ -67,21 +67,9 @@ abstract public class BaseServicePg<T extends BaseModifiableBusinessObject, E ex
 	 * @see com.cognive.storage.app.rdbms.service.BaseBoCrudService#find(com.cognive.core.model.base.ModifiableBoFilter)
 	 */
 	@Override
-	public List<T> find(ModifiableBoFilter filter) {
+	public List<T> find(BaseBoFilter filter) {
 		Iterable<E> items = getRepo().findAll(asPageRequest(filter));
 		return getMapper().entitiesToBoList(items);
-	}
-
-	/* (non-Javadoc)
-	 * @see com.cognive.storage.app.rdbms.service.BaseBoCrudService#update(T)
-	 */
-	@Override
-	public T update(T bo) {
-		E e = getEntityById(bo.getId());
-		getMapper().updateEntity(getMapper().boToEntity(bo), e);
-		prepareToUpdate(e);
-		e = getRepo().save(e);
-		return getMapper().entityToBo(e);
 	}
 
 	/* (non-Javadoc)
@@ -96,11 +84,6 @@ abstract public class BaseServicePg<T extends BaseModifiableBusinessObject, E ex
 	protected void prepareToCreate(T arg) {
 		arg.setCreatedOn(new Date());
 		arg.setCreatedBy( getCurrentUser() );
-	}
-
-	protected void prepareToUpdate(E arg) {
-		arg.setModifiedOn(new Date());
-		arg.setModifiedBy( getCurrentUser() );
 	}
 
 	protected String getCurrentUser() {

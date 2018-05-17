@@ -1,4 +1,4 @@
-package com.cognive.storage.app.rdbms.service;
+package com.cognive.storage.rdbms.service;
 
 import java.util.Collection;
 import java.util.List;
@@ -20,9 +20,9 @@ public abstract class BaseDictCrudServicePg<BO extends BaseDictItem, E extends B
 
 	private static final Logger logger = LoggerFactory.getLogger(CogniveApplication.class);
 	
-	abstract BaseDictItemMapper<BO, E> getMapper();
+	abstract public BaseDictItemMapper<BO, E> getMapper();
 	
-	abstract CrudRepository<E, String> getRepo();
+	abstract public CrudRepository<E, String> getRepo();
 	
 	// TODO: cache + preloading on startup
 	

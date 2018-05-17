@@ -10,6 +10,7 @@ import com.cognive.storage.app.rdbms.entity.dict.DictCountryEntity;
 import com.cognive.storage.app.rdbms.mapper.BaseDictItemMapper;
 import com.cognive.storage.app.rdbms.mapper.CountryDictItemMapper;
 import com.cognive.storage.app.rdbms.repo.DictCountryEntityRepo;
+import com.cognive.storage.rdbms.service.BaseDictCrudServicePg;
 
 @Service
 public class CountryDictCrudServicePg extends BaseDictCrudServicePg<CountryDictItem, DictCountryEntity> implements CountryDictService {
@@ -21,13 +22,13 @@ public class CountryDictCrudServicePg extends BaseDictCrudServicePg<CountryDictI
 	CountryDictItemMapper mapper;
 	
 	@Override
-	BaseDictItemMapper<CountryDictItem, DictCountryEntity> getMapper() {
+	public BaseDictItemMapper<CountryDictItem, DictCountryEntity> getMapper() {
 		return mapper;
 	}
 
 	@Override
-	CrudRepository<DictCountryEntity, String> getRepo() {
+	public CrudRepository<DictCountryEntity, String> getRepo() {
 		return repo;
 	}
-
+	
 }

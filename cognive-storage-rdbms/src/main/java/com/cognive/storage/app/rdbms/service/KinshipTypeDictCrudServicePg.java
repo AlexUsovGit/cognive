@@ -10,6 +10,7 @@ import com.cognive.storage.app.rdbms.entity.dict.DictKinshipTypeEntity;
 import com.cognive.storage.app.rdbms.mapper.BaseDictItemMapper;
 import com.cognive.storage.app.rdbms.mapper.KinshipTypeDictItemMapper;
 import com.cognive.storage.app.rdbms.repo.DictKinshipTypeEntityRepo;
+import com.cognive.storage.rdbms.service.BaseDictCrudServicePg;
 
 @Service
 public class KinshipTypeDictCrudServicePg extends BaseDictCrudServicePg<KinshipTypeDictItem, DictKinshipTypeEntity> implements KinshipTypeDictService {
@@ -21,12 +22,12 @@ public class KinshipTypeDictCrudServicePg extends BaseDictCrudServicePg<KinshipT
 	KinshipTypeDictItemMapper mapper;
 	
 	@Override
-	BaseDictItemMapper<KinshipTypeDictItem, DictKinshipTypeEntity> getMapper() {
+	public BaseDictItemMapper<KinshipTypeDictItem, DictKinshipTypeEntity> getMapper() {
 		return mapper;
 	}
 
 	@Override
-	CrudRepository<DictKinshipTypeEntity, String> getRepo() {
+	public CrudRepository<DictKinshipTypeEntity, String> getRepo() {
 		return repo;
 	}
 

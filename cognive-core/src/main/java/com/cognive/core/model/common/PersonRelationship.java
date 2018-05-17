@@ -14,8 +14,11 @@ import com.cognive.core.model.base.BaseBusinessObject;
 
 public class PersonRelationship extends BaseBusinessObject {
 
-	private long personFrom;
-	private long personTo;
+	private long personFromId;
+	private long personToId;
+	
+	private Person personFrom;
+	private Person personTo;
 	
 	private String kind;
 	private String type;
@@ -23,19 +26,35 @@ public class PersonRelationship extends BaseBusinessObject {
 	
 	private String details;
 
-	public long getPersonFrom() {
+	public long getPersonFromId() {
+		return personFromId;
+	}
+
+	public void setPersonFromId(long personFromId) {
+		this.personFromId = personFromId;
+	}
+
+	public long getPersonToId() {
+		return personToId;
+	}
+
+	public void setPersonToId(long personToId) {
+		this.personToId = personToId;
+	}
+
+	public Person getPersonFrom() {
 		return personFrom;
 	}
 
-	public void setPersonFrom(long personFrom) {
+	public void setPersonFrom(Person personFrom) {
 		this.personFrom = personFrom;
 	}
 
-	public long getPersonTo() {
+	public Person getPersonTo() {
 		return personTo;
 	}
 
-	public void setPersonTo(long personTo) {
+	public void setPersonTo(Person personTo) {
 		this.personTo = personTo;
 	}
 
