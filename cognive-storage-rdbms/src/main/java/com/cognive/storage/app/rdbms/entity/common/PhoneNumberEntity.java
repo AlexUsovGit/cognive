@@ -1,7 +1,10 @@
 package com.cognive.storage.app.rdbms.entity.common;
 
+import javax.persistence.Entity;
+
 import com.cognive.storage.rdbms.entity.BaseEntity;
 
+@Entity
 public class PhoneNumberEntity extends BaseEntity {
 
 	private long personId;
@@ -9,6 +12,9 @@ public class PhoneNumberEntity extends BaseEntity {
 
 	private String number;
 	private String type;
+	
+	// TODO: add ext num
+	// office: empl | org
 
 	public long getPersonId() {
 		return personId;

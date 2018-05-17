@@ -10,8 +10,8 @@ import com.cognive.app.base.rest.model.messages.ContentListMessage;
 import com.cognive.core.model.base.BaseDictItem;
 import com.cognive.core.model.dict.CountryDictItem;
 import com.cognive.core.model.dict.KinshipTypeDictItem;
-import com.cognive.core.service.CountryDictService;
-import com.cognive.core.service.KinshipTypeDictService;
+import com.cognive.core.service.dict.CountryDictService;
+import com.cognive.core.service.dict.KinshipTypeDictService;
 
 @RestController
 @RequestMapping("/api/v1/user")

@@ -8,6 +8,8 @@ public class Attachment extends BaseBusinessObject {
 	private String type;
 	private String kind;
 	private String contentType;
+	
+	private long ownerId;
 
 	// FIXME: define
 	// private byte[] data;
@@ -52,5 +54,15 @@ public class Attachment extends BaseBusinessObject {
 	public void setData(java.sql.Blob data) {
 		this.data = data;
 	}
+
+	public long getOwnerId() {
+		return ownerId;
+	}
+
+	public void setOwnerId(long ownerId) {
+		this.ownerId = ownerId;
+	}
+	
+	
 
 }

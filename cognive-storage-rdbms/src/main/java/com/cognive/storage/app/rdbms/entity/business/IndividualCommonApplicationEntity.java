@@ -3,7 +3,8 @@ package com.cognive.storage.app.rdbms.entity.business;
 import java.util.List;
 
 import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 import com.cognive.core.model.common.Person;
 import com.cognive.storage.app.rdbms.entity.common.PersonRelationshipEntity;
@@ -13,6 +14,7 @@ public class IndividualCommonApplicationEntity extends BaseApplicationEntity {
 
 	public final static String ATTACHMENT_KIND = "ind_app";
 
+	@OneToOne(mappedBy="personId")
 	private Person individual;
 
 	private String reputation;
@@ -24,9 +26,14 @@ public class IndividualCommonApplicationEntity extends BaseApplicationEntity {
 	private int relationshipWithBank;
 	private String relationshipWithBankOther;
 
+	// FIXME: filter by kind? different entities? single list?
+	@OneToMany(mappedBy="beneficiaries")
 	private List<PersonRelationshipEntity> beneficiaries;
 
+	@OneToMany(mappedBy="publicOfficials")
 	private List<PersonRelationshipEntity> publicOfficials;
+	
+	@OneToMany(mappedBy="foreignPublicOfficials")
 	private List<PersonRelationshipEntity> foreignPublicOfficials;
 
 	public Person getIndividual() {

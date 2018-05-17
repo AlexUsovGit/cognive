@@ -12,7 +12,7 @@ import com.cognive.core.CogniveApplication;
 import com.cognive.core.exception.IllegalArgumentCogniveRtException;
 import com.cognive.core.exception.NotFoundCogniveRtException;
 import com.cognive.core.model.base.BaseDictItem;
-import com.cognive.core.service.BaseDictCrudService;
+import com.cognive.core.service.base.BaseDictCrudService;
 import com.cognive.storage.app.rdbms.mapper.BaseDictItemMapper;
 import com.cognive.storage.rdbms.entity.BaseDictEntity;
 

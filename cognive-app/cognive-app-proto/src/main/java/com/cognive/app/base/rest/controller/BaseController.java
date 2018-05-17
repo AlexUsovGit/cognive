@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
-import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import com.cognive.app.base.exception.BadRequestCogniveRtException;
 import com.cognive.app.base.rest.model.messages.ContentListMessage;

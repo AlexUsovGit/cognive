@@ -13,6 +13,8 @@ public class Document extends BaseBusinessObject {
 	private Date expirationDate;
 	private String issuer;
 	private String issuerCode;
+	
+	private Person owner;
 
 	public String getDocumentType() {
 		return documentType;
@@ -68,6 +70,14 @@ public class Document extends BaseBusinessObject {
 
 	public void setIssuerCode(String issuerCode) {
 		this.issuerCode = issuerCode;
+	}
+
+	public Person getOwner() {
+		return owner;
+	}
+
+	public void setOwner(Person owner) {
+		this.owner = owner;
 	}
 
 }

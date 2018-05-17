@@ -3,7 +3,11 @@ package com.cognive.storage.app.rdbms.entity.common;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 import com.cognive.storage.rdbms.entity.BaseModifiableEntity;
@@ -20,19 +24,32 @@ public class PersonEntity extends BaseModifiableEntity {
 	private String birthCountry; // Code
 	private String citizenshipCountry; // Code
 	
-	// 
-	private AddressEntity registrationAddress; 
+	// remake -> List + address type
+	@ManyToOne(fetch=FetchType.EAGER)
+	@JoinColumn(name="registrationAddressId")
+	private AddressEntity registrationAddress;
+	
+	@ManyToOne(fetch=FetchType.EAGER)
+	@JoinColumn(name="residenceAddressId")
 	private AddressEntity residenceAddress;
+	
+	@ManyToOne(fetch=FetchType.EAGER)
+	@JoinColumn(name="postalAddressId")
 	private AddressEntity postalAddress; // postalAddress
 
 	@ManyToMany
+	@JoinTable(
+			name = "person_phone",
+			joinColumns = @JoinColumn(name="person_id", referencedColumnName = "id"),
+			inverseJoinColumns = @JoinColumn(name="phone_id", referencedColumnName = "id")
+			)
 	private List<PhoneNumberEntity> phoneNumbers;
 	
 	private String taxIdentificationNumber; // inn
 	private String socialSecurityNumber; // snils;
 	private String email;
 
-	@OneToMany
+	@OneToMany(mappedBy="owner")
 	private List<DocumentEntity> documents;
 
 	public String getFirstName() {

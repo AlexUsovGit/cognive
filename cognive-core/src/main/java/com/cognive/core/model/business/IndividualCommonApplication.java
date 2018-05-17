@@ -19,7 +19,6 @@ public class IndividualCommonApplication extends BaseApplication {
 	private String relationshipWithBankOther;
 
 	private List<PersonRelationship> beneficiaries;
-
 	private List<PersonRelationship> publicOfficials;
 	private List<PersonRelationship> foreignPublicOfficials;
 

@@ -16,11 +16,11 @@ import com.cognive.core.exception.NotFoundCogniveRtException;
 import com.cognive.core.model.base.BaseModifiableBusinessObject;
 import com.cognive.core.model.base.ItemsPage;
 import com.cognive.core.model.base.ModifiableBoFilter;
-import com.cognive.core.service.base.BaseBoCrudService;
+import com.cognive.core.service.base.BaseModifiableBoCrudService;
 import com.cognive.storage.app.rdbms.mapper.BaseModifiableEntityMapper;
 import com.cognive.storage.rdbms.entity.BaseModifiableEntity;
 
-abstract public class BaseServicePg<T extends BaseModifiableBusinessObject, E extends BaseModifiableEntity> implements BaseBoCrudService<T> {
+abstract public class BaseServicePg<T extends BaseModifiableBusinessObject, E extends BaseModifiableEntity> implements BaseModifiableBoCrudService<T> {
 
 	protected static final String CREATED_ON = "createdOn";
 	protected static final String DEFAULT_SORT_FIELD = CREATED_ON;
@@ -49,7 +49,7 @@ abstract public class BaseServicePg<T extends BaseModifiableBusinessObject, E ex
 	 * @see com.cognive.storage.app.rdbms.service.BaseBoCrudService#getById(java.lang.Long)
 	 */
 	@Override
-	public T getById(Long id) {
+	public T getById(long id) {
 		E e = getEntityById(id);
 		return getMapper().entityToBo(e);
 	}

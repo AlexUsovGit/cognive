@@ -1,4 +1,4 @@
-package com.cognive.core.service;
+package com.cognive.core.service.base;
 
 import java.util.Collection;
 import java.util.List;

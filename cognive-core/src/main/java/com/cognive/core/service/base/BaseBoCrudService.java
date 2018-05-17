@@ -2,18 +2,16 @@ package com.cognive.core.service.base;
 
 import java.util.List;
 
-import com.cognive.core.model.base.BaseModifiableBusinessObject;
-import com.cognive.core.model.base.ModifiableBoFilter;
+import com.cognive.core.model.base.BaseBoFilter;
+import com.cognive.core.model.base.BaseBusinessObject;
 
-public interface BaseBoCrudService<T extends BaseModifiableBusinessObject> {
+public interface BaseBoCrudService<T extends BaseBusinessObject> {
 
 	T create(T bo);
 
-	T getById(Long id);
+	T getById(long id);
 
-	List<T> find(ModifiableBoFilter filter);
-
-	T update(T bo);
+	List<T> find(BaseBoFilter filter);
 
 	void delete(long id);
 

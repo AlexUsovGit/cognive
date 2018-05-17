@@ -3,7 +3,9 @@ package com.cognive.storage.app.rdbms.entity.common;
 import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 
+import com.cognive.core.model.common.Person;
 import com.cognive.storage.rdbms.entity.BaseEntity;
 
 @Entity
@@ -16,6 +18,9 @@ public class DocumentEntity extends BaseEntity {
 	private Date expirationDate;
 	private String issuer;
 	private String issuerCode;
+	
+	@ManyToOne
+	private PersonEntity owner;
 
 	// add attachment?
 	
@@ -73,6 +78,14 @@ public class DocumentEntity extends BaseEntity {
 
 	public void setIssuerCode(String issuerCode) {
 		this.issuerCode = issuerCode;
+	}
+
+	public PersonEntity getOwner() {
+		return owner;
+	}
+
+	public void setOwner(PersonEntity owner) {
+		this.owner = owner;
 	}
 
 }

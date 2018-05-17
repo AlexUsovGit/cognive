@@ -12,7 +12,7 @@ abstract public class BaseEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private long id;
+	private Long id;
 
 	private Date createdOn;
 	private String createdBy;

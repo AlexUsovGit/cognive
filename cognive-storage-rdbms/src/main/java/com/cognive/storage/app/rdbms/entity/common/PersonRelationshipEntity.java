@@ -3,8 +3,13 @@
  */
 package com.cognive.storage.app.rdbms.entity.common;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.IdClass;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
+import com.cognive.core.model.common.Person;
 import com.cognive.storage.rdbms.entity.BaseEntity;
 
 /**
@@ -12,10 +17,20 @@ import com.cognive.storage.rdbms.entity.BaseEntity;
  *
  */
 @Entity
+@IdClass(PersonRelationshipId.class)
 public class PersonRelationshipEntity extends BaseEntity {
 
-	private long personFrom;
-	private long personTo;
+	@Column(name = "PERSON_FROM_ID")
+	private Long personFromId;
+	@Column(name = "PERSON_TO_ID")
+	private Long personToId;
+	
+	@ManyToOne
+	@JoinColumn(name = "PERSON_FROM_ID", referencedColumnName = "id")
+	private Person personFrom;
+	@ManyToOne
+	@JoinColumn(name = "PERSON_TO_ID", referencedColumnName = "id")
+	private Person personTo;
 	
 	private String kind;
 	private String type;
@@ -23,19 +38,35 @@ public class PersonRelationshipEntity extends BaseEntity {
 	
 	private String details;
 
-	public long getPersonFrom() {
+	public Long getPersonFromId() {
+		return personFromId;
+	}
+
+	public void setPersonFromId(Long personFromId) {
+		this.personFromId = personFromId;
+	}
+
+	public Long getPersonToId() {
+		return personToId;
+	}
+
+	public void setPersonToId(Long personToId) {
+		this.personToId = personToId;
+	}
+
+	public Person getPersonFrom() {
 		return personFrom;
 	}
 
-	public void setPersonFrom(long personFrom) {
+	public void setPersonFrom(Person personFrom) {
 		this.personFrom = personFrom;
 	}
 
-	public long getPersonTo() {
+	public Person getPersonTo() {
 		return personTo;
 	}
 
-	public void setPersonTo(long personTo) {
+	public void setPersonTo(Person personTo) {
 		this.personTo = personTo;
 	}
 
@@ -70,5 +101,5 @@ public class PersonRelationshipEntity extends BaseEntity {
 	public void setDetails(String details) {
 		this.details = details;
 	}
-	
+
 }
