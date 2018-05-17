@@ -1,0 +1,16 @@
+/** Cards. */
+
+@import "../core/core";
+
+// Common card
+.cgn-card {
+  background-color: $color-background-white;
+  border-radius: 12px;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
+}
+
+// Card header
+.cgn-header {
+  border-bottom: 1px solid $color-borders;
+  padding-top: 40px;
+}
