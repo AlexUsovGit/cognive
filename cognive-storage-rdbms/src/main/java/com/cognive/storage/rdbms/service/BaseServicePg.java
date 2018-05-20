@@ -40,6 +40,7 @@ abstract public class BaseServicePg<T extends BaseBusinessObject, E extends Base
 	public T create(T bo) {
 		// bo.setId(0);
 		// Optional<T> existed = getRepo().findById(bo.getId());
+		prepareToCreate(bo);
 		E e = getMapper().boToEntity(bo);
 		e = getRepo().save(e);
 		return getMapper().entityToBo(e);

@@ -1,5 +1,6 @@
 package com.cognive.core.model.common;
 
+import java.util.Date;
 import java.util.List;
 
 import com.cognive.core.model.base.BaseModifiableBusinessObject;
@@ -10,7 +11,7 @@ public class Person extends BaseModifiableBusinessObject {
 	private String middleName;
 	private String lastName;
 	
-	private String birthDate;
+	private Date birthDate;
 	private String birthPlace;
 	private String birthCountry; // Code
 	private String citizenshipCountry; // Code
@@ -51,11 +52,11 @@ public class Person extends BaseModifiableBusinessObject {
 		this.lastName = lastName;
 	}
 
-	public String getBirthDate() {
+	public Date getBirthDate() {
 		return birthDate;
 	}
 
-	public void setBirthDate(String birthDate) {
+	public void setBirthDate(Date birthDate) {
 		this.birthDate = birthDate;
 	}
 

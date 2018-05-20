@@ -14,7 +14,7 @@ import com.cognive.core.service.dict.CountryDictService;
 import com.cognive.core.service.dict.KinshipTypeDictService;
 
 @RestController
-@RequestMapping("/api/v1/user")
+@RequestMapping("/api/v1/dict")
 public class DictController extends BaseDictController<BaseDictItem> {
 
 	// TODO: make crud by type?

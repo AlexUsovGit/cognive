@@ -1,5 +1,6 @@
 package com.cognive.storage.app.rdbms.entity.common;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -9,17 +10,19 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 import com.cognive.storage.rdbms.entity.BaseModifiableEntity;
 
 @Entity
+@Table(name="Person")
 public class PersonEntity extends BaseModifiableEntity {
 
 	private String firstName;
 	private String middleName;
 	private String lastName;
 	
-	private String birthDate;
+	private Date birthDate;
 	private String birthPlace;
 	private String birthCountry; // Code
 	private String citizenshipCountry; // Code
@@ -76,11 +79,11 @@ public class PersonEntity extends BaseModifiableEntity {
 		this.lastName = lastName;
 	}
 
-	public String getBirthDate() {
+	public Date getBirthDate() {
 		return birthDate;
 	}
 
-	public void setBirthDate(String birthDate) {
+	public void setBirthDate(Date birthDate) {
 		this.birthDate = birthDate;
 	}
 
