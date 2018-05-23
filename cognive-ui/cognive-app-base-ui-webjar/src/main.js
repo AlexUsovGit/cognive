@@ -4,6 +4,7 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import ApplicationForIndividual from '@/components/layout/content/search/ApplicationForIndividual'
+import moment from 'moment'
 // Import plugins
 import VCalendar from 'v-calendar';
 import 'v-calendar/lib/v-calendar.min.css';
@@ -13,6 +14,14 @@ Vue.config.productionTip = false;
 // Global registration
 // ToDo: if global registration contains too much component, refactor according to https://ru.vuejs.org/v2/guide/components-registration.html#%D0%90%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B0%D1%8F-%D0%B3%D0%BB%D0%BE%D0%B1%D0%B0%D0%BB%D1%8C%D0%BD%D0%B0%D1%8F-%D1%80%D0%B5%D0%B3%D0%B8%D1%81%D1%82%D1%80%D0%B0%D1%86%D0%B8%D1%8F-%D0%B1%D0%B0%D0%B7%D0%BE%D0%B2%D1%8B%D1%85-%D0%BA%D0%BE%D0%BC%D0%BF%D0%BE%D0%BD%D0%B5%D0%BD%D1%82%D0%BE%D0%B2
 Vue.component('ApplicationForIndividual', ApplicationForIndividual);
+
+// Filters
+Vue.filter('dateFormat', function (value, format) {
+  if (value) {
+    moment.locale('ru');
+    return moment(value).format(format ? format : 'DD MMMM YYYYг')
+  }
+});
 
 /* Install plugins */
 // Date picker
