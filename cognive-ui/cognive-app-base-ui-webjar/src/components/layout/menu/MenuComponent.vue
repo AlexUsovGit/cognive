@@ -13,7 +13,7 @@
         {{section.title}}
       </h6>
       <menu-item-component
-        v-for="item in section.items"
+        v-for="item of section.items"
         :key="'item' + item.id"
         :item="item"
       />

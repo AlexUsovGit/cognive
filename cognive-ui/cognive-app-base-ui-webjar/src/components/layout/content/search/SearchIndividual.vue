@@ -62,23 +62,17 @@
                 name="birthPlace"
                 class="form-control"
               >
-                <option>
+                <option
+                  :value="null"
+                  disabled
+                >
                   Место Рождения
                 </option>
-                <option>
-                  Беларусь
-                </option>
-                <option>
-                  Казахстан
-                </option>
-                <option>
-                  США
-                </option>
-                <option>
-                  Россия
-                </option>
-                <option>
-                  ... другие
+                <option
+                  v-for="birthPlaceItem of dictCountries"
+                  :key="birthPlaceItem.code"
+                >
+                  {{birthPlaceItem.name}}
                 </option>
               </select>
             </div>
@@ -189,7 +183,7 @@
 
     <div class="row results">
       <div class="col">
-        <search-individual-results/>
+        <search-individual-results :search-results="searchResults"/>
       </div>
     </div>
   </div>
@@ -198,21 +192,21 @@
 <script>
     import SearchIndividualResults from "@/components/layout/content/search/SearchIndividualResults";
     import SpinnerComponent from "@/components/common/SpinnerComponent";
+    import axios from "axios";
 
     export default {
       name: "SearchIndividual",
       components: {SpinnerComponent, SearchIndividualResults},
       data: function () {
         return {
-          searchResults: [
-            {
-              id: '45672',
-              fullName: 'Иванов Петр Семенович',
-              birthDate: '20.09.1956',
-              passport: 'MP344480',
-              others: 'НКБ'
+          api: axios.create({
+            baseURL: process.env.API_URL,
+            auth: {
+              username: 'user',
+              password: 'password'
             }
-          ],
+          }),
+          searchResults: [],
           searchForm: {
             fullName: null,
             birthDate: null,
@@ -223,17 +217,41 @@
             address: null,
             bankAccount: null
           },
-          isSpinnerVisible: false
+          isSpinnerVisible: false,
+          dictCountries: []
         }
+      },
+      mounted: function () {
+        this.api
+          .get('/dict/countries')
+          .then(
+            resp => this.dictCountries = resp.data.items,
+            error => console.error(error)
+          );
       },
       methods: {
         resetForm: function () {
           for (const prop in this.searchForm) {
             this.searchForm[prop] = null;
           }
+          this.searchResults = [];
         },
+
         search: function () {
           this.isSpinnerVisible = true;
+
+          this
+            .api.get('/bo/person', {params: this.searchForm})
+            .then(
+              resp => {
+                this.searchResults = resp.data.items;
+                this.isSpinnerVisible = false;
+              },
+              error => {
+                console.error(error);
+                this.isSpinnerVisible = false;
+              }
+            );
         }
       }
     }

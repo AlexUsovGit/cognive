@@ -13,10 +13,12 @@
     "build": "node build_scripts/build.js"
   },
   "dependencies": {
+    "axios": "^0.18.0",
     "bootstrap": "^4.0.0-beta.3",
+    "moment": "^2.22.1",
+    "v-calendar": "^0.9.7",
     "vue": "^2.5.2",
-    "vue-router": "^3.0.1",
-    "v-calendar": "^0.9.7"
+    "vue-router": "^3.0.1"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",
@@ -54,7 +56,7 @@
     "mocha": "^3.2.0",
     "nightwatch": "^0.9.12",
     "node-notifier": "^5.1.2",
-    "node-sass": "^4.8.3",
+    "node-sass": "4.9.0",
     "optimize-css-assets-webpack-plugin": "^3.2.0",
     "ora": "^1.2.0",
     "phantomjs-prebuilt": "^2.1.14",

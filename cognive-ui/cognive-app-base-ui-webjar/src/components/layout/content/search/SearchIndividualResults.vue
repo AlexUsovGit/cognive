@@ -3,19 +3,28 @@
 <template>
     <div class="container-fluid">
       <div
-        v-for="item of 5"
+        v-for="result of searchResults"
+        :key="'result' + result.id"
         class="row result-row align-items-center"
+        @click="redirectToIndividual(result.id)"
       >
         <div class="col">
           <p class="text-main">
-            Иванов Петр Семенович, 20 Сенября 1956г, Пасспорт MP344480, НКБ
+            {{result.firstName}} {{result.lastName}},
+            {{result.birthDate | dateFormat}},
+            {{result.documents[0] && result.documents[0].documentType}}
+            {{result.documents[0] && result.documents[0].documentSeries}}{{result.documents[0] && result.documents[0].documentNumber}},
+            НКБ
             <span class="result-id">
-              # 45672
+              # {{result.id}}
             </span>
           </p>
         </div>
         <div class="col-auto">
-          <div class="props d-flex align-items-center justify-content-center">
+          <div
+            class="props d-flex align-items-center justify-content-center"
+            @click.stop="openSettings(result.id)"
+          >
             <icon-svg icon-name="icon_24_ic_more_vert"/>
           </div>
         </div>
@@ -61,7 +70,21 @@
 
     export default {
       name: "SearchIndividualResults",
-      components: {SpinnerComponent, IconSvg}
+      components: {SpinnerComponent, IconSvg},
+      props: {
+        searchResults: {
+          required: true,
+          type: Array
+        }
+      },
+      methods: {
+        redirectToIndividual: function (id) {
+          console.log('Redirect to Individual with id:' + id)
+        },
+        openSettings: function (id) {
+          console.log('You open settings to result with id:' + id)
+        }
+      }
     }
 </script>
 
