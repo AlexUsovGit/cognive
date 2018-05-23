@@ -4,27 +4,9 @@ import java.util.Date;
 
 public class ModifiableBoFilter extends BaseBoFilter {
 
-	private String tag;
-	private String version;
 	private String modifiedBy;
 	private Date modifiedAfter;
 	private Date modifiedBefore;
-
-	public String getTag() {
-		return tag;
-	}
-
-	public void setTag(String tag) {
-		this.tag = tag;
-	}
-
-	public String getVersion() {
-		return version;
-	}
-
-	public void setVersion(String version) {
-		this.version = version;
-	}
 
 	public String getModifiedBy() {
 		return modifiedBy;

@@ -9,5 +9,5 @@ import com.cognive.core.model.common.Person;
 @RestController
 @RequestMapping("/api/v1/bo/person")
 public class PersonCrudController extends BaseBoCrudController<Person> {
-
+	
 }

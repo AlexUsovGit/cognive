@@ -67,6 +67,7 @@ const webpackConfig = merge(baseWebpackConfig, {
         ? 'index.html'
         : config.build.index,
       template: 'index.html',
+      chunks: ['vendor', 'manifest', 'app'],
       inject: true,
       minify: {
         removeComments: true,
@@ -78,6 +79,12 @@ const webpackConfig = merge(baseWebpackConfig, {
       // necessary to consistently work with multiple chunks via CommonsChunkPlugin
       chunksSortMode: 'dependency'
     }),
+    new HtmlWebpackPlugin({
+        filename: 'login.html',
+        template: 'login.html',
+        chunks: ['vendor', 'manifest', 'login'],
+        inject: true
+    }),    
     // keep module.id stable when vendor modules does not change
     new webpack.HashedModuleIdsPlugin(),
     // enable scope hoisting

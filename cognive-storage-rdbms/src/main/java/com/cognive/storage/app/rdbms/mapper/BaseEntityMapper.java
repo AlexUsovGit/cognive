@@ -12,8 +12,10 @@ import com.cognive.storage.rdbms.entity.BaseEntity;
 // @Mapper(componentModel = "spring")
 public interface BaseEntityMapper<BO extends BaseBusinessObject, E extends BaseEntity> {
 
+	// @Mappings
 	E boToEntity(BO bo);
 	
+	// @InheritInverseConfiguration
 	BO entityToBo(E entity);
 	
 	@Mappings({
