@@ -15,7 +15,7 @@ module.exports = {
   entry: {
 	// vendor: Object.keys(package.dependencies),
     app: './src/main.js',
-    login: './src/login.js'
+    login: './src/login.js' // For Cognive project. Dividing UI to a few SPA. Adding login.html
   },
   output: {
     path: config.build.assetsRoot,

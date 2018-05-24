@@ -13,7 +13,7 @@ Vue.use(Router);
 
 export default new Router({
   mode: 'history',
-  base: '/proto/', // Context path for Cognive project
+  base: '/proto/', // For Cognive project. Context path
   routes: [
     {
       path: '/',

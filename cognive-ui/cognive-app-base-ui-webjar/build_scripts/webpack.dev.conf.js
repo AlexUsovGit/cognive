@@ -55,11 +55,14 @@ const devWebpackConfig = merge(baseWebpackConfig, {
     new HtmlWebpackPlugin({
       filename: 'index.html',
       template: 'index.html',
+      chunks: ['vendor', 'manifest', 'app'], // For Cognive project. Dividing UI to a few SPA.
       inject: true
     }),
+    // For Cognive project. Dividing UI to a few SPA. Adding login.html
     new HtmlWebpackPlugin({
         filename: 'login.html',
         template: 'login.html',
+        chunks: ['vendor', 'manifest', 'login'],
         inject: true
     }),
     // copy custom static assets
