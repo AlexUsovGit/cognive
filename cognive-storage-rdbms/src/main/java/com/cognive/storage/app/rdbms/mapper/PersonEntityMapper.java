@@ -13,12 +13,12 @@ import com.cognive.storage.app.rdbms.entity.common.PersonEntity;
 public interface PersonEntityMapper extends BaseModifiableEntityMapper<Person, PersonEntity> {
 
 	@Mappings({ 
-        @Mapping(target = "person.documents", ignore = true)
+        @Mapping(target = "owner", ignore = true)
     })
 	DocumentEntity boToEntity(Document bo);
 	
 	@Mappings({ 
-        @Mapping(target = "person.documents", ignore = true)
+        @Mapping(target = "owner", ignore = true)
     })	
 	Document entityToBo(DocumentEntity entity);	
 	

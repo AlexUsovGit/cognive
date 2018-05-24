@@ -65,9 +65,11 @@ label {
     display: block;
     height: 20px;
     width: 24px;
-    background-image: url("assets/images/checkbox-login-sprite.png");
-    background-repeat: no-repeat;
-    background-position-x: 0;
+    background: {
+      image: url("assets/images/checkbox-login-sprite.png");
+      repeat: no-repeat;
+      position-x: 0;
+    };
   }
   &.checked::before {
     background-position-x: -25px;

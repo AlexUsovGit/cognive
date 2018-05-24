@@ -28,7 +28,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 			.cors()
 				.and()
 			.authorizeRequests()
-				.antMatchers("/static/css/**", "/static/img/**", "/intro.html", "/login.html").permitAll() //.html
+				.antMatchers("/static/css/**", "/static/img/**", "/static/js/**", "/intro.html", "/login", "/recovery").permitAll() //.html
 	            .anyRequest().authenticated()
 	            // .antMatchers("/api/**").authenticated()
 	            .and()
@@ -36,9 +36,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	        	.defaultAuthenticationEntryPointFor(getRestAuthenticationEntryPoint(), new AntPathRequestMatcher("/api/**"))
 	        	.and()
 	        .formLogin()
-	            .loginPage("/login.html") // .html
+	            .loginPage("/login") // .html
 	            // .permitAll()
-	            .loginProcessingUrl("/login.html")
+	            .loginProcessingUrl("/login")
                 .defaultSuccessUrl("/")
                 // .failureUrl("/login.html?error")
                 .and()

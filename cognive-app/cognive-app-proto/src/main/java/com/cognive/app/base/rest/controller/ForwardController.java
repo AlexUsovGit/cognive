@@ -12,6 +12,11 @@ public class ForwardController {
 		return "forward:/";
 	}
 
+	@RequestMapping(value = { "/**/login", "/**/recovery", "/**/recovery/{token}" }, method = RequestMethod.GET)
+	public String redirectLogin() {
+		return "forward:/login.html";
+	}
+
 //	@RequestMapping(value = "/**/{[path:[^\\.]*}")
 //	public String redirect() {
 //		return "forward:/";

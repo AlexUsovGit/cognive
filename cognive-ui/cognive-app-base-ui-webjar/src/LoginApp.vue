@@ -1,19 +1,19 @@
 <template>
-  <div id="app">
+  <div id="login">
     <router-view/>
   </div>
 </template>
 
 <script>
-export default {
-  name: 'App'
-}
+    export default {
+        name: "LoginApp"
+    }
 </script>
 
 <style lang="scss">
   @import "~bootstrap/scss/bootstrap";
 
-  #app {
+  #login {
     @import "assets/styles/cognive";
   }
 </style>
