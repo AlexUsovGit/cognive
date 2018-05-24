@@ -40,7 +40,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	            // .permitAll()
 	            .loginProcessingUrl("/login")
                 .defaultSuccessUrl("/")
-                // .failureUrl("/login.html?error")
+				.failureUrl("/login?error=true")
                 .and()
 	        .logout()
 	        	.logoutUrl("/logout")
@@ -78,14 +78,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     	// Authorization: Basic dXNlcjpwYXNzd29yZA==
         UserDetails user =
              User.withDefaultPasswordEncoder()
-                .username("user")
+                .username("user@cognive.com")
                 .password("password")
                 .roles("USER")
                 .build();
         // Authorization: Basic YWRtaW46cGFzc3dvcmQ=
         UserDetails admin =
                 User.withDefaultPasswordEncoder()
-                   .username("admin")
+                   .username("admin@cognive.com")
                    .password("password")
                    .roles("ADMIN")
                    .build();

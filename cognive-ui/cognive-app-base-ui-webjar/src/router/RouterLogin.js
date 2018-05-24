@@ -12,7 +12,8 @@ export default new Router({
     {
       path: '/login',
       name: 'Login',
-      component: LoginPage
+      component: LoginPage,
+      props: (route) => ({error: route.query.error})
     },
     {
       path: '/recovery',

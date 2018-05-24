@@ -18,7 +18,8 @@
           <form
             novalidate
             class="text-left"
-            @submit.prevent="login"
+            method="post"
+            @submit="login"
           >
 
             <div class="form-group">
@@ -27,8 +28,9 @@
               </label>
               <input
                 id="email"
+                name="username"
                 v-model="email"
-                :class="{'invalid': !emailValid || !passwordValid}"
+                :class="{'invalid': !emailValid || !passwordValid || error}"
                 type="email"
                 required
                 class="form-control"
@@ -48,8 +50,9 @@
               </label>
               <input
                 id="password"
+                name="password"
                 v-model="password"
-                :class="{'invalid': !passwordValid}"
+                :class="{'invalid': !passwordValid || error}"
                 type="password"
                 required
                 class="form-control"
@@ -109,10 +112,14 @@
 </template>
 
 <script>
-  import users from '@/../config/configs-temp/users'
-
   export default {
     name: 'LoginPage',
+    props: {
+      error: {
+        type: Boolean,
+        default: false
+      }
+    },
     data () {
       return {
         email: '',
@@ -123,30 +130,23 @@
       }
     },
     methods: {
-      login: function () {
+      login: function (e) {
         this.emailValid = true;
         this.passwordValid = true;
 
         if (this.email === '' || this.password === '') {
           this.passwordValid = false;
-          return
         }
 
-        for (let user of users) {
-          if (!this.checkEmail(this.email)) {
-            this.emailValid = false;
-            return
-          } else {
-            this.emailValid = true
-          }
-          if (this.email === user.email && this.password === user.password) {
-            alert('Success =)');
-            this.resetForm();
-            return
-          }
+        if (!this.checkEmail(this.email)) {
+          this.emailValid = false;
+        } else {
+          this.emailValid = true;
         }
 
-        this.passwordValid = false
+        if (!this.emailValid || !this.passwordValid) {
+          e.preventDefault();
+        }
       },
 
       // This function checks email. If email is valid it returns true
