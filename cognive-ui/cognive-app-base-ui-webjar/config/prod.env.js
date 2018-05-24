@@ -1,5 +1,5 @@
 'use strict'
 module.exports = {
   NODE_ENV: '"production"',
-  API_URL: '"http://localhost:8080/proto/api/v1/"'
+  API_URL: '"/proto/api/v1/"' // API URL for Cognive project
 }
