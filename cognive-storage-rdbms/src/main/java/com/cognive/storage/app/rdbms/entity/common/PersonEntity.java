@@ -3,6 +3,7 @@ package com.cognive.storage.app.rdbms.entity.common;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
@@ -52,7 +53,7 @@ public class PersonEntity extends BaseModifiableEntity {
 	private String socialSecurityNumber; // snils;
 	private String email;
 
-	@OneToMany(mappedBy="owner")
+	@OneToMany(mappedBy="owner", cascade = CascadeType.ALL)
 	private List<DocumentEntity> documents;
 
 	public String getFirstName() {

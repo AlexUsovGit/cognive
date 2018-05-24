@@ -12,7 +12,7 @@
       <div class="col">
         <form
           class="container-fluid"
-          @submit.prevent="search"
+          @submit.prevent="search(0)"
         >
           <div class="row">
             <div class="col-6 form-group">
@@ -181,9 +181,16 @@
       </div>
     </div>
 
-    <div class="row results">
+    <div
+      v-if="searchResult"
+      class="row results"
+    >
       <div class="col">
-        <search-individual-results :search-results="searchResults"/>
+        <search-individual-results
+          :search-results="searchResult.items"
+          :page="searchResult.page"
+          @pagination="search($event)"
+        />
       </div>
     </div>
   </div>
@@ -206,7 +213,7 @@
               password: 'password'
             }
           }),
-          searchResults: [],
+          searchResult: null,
           searchForm: {
             fullName: null,
             birthDate: null,
@@ -234,17 +241,23 @@
           for (const prop in this.searchForm) {
             this.searchForm[prop] = null;
           }
-          this.searchResults = [];
+          this.searchResult = null;
         },
 
-        search: function () {
+        search: function (page) {
           this.isSpinnerVisible = true;
+
+          if (page == 0) {
+            this.searchForm.page = null;
+          } else {
+            this.searchForm.page = Number(page);
+          }
 
           this
             .api.get('/bo/person', {params: this.searchForm})
             .then(
               resp => {
-                this.searchResults = resp.data.items;
+                this.searchResult = resp.data;
                 this.isSpinnerVisible = false;
               },
               error => {

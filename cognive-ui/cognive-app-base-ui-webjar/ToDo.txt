@@ -1,3 +1,5 @@
  - i18n
  - include npm task into build
  - clean build.gradle
+ - separate login.html
+ - make DEV profile - clear src

@@ -1,0 +1,133 @@
+1. Querydsl predicate execution (qentity)
+2. Specification Exec (string, metamodel)
+3. Criteria API (metamodel)
+4. Query by example (limited functionality)
+
+---
+
+1.
+
+sourceSets {
+    generated
+}
+sourceSets.generated.java.srcDirs = ['src/main/generated']
+configurations {
+    querydslapt
+}
+dependencies {
+    // other deps ....
+    compile "com.mysema.querydsl:querydsl-jpa:3.6.3"
+    compile "com.mysema.querydsl:querydsl-apt:3.6.3:jpa"
+}
+task generateQueryDSL(type: JavaCompile, group: 'build', description: 'Generates the QueryDSL query types') {
+    source = sourceSets.main.java
+    classpath = configurations.compile + configurations.querydslapt
+    options.compilerArgs = [
+            "-proc:only",
+            "-processor", "com.mysema.query.apt.jpa.JPAAnnotationProcessor"
+    ]
+    destinationDir = sourceSets.generated.java.srcDirs.iterator().next()
+}
+
+compileJava {
+    dependsOn generateQueryDSL
+    source generateQueryDSL.destinationDir
+}
+
+compileGeneratedJava {
+    dependsOn generateQueryDSL
+    classpath += sourceSets.main.runtimeClasspath
+}
+
+package com.cognive.storage.app.rdbms.repo;
+
+import org.springframework.data.querydsl.QuerydslPredicateExecutor;
+import org.springframework.data.repository.CrudRepository;
+
+import com.cognive.storage.app.rdbms.entity.common.PersonEntity;
+
+public interface PersonQuerydslRepo extends CrudRepository<PersonEntity, Long>, QuerydslPredicateExecutor<PersonEntity> {
+
+}
+
+---
+
+2. 
+
+public interface CustomerRepository extends SimpleJpaRepository<T, ID>, JpaSpecificationExecutor {
+
+}
+
+new Specification<Customer>() {
+            public Predicate toPredicate(
+                Root<Customer> root, CriteriaQuery<?> query,
+                CriteriaBuilder builder) {
+                LocalDate date = new LocalDate().minusYears(2);
+                return builder.lessThan(root.get('dateField'), date);
+            }
+        };
+        
+        
+3. generate metamodel
+
+buildscript {
+   repositories {
+      jcenter()
+      maven {
+         url "https://plugins.gradle.org/m2/"
+      }
+      //... other repositories
+   }
+
+   dependencies {
+      classpath "at.comm_unity.gradle.plugins.jpamodelgen:plugin:1.1.4"
+   }
+} 
+
+sourceSets {
+    main {
+        java {
+            srcDirs = ['src/main/java','src/main/generated']
+        }
+    }
+}
+
+apply plugin: "com.github.iboyko.gradle.plugins.jpamodelgen"
+
+jpaModelgen {
+    library = "org.hibernate:hibernate-jpamodelgen:5.2.11.Final"
+    jpaModelgenSourcesDir = "${buildDir}/generated/src/java/"
+}
+
+compileJava.options.compilerArgs += ["-proc:none"]
+ 
+--
+
+plugins {
+    id "java"
+    id "at.comm_unity.gradle.plugins.jpamodelgen" version "1.1.4"
+}
+
+repositories{
+    jcenter()
+}
+
+jpaModelgen{
+    jpaModelgenSourcesDir = 'src/generated/java'
+}
+
+compileJpaModelgen {
+    includes += ['**/entities/*.java', '**/entity/*.java']
+}
+
+
+4. 
+
+QueryByExampleExecutor interface
+
+Employee e = new Employee();
+e.setEmployeeNumber(getEmployeeNumberSomewherFrom());
+
+ExampleMatcher matcher = ExampleMatcher.matching().
+          withMatcher("profession", ExampleMatcher.GenericPropertyMatcher.of(ExampleMatcher.StringMatcher.CONTAINING).ignoreCase());
+

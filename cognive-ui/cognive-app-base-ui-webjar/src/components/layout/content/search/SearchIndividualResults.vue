@@ -33,13 +33,22 @@
       <div class="row">
         <div class="col">
           <p class="pgn">
-            <span class="pgn-button">
+            <span
+              class="pgn-button"
+              @click="pagination(page.page - 1)"
+            >
               <
             </span>
-            <span class="pgn-button">
+            <!-- ToDo: add this after total has been fixed -->
+            <!--
+            <span
+              class="pgn-button"
+            >
               1
             </span>
-            <span class="pgn-button">
+            <span
+              class="pgn-button"
+            >
               ...
             </span>
             <span
@@ -49,13 +58,21 @@
             >
               {{pButton + 15}}
             </span>
-            <span class="pgn-button">
+            <span
+              class="pgn-button"
+            >
               ...
             </span>
-            <span class="pgn-button">
+            <span
+              class="pgn-button"
+            >
               67
             </span>
-            <span class="pgn-button">
+            -->
+            <span
+              class="pgn-button"
+              @click="pagination(page.page + 1)"
+            >
               >
             </span>
           </p>
@@ -75,14 +92,29 @@
         searchResults: {
           required: true,
           type: Array
+        },
+        page: {
+          required: true,
+          type: Object
         }
       },
+      data: function() {
+        return {}
+      },
+      computed: {},
       methods: {
         redirectToIndividual: function (id) {
-          console.log('Redirect to Individual with id:' + id)
+          this.$router.push({name: 'SearchApplication', params: {id}});
         },
         openSettings: function (id) {
           console.log('You open settings to result with id:' + id)
+        },
+        pagination: function (pageNumber) {
+          if (pageNumber < 0) {
+            pageNumber = this.page.page;
+          }
+
+          this.$emit('pagination', pageNumber);
         }
       }
     }

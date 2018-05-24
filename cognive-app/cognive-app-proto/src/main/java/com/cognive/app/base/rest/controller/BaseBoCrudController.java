@@ -13,7 +13,7 @@ import com.cognive.core.service.base.BaseModifiableBoCrudService;
 abstract public class BaseBoCrudController<T extends BaseModifiableBusinessObject> extends BaseBoCrdController<T> {
 
 	@Autowired
-	BaseModifiableBoCrudService<T> boService;
+	protected BaseModifiableBoCrudService<T> boService;
 
 	@PutMapping("/{id}")
 	public ContentMessage<T> update(@PathVariable(name = "id", required = true) long id, @RequestBody T bo) {

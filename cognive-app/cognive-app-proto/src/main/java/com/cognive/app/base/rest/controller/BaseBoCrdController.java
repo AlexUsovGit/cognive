@@ -16,7 +16,7 @@ import com.cognive.core.service.base.BaseBoCrudService;
 abstract public class BaseBoCrdController<T extends BaseBusinessObject> extends BaseController<T> {
 
 	@Autowired
-	BaseBoCrudService<T> boService;
+	protected BaseBoCrudService<T> boService;
 
 	@GetMapping("/{id}")
 	public ContentMessage<T> getById(@PathVariable(name = "id", required = true) long id) {

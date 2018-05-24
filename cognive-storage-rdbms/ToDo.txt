@@ -17,4 +17,5 @@
  - use transactions
  - names: tables, columns
  - fetch, etc
- - 
+ - @NoRepositoryBean for baseRepos
+ - db init: schema-${platform}.sql and data-${platform}.sql (< postgresql) OR liquibase OR data.json 

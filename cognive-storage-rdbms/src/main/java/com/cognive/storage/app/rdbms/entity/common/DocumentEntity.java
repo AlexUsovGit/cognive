@@ -2,10 +2,11 @@ package com.cognive.storage.app.rdbms.entity.common;
 
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.ManyToOne;
 
-import com.cognive.core.model.common.Person;
 import com.cognive.storage.rdbms.entity.BaseEntity;
 
 @Entity
@@ -19,7 +20,7 @@ public class DocumentEntity extends BaseEntity {
 	private String issuer;
 	private String issuerCode;
 	
-	@ManyToOne
+	@ManyToOne(optional = false, cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
 	private PersonEntity owner;
 
 	// add attachment?
