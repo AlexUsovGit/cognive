@@ -68,7 +68,9 @@ new Specification<Customer>() {
         };
         
         
-3. generate metamodel
+3. generate metamodel 
+
+https://stackoverflow.com/questions/44876016/issue-getting-gradle-apt-plugin-to-work-with-querydsl-lombok-mapstruct
 
 buildscript {
    repositories {

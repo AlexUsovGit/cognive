@@ -5,6 +5,7 @@ import java.util.List;
 import org.mapstruct.Mapping;
 import org.mapstruct.MappingTarget;
 import org.mapstruct.Mappings;
+import org.springframework.data.domain.Page;
 
 import com.cognive.core.model.base.BaseBusinessObject;
 import com.cognive.storage.rdbms.entity.BaseEntity;
@@ -26,5 +27,7 @@ public interface BaseEntityMapper<BO extends BaseBusinessObject, E extends BaseE
 	void updateEntity(E source, @MappingTarget E target);
 	
 	List<BO> entitiesToBoList(Iterable<E> entities);
+	
+	// Page<BO> entitiesToBoList(Page<E> entities);
 	
 }
