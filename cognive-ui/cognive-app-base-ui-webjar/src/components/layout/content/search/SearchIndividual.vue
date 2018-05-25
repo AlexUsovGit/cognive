@@ -209,7 +209,7 @@
           api: axios.create({
             baseURL: process.env.API_URL,
             auth: {
-              username: 'user',
+              username: 'user@cognive.com',
               password: 'password'
             }
           }),
