@@ -13,6 +13,8 @@ buildscript {
 
 plugins {
     id 'net.ltgt.apt' version '0.15'
+    id 'net.ltgt.apt-eclipse' version '0.15'
+//    id 'net.ltgt.apt-idea' version '0.15'
 }
 
 dependencyManagement {
@@ -32,14 +34,30 @@ dependencies {
 	compileOnly "org.hibernate:hibernate-jpamodelgen:5.2.9.Final"
 	compileOnly "org.mapstruct:mapstruct-jdk8:${MAPSTRUCT_VERSION}"
     
-    apt	"org.mapstruct:mapstruct-processor:${MAPSTRUCT_VERSION}"
-    apt "org.hibernate:hibernate-jpamodelgen:5.2.9.Final"
-    apt "org.hibernate.javax.persistence:hibernate-jpa-2.1-api:1.0.0.Final"
-    apt "com.fasterxml.jackson.core:jackson-core:2.9.5"
+    annotationProcessor "org.mapstruct:mapstruct-processor:${MAPSTRUCT_VERSION}"
+    annotationProcessor "org.hibernate:hibernate-jpamodelgen:5.2.9.Final"
+    annotationProcessor "org.hibernate.javax.persistence:hibernate-jpa-2.1-api:1.0.0.Final"
+    annotationProcessor "com.fasterxml.jackson.core:jackson-core:2.9.5"
     
    	testCompile "org.springframework.boot:spring-boot-starter-test"
+}
+
+ext {
+    generatedSourcesDir = '${buildDir}/generated/source/apt/main'
+}
+
+
+tasks.withType(JavaCompile) {
+	// to avoid IllegalStateException: endPosTable already set (Java8 bug)
+	// or it looks like we can use different dirs for processors
+	if (file(generatedSourcesDir).exists()) {
+		FileCollection collection = files { file(generatedSourcesDir).listFiles() }
+		collection.each { delete it }
+	}
 }
 
 compileJava {
     aptOptions.processors = ['org.mapstruct.ap.MappingProcessor', 'org.hibernate.jpamodelgen.JPAMetaModelEntityProcessor']
 }
+
+//sourceSets.main.java.srcDirs += generatedSourcesDir

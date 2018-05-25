@@ -42,7 +42,7 @@ abstract public class BaseModifiableServicePg<T extends BaseModifiableBusinessOb
 	@Override
 	public T update(T bo) {
 		E e = getEntityById(bo.getId());
-		getMapper().updateEntity(getMapper().boToEntity(bo), e);
+		getMapper().updateAsModifiableEntity(getMapper().boToEntity(bo), e);
 		prepareToUpdate(e);
 		e = getRepo().save(e);
 		return getMapper().entityToBo(e);

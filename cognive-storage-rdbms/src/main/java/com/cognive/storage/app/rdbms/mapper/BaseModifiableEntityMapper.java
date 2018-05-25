@@ -18,6 +18,6 @@ public interface BaseModifiableEntityMapper<BO extends BaseModifiableBusinessObj
 		@Mapping(target = "modifiedBy", ignore = true),
 		@Mapping(target = "modifiedOn", ignore = true)
 	})
-	void updateEntity(E source, @MappingTarget E target);
+	void updateAsModifiableEntity(E source, @MappingTarget E target);
 	
 }
