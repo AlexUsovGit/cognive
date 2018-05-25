@@ -6,6 +6,7 @@ import java.util.Optional;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort.Direction;
@@ -69,8 +70,9 @@ abstract public class BaseServicePg<T extends BaseBusinessObject, E extends Base
 	 */
 	@Override
 	public List<T> find(BaseBoFilter filter) {
-		Iterable<E> items = getRepo().findAll(asPageRequest(filter));
-		return getMapper().entitiesToBoList(items);
+		Page<E> items = getRepo().findAll(asPageRequest(filter));
+		filter.setTotal(items.getTotalElements());
+		return getMapper().entitiesToBoList(items.getContent());
 	}
 
 	/* (non-Javadoc)

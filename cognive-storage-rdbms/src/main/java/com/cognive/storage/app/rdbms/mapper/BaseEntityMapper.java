@@ -18,13 +18,16 @@ public interface BaseEntityMapper<BO extends BaseBusinessObject, E extends BaseE
 	// @InheritInverseConfiguration
 	BO entityToBo(E entity);
 	
+	// FIXME: remove this method
 	@Mappings({
 		@Mapping(target = "id", ignore = true),
 		@Mapping(target = "createdBy", ignore = true),
 		@Mapping(target = "createdOn", ignore = true)
 	})
-	void updateEntity(E source, @MappingTarget E target);
+	void updateAsBaseEntity(E source, @MappingTarget E target);
 	
 	List<BO> entitiesToBoList(Iterable<E> entities);
+	
+	// Page<BO> entitiesToBoList(Page<E> entities);
 	
 }

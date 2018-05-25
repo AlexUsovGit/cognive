@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.data.domain.Page;
 import org.springframework.data.repository.PagingAndSortingRepository;
 
 import com.cognive.core.model.base.BaseModifiableBusinessObject;
@@ -30,8 +31,9 @@ abstract public class BaseModifiableServicePg<T extends BaseModifiableBusinessOb
 
 	@Override
 	public List<T> find(ModifiableBoFilter filter) {
-		Iterable<E> items = getRepo().findAll(asPageRequest(filter));
-		return getMapper().entitiesToBoList(items);
+		Page<E> items = getRepo().findAll(asPageRequest(filter));
+		filter.setTotal( items.getTotalElements() );
+		return getMapper().entitiesToBoList(items.getContent());
 	}
 
 	/* (non-Javadoc)
@@ -40,7 +42,7 @@ abstract public class BaseModifiableServicePg<T extends BaseModifiableBusinessOb
 	@Override
 	public T update(T bo) {
 		E e = getEntityById(bo.getId());
-		getMapper().updateEntity(getMapper().boToEntity(bo), e);
+		getMapper().updateAsModifiableEntity(getMapper().boToEntity(bo), e);
 		prepareToUpdate(e);
 		e = getRepo().save(e);
 		return getMapper().entityToBo(e);

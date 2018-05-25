@@ -1,0 +1,83 @@
+buildscript {
+    repositories {
+    	mavenCentral() 
+		jcenter()
+		maven {
+			url "https://plugins.gradle.org/m2/"
+		}
+    }
+    dependencies { 
+    	classpath "org.springframework.boot:spring-boot-gradle-plugin:${SPRING_BOOT_VERSION}"
+    	// classpath "gradle.plugin.at.comm_unity.gradle.plugins.jpamodelgen:plugin:1.1.4" 
+    }
+}
+
+plugins {
+    id 'net.ltgt.apt' version '0.8'
+    id 'at.comm_unity.gradle.plugins.jpamodelgen' version '1.1.4'
+}
+
+dependencyManagement {
+	imports { mavenBom("org.springframework.boot:spring-boot-dependencies:${SPRING_BOOT_VERSION}") }
+	dependencies {
+	}
+}
+	
+dependencies {
+   	compile project(':cognive-core')
+   	
+   	compile 'org.springframework.boot:spring-boot-starter-data-jpa'
+
+   	// compile 'org.springframework.data:spring-data-jpa'
+   	// compile 'org.hibernate:hibernate-entitymanager'
+
+	compile 'org.postgresql:postgresql:42.2.2'
+	compile 'com.vladmihalcea:hibernate-types-52:2.2.0'
+	compile group: 'org.hibernate', name: 'hibernate-jpamodelgen', version: '5.2.16.Final'
+	// compile group: 'javax.persistence', name: 'persistence-api', version: '1.0.2'
+	// compile group: 'javax.persistence', name: 'javax.persistence-api', version: '2.2'
+	
+	// compile 'com.fasterxml.jackson.core:jackson-core:2.9.5'
+	// compile 'com.fasterxml.jackson.datatype:jackson-datatype-jsr353:2.9.0' // to use javax.json API
+   	
+	compile "org.mapstruct:mapstruct-jdk8:${MAPSTRUCT_VERSION}"
+    // mapstruct "org.mapstruct:mapstruct-processor:${MAPSTRUCT_VERSION}"
+    apt "org.mapstruct:mapstruct-processor:${MAPSTRUCT_VERSION}"
+    
+   	testCompile "org.springframework.boot:spring-boot-starter-test"
+}
+
+ext {
+    // generatedMapperSourcesDir = "${buildDir}/generated-src/mapstruct/main" // "${buildDir}/generated/source/apt/main"
+    generatedMapperSourcesDir = "${buildDir}/generated/source/apt/main" // "${buildDir}/generated/src/apt/main"
+    generatedJpaSourcesDir = "${buildDir}/generated/source/jpa/main"
+}
+
+sourceSets {
+    main {
+        java {
+            srcDir 'src/main/java'
+            srcDir generatedMapperSourcesDir
+            srcDir generatedJpaSourcesDir
+        }
+    }
+}
+
+tasks.withType(JavaCompile) {
+    options.compilerArgs = [
+            '-Amapstruct.suppressGeneratorTimestamp=true'
+    ]
+}
+
+jpaModelgen {
+    library = "org.hibernate:hibernate-jpamodelgen:5.2.16.Final"
+    jpaModelgenSourcesDir = generatedJpaSourcesDir
+}
+
+compileJpaModelgen {
+    includes += ['**/entity/*.java', '**/entity/*/*.java']
+}
+
+// compileJava.options.compilerArgs += ["-proc:none"]
+ 
+// configurations { mapstruct }

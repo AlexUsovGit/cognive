@@ -1,18 +1,21 @@
 buildscript {
-    repositories { mavenCentral() }
-    dependencies { classpath("org.springframework.boot:spring-boot-gradle-plugin:${SPRING_BOOT_VERSION}") }
+    repositories {
+    	mavenCentral() 
+		jcenter()
+		maven {
+			url "https://plugins.gradle.org/m2/"
+		}
+    }
+    dependencies { 
+    	classpath "org.springframework.boot:spring-boot-gradle-plugin:${SPRING_BOOT_VERSION}"
+    }
 }
 
 plugins {
-    id 'net.ltgt.apt' version '0.8'
+    id 'net.ltgt.apt' version '0.15'
+    id 'net.ltgt.apt-eclipse' version '0.15'
+//    id 'net.ltgt.apt-idea' version '0.15'
 }
-
-ext {
-    // generatedMapperSourcesDir = "${buildDir}/generated-src/mapstruct/main"
-    generatedMapperSourcesDir = "${buildDir}/generated/source/apt/main"
-}
- 
-// configurations { mapstruct }
 
 dependencyManagement {
 	imports { mavenBom("org.springframework.boot:spring-boot-dependencies:${SPRING_BOOT_VERSION}") }
@@ -25,22 +28,36 @@ dependencies {
    	
    	compile 'org.springframework.boot:spring-boot-starter-data-jpa'
 
-   	// compile 'org.springframework.data:spring-data-jpa'
-   	// compile 'org.hibernate:hibernate-entitymanager'
-
 	compile 'org.postgresql:postgresql:42.2.2'
 	compile 'com.vladmihalcea:hibernate-types-52:2.2.0'
-	// compile 'com.fasterxml.jackson.datatype:jackson-datatype-jsr353:2.9.0' // to use javax.json API
-   	
-	compile "org.mapstruct:mapstruct-jdk8:${MAPSTRUCT_VERSION}"
-    // mapstruct "org.mapstruct:mapstruct-processor:${MAPSTRUCT_VERSION}"
-    apt "org.mapstruct:mapstruct-processor:${MAPSTRUCT_VERSION}"
+	
+	compileOnly "org.hibernate:hibernate-jpamodelgen:5.2.9.Final"
+	compileOnly "org.mapstruct:mapstruct-jdk8:${MAPSTRUCT_VERSION}"
+    
+    annotationProcessor "org.mapstruct:mapstruct-processor:${MAPSTRUCT_VERSION}"
+    annotationProcessor "org.hibernate:hibernate-jpamodelgen:5.2.9.Final"
+    annotationProcessor "org.hibernate.javax.persistence:hibernate-jpa-2.1-api:1.0.0.Final"
+    annotationProcessor "com.fasterxml.jackson.core:jackson-core:2.9.5"
     
    	testCompile "org.springframework.boot:spring-boot-starter-test"
 }
 
-tasks.withType(JavaCompile) {
-    options.compilerArgs = [
-            '-Amapstruct.suppressGeneratorTimestamp=true'
-    ]
+ext {
+    generatedSourcesDir = '${buildDir}/generated/source/apt/main'
 }
+
+
+tasks.withType(JavaCompile) {
+	// to avoid IllegalStateException: endPosTable already set (Java8 bug)
+	// or it looks like we can use different dirs for processors
+	if (file(generatedSourcesDir).exists()) {
+		FileCollection collection = files { file(generatedSourcesDir).listFiles() }
+		collection.each { delete it }
+	}
+}
+
+compileJava {
+    aptOptions.processors = ['org.mapstruct.ap.MappingProcessor', 'org.hibernate.jpamodelgen.JPAMetaModelEntityProcessor']
+}
+
+//sourceSets.main.java.srcDirs += generatedSourcesDir
