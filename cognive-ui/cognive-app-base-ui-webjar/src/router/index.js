@@ -35,7 +35,8 @@ export default new Router({
         {
           path: 'search_application/:id',
           name: 'SearchApplication',
-          component: ApplicationForIndividual
+          component: ApplicationForIndividual,
+          props: true
         }
       ]
     },
