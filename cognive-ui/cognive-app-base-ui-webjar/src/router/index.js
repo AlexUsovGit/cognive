@@ -28,13 +28,13 @@ export default new Router({
           component: ContentSearch
         },
         {
-          path: 'search_form',
-          name: 'SearchForm',
-          component: SearchIndividual
+          path: 'application',
+          name: 'Application',
+          component: ApplicationForIndividual
         },
         {
-          path: 'search_application/:id',
-          name: 'SearchApplication',
+          path: 'application/:id',
+          name: 'ApplicationWithId',
           component: ApplicationForIndividual,
           props: true
         }
