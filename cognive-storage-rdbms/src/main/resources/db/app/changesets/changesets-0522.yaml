@@ -9,6 +9,7 @@ databaseChangeLog:
          relativeToChangelogFile: true
          splitStatements: true
          stripComments: true
+         failOnError: true
   - changeSet:
       id: "2018-05-24-data-dict-kinship"
       author: user1
@@ -18,4 +19,5 @@ databaseChangeLog:
          path: "pg/data-dicts-kinship.sql"
          relativeToChangelogFile: true
          splitStatements: true
-         stripComments: true      
+         stripComments: true
+         failOnError: true      

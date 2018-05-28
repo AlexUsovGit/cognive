@@ -10,6 +10,6 @@ public interface PersonService extends BaseModifiableBoCrudService<Person> {
 
 	List<Person> find(PersonSearchFilter filter);
 	
-	Person getFullById(long id);
+	Person getFullById(Long id);
 
 }

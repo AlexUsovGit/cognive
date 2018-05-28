@@ -1,6 +1,8 @@
 bootJar {
     baseName = 'cognive-app-proto'
     version =  '0.1.0'
+    
+    // jvmArgs=["-agentlib:jdwp=transport=dt_socket,server=y,suspend=y,address=32323"]
 }
 
 dependencies {
@@ -15,3 +17,4 @@ dependencies {
 	testCompile 'org.springframework.boot:spring-boot-starter-test'
 	testCompile 'org.springframework.security:spring-security-test'
 }
+

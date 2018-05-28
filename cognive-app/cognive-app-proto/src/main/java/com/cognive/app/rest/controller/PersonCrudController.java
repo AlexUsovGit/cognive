@@ -20,7 +20,7 @@ public class PersonCrudController extends BaseBoCrudController<Person> {
 	
 	@GetMapping("/{id}")
 	@Override
-	public ContentMessage<Person> getById(@PathVariable(name = "id", required = true) long id) {
+	public ContentMessage<Person> getById(@PathVariable(name = "id", required = true) Long id) {
 		return asContentMessage( personService.getFullById(id) );
 	}
 	

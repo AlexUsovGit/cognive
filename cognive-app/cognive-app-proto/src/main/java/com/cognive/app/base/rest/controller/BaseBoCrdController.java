@@ -19,7 +19,7 @@ abstract public class BaseBoCrdController<T extends BaseBusinessObject> extends 
 	protected BaseBoCrudService<T> boService;
 
 	@GetMapping("/{id}")
-	public ContentMessage<T> getById(@PathVariable(name = "id", required = true) long id) {
+	public ContentMessage<T> getById(@PathVariable(name = "id", required = true) Long id) {
 		return asContentMessage( boService.getById(id) );
 	}
 	
@@ -35,7 +35,7 @@ abstract public class BaseBoCrdController<T extends BaseBusinessObject> extends 
 	}
 	
 	@DeleteMapping("/{id}")
-	public ContentMessage<T> delete(@PathVariable(name = "id", required = true) long id) {
+	public ContentMessage<T> delete(@PathVariable(name = "id", required = true) Long id) {
 		boService.delete(id);
 		return getEmptyContentMessage();
 	}

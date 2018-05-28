@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
@@ -44,19 +45,19 @@ public class PersonEntity extends BaseModifiableEntity implements Serializable {
 	private String citizenshipCountry; // Code
 	
 	// remake -> List + address type
-	@ManyToOne(fetch=FetchType.LAZY)
+	@ManyToOne(fetch=FetchType.LAZY, cascade=CascadeType.ALL)
 	@JoinColumn(name="registrationAddress")
 	private AddressEntity registrationAddress;
 	
-	@ManyToOne(fetch=FetchType.LAZY)
+	@ManyToOne(fetch=FetchType.LAZY, cascade=CascadeType.MERGE)
 	@JoinColumn(name="residenceAddressId")
 	private AddressEntity residenceAddress;
 	
-	@ManyToOne(fetch=FetchType.LAZY)
+	@ManyToOne(fetch=FetchType.LAZY, cascade=CascadeType.PERSIST)
 	@JoinColumn(name="postalAddressId")
 	private AddressEntity postalAddress; // postalAddress
 
-	@ManyToMany(fetch=FetchType.LAZY)
+	@ManyToMany(fetch=FetchType.LAZY, cascade=CascadeType.PERSIST)
 	@JoinTable(
 			name = "person_phone",
 			joinColumns = @JoinColumn(name="person_id", referencedColumnName = "id"),
@@ -68,7 +69,7 @@ public class PersonEntity extends BaseModifiableEntity implements Serializable {
 	private String socialSecurityNumber; // snils;
 	private String email;
 
-	@OneToMany(mappedBy="owner", fetch=FetchType.LAZY)
+	@OneToMany(mappedBy="owner", fetch=FetchType.LAZY, cascade=CascadeType.ALL)
 	private List<DocumentEntity> documents;
 
 	public String getFirstName() {

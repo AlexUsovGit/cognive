@@ -3,3 +3,8 @@
  - clean build.gradle
  - separate login.html
  - make DEV profile - clear src
+ 
+ - make components
+ - update - PUT
+ - documents object?
+ - check docs fields

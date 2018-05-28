@@ -9,10 +9,10 @@ public interface BaseBoCrudService<T extends BaseBusinessObject> {
 
 	T create(T bo);
 
-	T getById(long id);
+	T getById(Long id);
 
 	List<T> find(BaseBoFilter filter);
 
-	void delete(long id);
+	void delete(Long id);
 
 }

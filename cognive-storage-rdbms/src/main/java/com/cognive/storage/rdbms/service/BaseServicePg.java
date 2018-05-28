@@ -51,7 +51,7 @@ abstract public class BaseServicePg<T extends BaseBusinessObject, E extends Base
 	 * @see com.cognive.storage.app.rdbms.service.BaseBoCrudService#getById(java.lang.Long)
 	 */
 	@Override
-	public T getById(long id) {
+	public T getById(Long id) {
 		E e = getEntityById(id);
 		return getMapper().entityToBo(e);
 	}
@@ -79,7 +79,7 @@ abstract public class BaseServicePg<T extends BaseBusinessObject, E extends Base
 	 * @see com.cognive.storage.app.rdbms.service.BaseBoCrudService#delete(long)
 	 */
 	@Override
-	public void delete(long id) {
+	public void delete(Long id) {
 		assertValidId(id, "ID is not valid for the delete operation.");
 		getRepo().deleteById(id);
 	}

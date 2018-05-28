@@ -37,7 +37,7 @@ public class PersonServicePg extends BaseModifiableServicePg<Person, PersonEntit
 	}
 	
 	@Override
-	public Person getFullById(long id) {
+	public Person getFullById(Long id) {
 		PersonEntity e = getFullEntityById(id);
 		return getMapper().entityToBo(e);
 	}

@@ -16,14 +16,14 @@ abstract public class BaseBoCrudController<T extends BaseModifiableBusinessObjec
 	protected BaseModifiableBoCrudService<T> boService;
 
 	@PutMapping("/{id}")
-	public ContentMessage<T> update(@PathVariable(name = "id", required = true) long id, @RequestBody T bo) {
+	public ContentMessage<T> update(@PathVariable(name = "id", required = true) Long id, @RequestBody T bo) {
 		assertRequestBodyNotNull(bo, null);
 		bo.setId(id);
 		return asContentMessage( boService.update(bo) );
 	}
 	
 	@PatchMapping("/{id}")
-	public ContentMessage<T> patch(@PathVariable(name = "id", required = true) long id, @RequestBody T bo) {
+	public ContentMessage<T> patch(@PathVariable(name = "id", required = true) Long id, @RequestBody T bo) {
 		assertRequestBodyNotNull(bo, null);
 		bo.setId(id);
 		return asContentMessage( boService.update(bo) );

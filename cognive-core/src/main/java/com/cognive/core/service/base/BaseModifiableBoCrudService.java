@@ -9,12 +9,12 @@ public interface BaseModifiableBoCrudService<T extends BaseModifiableBusinessObj
 
 	T create(T bo);
 
-	T getById(long id);
+	T getById(Long id);
 
 	List<T> find(ModifiableBoFilter filter);
 
 	T update(T bo);
 
-	void delete(long id);
+	void delete(Long id);
 
 }
