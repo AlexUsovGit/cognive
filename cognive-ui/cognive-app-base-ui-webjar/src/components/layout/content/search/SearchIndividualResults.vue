@@ -104,7 +104,7 @@
       computed: {},
       methods: {
         redirectToIndividual: function (id) {
-          this.$router.push({name: 'SearchApplication', params: {id}});
+          this.$router.push({name: 'ApplicationWithId', params: {id}});
         },
         openSettings: function (id) {
           console.log('You open settings to result with id:' + id)

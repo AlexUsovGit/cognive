@@ -13,9 +13,16 @@
         },
         {
           "id": 11,
-          "label": "Поиск",
+          "label": "Search",
           "icon": "icon_24_ic_search",
           "link": "/search"
+        },
+        {
+          "id": 12,
+          "label": "Individual application",
+          "icon": "icon_24_ic_subject",
+          "link": "/application",
+          "count": 0
         },
         {
           "id": 2,

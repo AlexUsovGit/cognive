@@ -21,7 +21,7 @@
               </label>
               <input
                 id="fullName"
-                v-model="searchForm.fullName"
+                v-model="searchForm.firstName"
                 name="fullName"
                 type="text"
                 class="form-control"
@@ -209,21 +209,12 @@
           api: axios.create({
             baseURL: process.env.API_URL,
             auth: {
-              username: 'user',
+              username: 'user@cognive.com',
               password: 'password'
             }
           }),
           searchResult: null,
-          searchForm: {
-            fullName: null,
-            birthDate: null,
-            birthPlace: null,
-            inn: null,
-            ogrnip: null,
-            passport: null,
-            address: null,
-            bankAccount: null
-          },
+          searchForm: {},
           isSpinnerVisible: false,
           dictCountries: []
         }
@@ -254,7 +245,7 @@
           }
 
           this
-            .api.get('/bo/person', {params: this.searchForm})
+            .api.get('/search/person/filter', {params: this.searchForm})
             .then(
               resp => {
                 this.searchResult = resp.data;

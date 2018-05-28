@@ -2,17 +2,17 @@
 
 <template>
   <div>
-    <tabs-component :tabs="config.contentSearch.tabs"/>
+    <search-individual/>
   </div>
 </template>
 
 <script>
   import ContentSearchConfig from "@/../config/configs-temp/search"
-  import TabsComponent from "@/components/common/tabs/TabsComponent";
+  import SearchIndividual from "@/components/layout/content/search/SearchIndividual";
 
   export default {
     name: "ContentSearch",
-    components: {TabsComponent},
+    components: {SearchIndividual},
     data: function () {
       return {
         config: ContentSearchConfig

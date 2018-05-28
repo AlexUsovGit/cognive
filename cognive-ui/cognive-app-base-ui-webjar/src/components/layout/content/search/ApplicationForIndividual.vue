@@ -3,9 +3,8 @@
 <template>
   <form
     class="app-form container-fluid"
-    method="post"
-    action="/test"
     novalidate
+    @submit.prevent="save"
   >
 
     <div class="row">
@@ -31,10 +30,10 @@
                   Фамилия
                 </label>
                 <input
+                  id="lastName"
+                  v-model="person.lastName"
                   type="text"
                   class="form-control"
-                  id="lastName"
-                  name="lastName"
                   placeholder="Фамилия"
                 />
               </div>
@@ -46,7 +45,7 @@
                 </label>
                 <input
                   id="firstName"
-                  name="firstName"
+                  v-model="person.firstName"
                   type="text"
                   class="form-control"
                   placeholder="Имя"
@@ -60,7 +59,7 @@
                 </label>
                 <input
                   id="middleName"
-                  name="middleName"
+                  v-model="person.middleName"
                   type="text"
                   class="form-control"
                   placeholder="Отчество (опционально)"
@@ -90,7 +89,7 @@
                 </label>
                 <v-date-picker
                   mode="single"
-                  v-model="birthDate"
+                  v-model="person.birthDate"
                 >
                   <input
                     id="birthDate"
@@ -114,26 +113,21 @@
                 </label>
                 <select
                   id="birthPlace"
-                  name="birthPlace"
+                  v-model="person.birthPlace"
                   class="form-control"
                 >
-                  <option>
+                  <option
+                    :value="undefined"
+                    disabled
+                  >
                     Место Рождения
                   </option>
-                  <option>
-                    Беларусь
-                  </option>
-                  <option>
-                    Казахстан
-                  </option>
-                  <option>
-                    США
-                  </option>
-                  <option>
-                    Россия
-                  </option>
-                  <option>
-                    ... другие
+                  <option
+                    v-for="birthPlaceItem of dictCountries"
+                    :key="'birthPlace' + birthPlaceItem.code"
+                    :value="birthPlaceItem.code"
+                  >
+                    {{birthPlaceItem.name}}
                   </option>
                 </select>
               </div>
@@ -145,26 +139,21 @@
                 </label>
                 <select
                   id="citizenship"
-                  name="citizenship"
+                  v-model="person.citizenship"
                   class="form-control"
                 >
-                  <option>
+                  <option
+                    :value="undefined"
+                    disabled
+                  >
                     Гражданство
                   </option>
-                  <option>
-                    Беларусь
-                  </option>
-                  <option>
-                    Казахстан
-                  </option>
-                  <option>
-                    США
-                  </option>
-                  <option>
-                    Россия
-                  </option>
-                  <option>
-                    ... другие
+                  <option
+                    v-for="citizenshipItem of dictCountries"
+                    :key="'citizenship' + citizenshipItem.code"
+                    :value="citizenshipItem.code"
+                  >
+                    {{citizenshipItem.name}}
                   </option>
                 </select>
               </div>
@@ -192,7 +181,7 @@
                 </label>
                 <input
                   id="documentType"
-                  name="documentType"
+                  v-model="document.documentType"
                   type="text"
                   class="form-control"
                   placeholder="Тип Документа"
@@ -206,7 +195,7 @@
                 </label>
                 <input
                   id="documentSeries"
-                  name="documentSeries"
+                  v-model="document.documentSeries"
                   type="text"
                   class="form-control"
                   placeholder="Серия"
@@ -220,7 +209,7 @@
                 </label>
                 <input
                   id="documentNumber"
-                  name="documentNumber"
+                  v-model="document.documentNumber"
                   type="text"
                   class="form-control"
                   placeholder="Номер"
@@ -257,7 +246,7 @@
                 </label>
                 <input
                   id="documentIssuePlace"
-                  name="documentIssuePlace"
+                  v-model="document.documentIssuePlace"
                   type="text"
                   class="form-control"
                   placeholder="Кем Выдан"
@@ -271,7 +260,7 @@
                 </label>
                 <input
                   id="documentDepartmentCode"
-                  name="documentDepartmentCode"
+                  v-model="document.documentDepartmentCode"
                   type="text"
                   class="form-control"
                   placeholder="Код Подразделения"
@@ -1386,11 +1375,26 @@
 </template>
 
 <script>
+  import axios from "axios";
+
   export default {
     name: "ApplicationForIndividual",
+    props: {
+      id: {
+        type: [Number, String]
+      }
+    },
     data: function () {
       return {
-        birthDate: null,
+        api: axios.create({
+          baseURL: process.env.API_URL,
+          auth: {
+            username: 'user@cognive.com',
+            password: 'password'
+          }
+        }),
+
+        // ToDO: replace these fields to Objects
         documentIssueDate: null,
         beneficialDocumentIssueDate: null,
         isAddressSame: false,
@@ -1399,7 +1403,69 @@
         isBeneficial: false,
         relationshipWithBankOther: false,
         purposesOther: false,
-        sourcesOther: false
+        sourcesOther: false,
+
+        dictCountries: [],
+        person: {},
+        document: {}
+      }
+    },
+    mounted: function() {
+      const requests = [
+        this.api.get('/dict/countries') // request to dict countries
+      ];
+
+      if (this.id) {
+        const requestPerson = this.api.get(`/bo/person/${this.id}`);
+        requests.push(requestPerson);
+      }
+
+      axios
+        .all(requests)
+        .then(
+          axios.spread((respDictCountries, respPerson) => {
+            this.dictCountries = respDictCountries.data.items;
+            if (respPerson) {
+              this.processPersonResp(respPerson.data.content);
+            }
+          })
+        )
+        .catch(
+          error => console.log(error)
+        );
+    },
+    methods: {
+      save: function () {
+        // ToDO: redesign DTO objects
+        this.person.documents = [];
+        this.person.documents.push(this.document);
+        this.person.documents[0].owner_id = this.id;
+
+        if (this.id) {
+          this.api.put(`/bo/person/${this.id}`, this.person).then(
+            resp => this.processPersonResp(resp),
+            error => console.log(error)
+          );
+        } else {
+          this.api.post(`/bo/person`, this.person).then(
+            resp => this.processPersonResp(resp),
+            error => console.log(error)
+          );
+        }
+      },
+      processPersonResp: function (person) {
+        this.person = person;
+        this.person.birthDate = this.convertToDate(this.person.birthDate);
+
+        this.document = person.documents[0] ? person.documents[0] : {};
+        this.document.documentIssueDate = this.convertToDate(this.document.documentIssueDate);
+      },
+      convertToDate: function (date) {
+        if (date) {
+          return new Date(date);
+        } else {
+          return null;
+        }
       }
     }
   }
