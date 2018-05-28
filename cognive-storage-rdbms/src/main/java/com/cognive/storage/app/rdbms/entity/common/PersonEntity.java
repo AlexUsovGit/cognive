@@ -189,6 +189,9 @@ public class PersonEntity extends BaseModifiableEntity implements Serializable {
 	}
 
 	public void setDocuments(List<DocumentEntity> documents) {
+		if (documents != null) {
+			documents.forEach(i -> i.setOwner(this));
+		}
 		this.documents = documents;
 	} 
 	

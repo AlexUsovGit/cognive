@@ -1,5 +1,6 @@
 package com.cognive.storage.app.rdbms.entity.business;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.MappedSuperclass;
@@ -12,7 +13,7 @@ import com.cognive.storage.rdbms.entity.BaseModifiableEntity;
 //@Entity
 //@Inheritance( strategy = InheritanceType.SINGLE_TABLE )
 //@DiscriminatorColumn( name = "kind" )
-public class BaseApplicationEntity extends BaseModifiableEntity {
+public class BaseApplicationEntity extends BaseModifiableEntity implements Serializable {
 
 	private String name;
 	private String type;

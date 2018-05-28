@@ -1,15 +1,18 @@
 package com.cognive.storage.app.rdbms.entity.common;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 import com.cognive.storage.rdbms.entity.BaseModifiableEntity;
 
 @Entity
-public class EmploymentEntity extends BaseModifiableEntity {
+@Table(name = "Employment")
+public class EmploymentEntity extends BaseModifiableEntity implements Serializable {
 
 	@ManyToOne
 	private OrganizationEntity organization;

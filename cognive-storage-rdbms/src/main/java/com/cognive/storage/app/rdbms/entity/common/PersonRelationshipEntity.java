@@ -3,11 +3,14 @@
  */
 package com.cognive.storage.app.rdbms.entity.common;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.IdClass;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 import com.cognive.core.model.common.Person;
 import com.cognive.storage.rdbms.entity.BaseEntity;
@@ -18,7 +21,8 @@ import com.cognive.storage.rdbms.entity.BaseEntity;
  */
 @Entity
 //@IdClass(PersonRelationshipId.class)
-public class PersonRelationshipEntity extends BaseEntity {
+@Table(name = "PersonRelationship")
+public class PersonRelationshipEntity extends BaseEntity implements Serializable {
 
 	@Column(name = "PERSON_FROM_ID")
 	private Long personFromId;

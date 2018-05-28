@@ -14,7 +14,7 @@ import org.hibernate.annotations.Type;
 import com.fasterxml.jackson.databind.JsonNode;
 
 @Entity
-@Table(name = "basic")
+@Table(name = "test_basic")
 public class BasicEntity {
 
 	@Id

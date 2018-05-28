@@ -1,18 +1,21 @@
 package com.cognive.storage.app.rdbms.entity.common;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 import org.hibernate.annotations.FetchMode;
 
 import com.cognive.storage.rdbms.entity.BaseEntity;
 
 @Entity
-public class DocumentEntity extends BaseEntity {
+@Table(name = "Document")
+public class DocumentEntity extends BaseEntity implements Serializable {
 
 	private String documentType;
 	private String documentSeries;

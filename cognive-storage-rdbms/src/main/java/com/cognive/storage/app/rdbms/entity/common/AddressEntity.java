@@ -1,11 +1,15 @@
 package com.cognive.storage.app.rdbms.entity.common;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
+import javax.persistence.Table;
 
 import com.cognive.storage.rdbms.entity.BaseEntity;
 
 @Entity
-public class AddressEntity extends BaseEntity {
+@Table(name = "Address")
+public class AddressEntity extends BaseEntity implements Serializable {
 
 	private String postCode;
 	private String countryCode;

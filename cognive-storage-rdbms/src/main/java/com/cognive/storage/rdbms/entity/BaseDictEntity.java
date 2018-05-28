@@ -1,11 +1,13 @@
 package com.cognive.storage.rdbms.entity;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 
 @MappedSuperclass
-public class BaseDictEntity {
+public class BaseDictEntity implements Serializable {
 
 	@Id
 	@Column(nullable = false, unique = true)

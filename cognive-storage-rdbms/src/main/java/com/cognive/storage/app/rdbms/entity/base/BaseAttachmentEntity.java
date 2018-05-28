@@ -1,5 +1,6 @@
 package com.cognive.storage.app.rdbms.entity.base;
 
+import java.io.Serializable;
 import java.sql.Blob;
 
 import javax.persistence.Basic;
@@ -16,7 +17,7 @@ import com.cognive.storage.rdbms.entity.BaseEntity;
 @Entity
 @Inheritance( strategy = InheritanceType.SINGLE_TABLE )
 @DiscriminatorColumn( name = "kind")
-public class BaseAttachmentEntity extends BaseEntity {
+public class BaseAttachmentEntity extends BaseEntity implements Serializable {
 
 	private String name;
 	private String type;

@@ -3,7 +3,7 @@ package com.cognive.storage.app.rdbms.mapper;
 import org.mapstruct.Mapper;
 
 import com.cognive.core.model.business.Customer;
-import com.cognive.storage.app.rdbms.entity.CustomerEntity;
+import com.cognive.storage.app.rdbms.entity.business.CustomerEntity;
 
 @Mapper(componentModel = "spring")
 public interface CustomerMapper {

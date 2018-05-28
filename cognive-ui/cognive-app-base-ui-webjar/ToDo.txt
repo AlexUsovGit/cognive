@@ -8,3 +8,5 @@
  - update - PUT
  - documents object?
  - check docs fields
+ 
+ ! Do "npm rebuild node-sass" if "Node Sass could not find a binding for your current environment"

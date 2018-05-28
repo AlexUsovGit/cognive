@@ -1,5 +1,7 @@
 package com.cognive.storage.app.rdbms.entity.banking;
 
-public class AccountEntity {
+import java.io.Serializable;
+
+public class AccountEntity implements Serializable {
 
 }
