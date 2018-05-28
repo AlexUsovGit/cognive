@@ -26,7 +26,7 @@ public class PersonSearchController extends BaseController<Person> {
 	}
 		
 	
-	@GetMapping("/Map")
+	@GetMapping("/map")
 	public PagedContentMessage<Person> find(Map<String, String> filter) {
 		// return asPagedContentMessage( personService.find(filter), filter.cloneAsItemsPage());
 		return null;

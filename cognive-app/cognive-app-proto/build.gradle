@@ -7,6 +7,7 @@ dependencies {
 	compile project(':cognive-core')
 	compile project(':cognive-storage-rdbms')
 	compile project(':cognive-ui:cognive-app-base-ui-webjar')
+	compile project(':cognive-ui:cognive-app-i18n')
 
 	compile 'org.springframework.boot:spring-boot-starter-security'
 	compile 'org.springframework.boot:spring-boot-devtools'

@@ -1,0 +1,21 @@
+databaseChangeLog:
+  - changeSet:
+      id: "2018-05-24-data-dict-countries"
+      author: user1
+      changes:
+      - sqlfile:
+         dbms: postgresql
+         path: "pg/data-dicts-countries.sql"
+         relativeToChangelogFile: true
+         splitStatements: true
+         stripComments: true
+  - changeSet:
+      id: "2018-05-24-data-dict-kinship"
+      author: user1
+      changes:
+      - sqlfile:
+         dbms: postgresql
+         path: "pg/data-dicts-kinship.sql"
+         relativeToChangelogFile: true
+         splitStatements: true
+         stripComments: true      

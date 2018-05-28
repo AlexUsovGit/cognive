@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script type="text/javascript">
+function doIt() {
+	var input = document.getElementById('org');
+	var a = JSON.parse(input.value); // ('function () { return ' + input.value + ';}');
+	var result = '';
+	for (var i in a) {
+		result += 'INSERT INTO public.dict_countries(code, description, name) VALUES ("' +
+				a[i].code + '", "", "' +
+				a[i].name + '");\n';
+	}
+	document.getElementById('result').value = result;
+}
+</script>
+</head>
+<body>
+
+<textarea id="org" rows="" cols=""></textarea>
+<button onclick="doIt();">do it</button>
+<textarea id="result" rows="" cols=""></textarea>
+
+</body>
+</html>

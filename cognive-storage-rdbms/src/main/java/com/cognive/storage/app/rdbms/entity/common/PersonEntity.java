@@ -1,15 +1,17 @@
 package com.cognive.storage.app.rdbms.entity.common;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedAttributeNode;
+import javax.persistence.NamedEntityGraph;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -17,8 +19,21 @@ import com.cognive.storage.rdbms.entity.BaseModifiableEntity;
 
 @Entity
 @Table(name="Person")
-public class PersonEntity extends BaseModifiableEntity {
+@NamedEntityGraph(name="fullPersonEntity",
+		attributeNodes = {
+				@NamedAttributeNode(value = "documents"),
+				@NamedAttributeNode(value = "registrationAddress"),
+				@NamedAttributeNode(value = "residenceAddress"),
+				@NamedAttributeNode(value = "postalAddress"),
+				@NamedAttributeNode(value = "phoneNumbers")
+				})
+public class PersonEntity extends BaseModifiableEntity implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1108007264533437709L;
+	
 	private String firstName;
 	private String middleName;
 	private String lastName;
@@ -29,19 +44,19 @@ public class PersonEntity extends BaseModifiableEntity {
 	private String citizenshipCountry; // Code
 	
 	// remake -> List + address type
-	@ManyToOne(fetch=FetchType.EAGER)
-	@JoinColumn(name="registrationAddressId")
+	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name="registrationAddress")
 	private AddressEntity registrationAddress;
 	
-	@ManyToOne(fetch=FetchType.EAGER)
+	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="residenceAddressId")
 	private AddressEntity residenceAddress;
 	
-	@ManyToOne(fetch=FetchType.EAGER)
+	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="postalAddressId")
 	private AddressEntity postalAddress; // postalAddress
 
-	@ManyToMany
+	@ManyToMany(fetch=FetchType.LAZY)
 	@JoinTable(
 			name = "person_phone",
 			joinColumns = @JoinColumn(name="person_id", referencedColumnName = "id"),
@@ -53,7 +68,7 @@ public class PersonEntity extends BaseModifiableEntity {
 	private String socialSecurityNumber; // snils;
 	private String email;
 
-	@OneToMany(mappedBy="owner", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy="owner", fetch=FetchType.LAZY)
 	private List<DocumentEntity> documents;
 
 	public String getFirstName() {

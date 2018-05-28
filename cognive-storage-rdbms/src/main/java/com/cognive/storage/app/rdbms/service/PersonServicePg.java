@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.stereotype.Service;
 
+import com.cognive.core.exception.NotFoundCogniveRtException;
 import com.cognive.core.model.common.Person;
 import com.cognive.core.model.filter.PersonSearchFilter;
 import com.cognive.core.service.PersonService;
@@ -33,6 +34,21 @@ public class PersonServicePg extends BaseModifiableServicePg<Person, PersonEntit
 	@Override
 	protected PagingAndSortingRepository<PersonEntity, Long> getRepo() {
 		return repo;
+	}
+	
+	@Override
+	public Person getFullById(long id) {
+		PersonEntity e = getFullEntityById(id);
+		return getMapper().entityToBo(e);
+	}
+
+	protected PersonEntity getFullEntityById(Long id) {
+		assertValidId(id, "ID is not valid for the getFullById operation.");
+		PersonEntity e = repo.findFullById(id);
+		if (e == null) {
+			throw new NotFoundCogniveRtException("T was not found for id=" + id);
+		}
+		return e;
 	}
 
 	@Override

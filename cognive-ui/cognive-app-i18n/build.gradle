@@ -1,0 +1,18 @@
+buildscript {
+    repositories {
+        mavenLocal()
+        mavenCentral()
+        jcenter()
+    }
+}
+
+apply plugin: 'java' 
+
+jar {
+    baseName = 'cognive-app-i18n'
+    version = "${CGN_BASE_VERSION}"
+}
+
+dependencies {
+	compile "org.springframework:spring-webmvc" // :${SPRING_VERSION}
+}

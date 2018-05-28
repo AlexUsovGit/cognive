@@ -1,0 +1,3 @@
+databaseChangeLog:
+  - include:
+    file: app/changesets/changesets.yaml

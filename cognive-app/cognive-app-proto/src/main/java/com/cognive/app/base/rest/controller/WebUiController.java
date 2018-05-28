@@ -29,7 +29,7 @@ public class WebUiController {
 		WebUiDesciptor result = new WebUiDesciptor();
 		
 		// FIXME: tmp code. The class content will be loaded from the modules cfg
-		
+			
 		Map<String, WebUiComponent> uiComponents = new LinkedHashMap<>();
 		
 		WebUiComponent baseCmpn = new WebUiComponent();
@@ -51,5 +51,5 @@ public class WebUiController {
 		
 		return result;
 	} 
-	
+
 }

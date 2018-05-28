@@ -1,12 +1,13 @@
 package com.cognive.storage.rdbms.entity;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.MappedSuperclass;
 
 @MappedSuperclass
-abstract public class BaseModifiableEntity extends BaseEntity {
+abstract public class BaseModifiableEntity extends BaseEntity implements Serializable {
 
 	private Date modifiedOn;
 	private String modifiedBy;

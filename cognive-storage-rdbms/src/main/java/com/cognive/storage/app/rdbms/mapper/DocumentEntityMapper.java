@@ -12,8 +12,8 @@ import com.cognive.storage.app.rdbms.entity.common.PersonEntity;
 @Mapper(componentModel = "spring")
 public interface DocumentEntityMapper extends BaseEntityMapper<Document, DocumentEntity> {
 	
-	@Mappings({ @Mapping(target = "documents", ignore = true) })
-	PersonEntity boToEntity(Person bo);
+//	@Mappings({ @Mapping(target = "documents", ignore = true) })
+//	PersonEntity boToEntity(Person bo);
 
 	@Mappings({ @Mapping(target = "documents", ignore = true) })
 	Person entityToBo(PersonEntity entity);
